@@ -1,14 +1,11 @@
-# Render Blueprint for "The Site Office"
-# Deploys the Next.js app as a Node web service (needed for the /api/contact backend).
-# Docs: https://render.com/docs/blueprint-spec
+# Render Blueprint for "The Site Office" (static site - always on, free)
+# Next.js is exported to ./out and served as static files.
 services:
   - type: web
     name: thesiteoffice
-    runtime: node
-    plan: free
+    runtime: static
     buildCommand: npm install && npm run build
-    startCommand: npm run start
-    autoDeploy: true
+    staticPublishPath: ./out
     envVars:
       - key: NODE_VERSION
         value: "20.18.0"

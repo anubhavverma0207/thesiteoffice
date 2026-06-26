@@ -7,8 +7,8 @@ import { site } from "@/lib/site.config";
 /**
  * Cinematic landing intro.
  * The wordmark reveals full-screen and STAYS until the user scrolls
- * (or taps / presses a key). On mobile the wordmark stacks into rows
- * for impact; on desktop it sits on a single line. Colours cycle rapidly.
+ * (or taps / presses a key). On exit it forces the page back to the very
+ * top so the visitor always lands on the hero, never a scrolled position.
  */
 const GUARD = 800; // ms: let the reveal play before a scroll can dismiss
 
@@ -23,12 +23,19 @@ const COLORS = [
   "#ff3b30",
 ];
 
+function scrollToTop() {
+  const lenis = (window as unknown as { lenis?: { scrollTo: (t: number, o?: object) => void } }).lenis;
+  if (lenis) lenis.scrollTo(0, { immediate: true });
+  window.scrollTo(0, 0);
+}
+
 export default function Intro() {
   const [open, setOpen] = useState(true);
   const canDismiss = useRef(false);
-  const words = site.name.split(" ");
 
   useEffect(() => {
+    // Start at the top and lock scrolling while the intro is visible.
+    scrollToTop();
     document.body.style.overflow = "hidden";
 
     const unlockAt = window.setTimeout(() => {
@@ -54,6 +61,9 @@ export default function Intro() {
 
   const handleExitComplete = () => {
     document.body.style.overflow = "";
+    scrollToTop();
+    // Re-assert after Lenis' next frame so nothing snaps it back down.
+    window.setTimeout(scrollToTop, 60);
   };
 
   return (
@@ -88,7 +98,7 @@ export default function Intro() {
           >
             {/* Mobile: stacked rows */}
             <h1 className="md:hidden">
-              {words.map((w, i) => (
+              {site.name.split(" ").map((w, i) => (
                 <span key={i} className="reveal-mask text-[20vw]">
                   <motion.span
                     className="block"

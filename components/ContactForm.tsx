@@ -7,6 +7,10 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 const services = ["Brand", "Web Design", "Development", "Motion / 3D"];
 
+// Web3Forms access key. Get a free key at https://web3forms.com (enter your
+// email, they email you a key). Paste it between the quotes below.
+const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
+
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -25,21 +29,28 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
     const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: "New enquiry from The Site Office website",
+      from_name: "The Site Office",
       name: String(data.get("name") || ""),
       email: String(data.get("email") || ""),
       company: String(data.get("company") || ""),
-      services: selected,
+      services: selected.join(", "),
       message: String(data.get("message") || ""),
     };
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(payload),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "Something went wrong.");
+      if (!res.ok || !json.success)
+        throw new Error(json?.message || "Something went wrong. Please try again.");
       setStatus("success");
       form.reset();
       setSelected([]);
@@ -64,7 +75,7 @@ export default function ContactForm() {
           <span className="label text-ash">(Message sent)</span>
           <h3 className="mt-4 font-serif text-display-md">Thank you.</h3>
           <p className="mt-4 max-w-md text-lg text-ash">
-            Your message has landed. We'll be in touch within two business days
+            Your message has landed. We'll be in touch within two business days,
             usually much sooner.
           </p>
           <button
@@ -147,9 +158,7 @@ export default function ContactForm() {
             />
           </label>
 
-          {status === "error" && (
-            <p className="text-sm text-red-700">{error}</p>
-          )}
+          {status === "error" && <p className="text-sm text-red-700">{error}</p>}
 
           <button
             type="submit"
