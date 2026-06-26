@@ -1,0 +1,14 @@
+# Render Blueprint for "The Site Office"
+# Deploys the Next.js app as a Node web service (needed for the /api/contact backend).
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: thesiteoffice
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.0"
