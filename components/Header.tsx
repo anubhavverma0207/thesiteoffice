@@ -107,7 +107,7 @@ export default function Header() {
             <nav className="mt-6 flex flex-col md:mt-10">
               {[...site.nav, { label: "Start a project", href: "/contact" }].map(
                 (item, i) => (
-                  <div key={item.href} className="overflow-hidden pb-[0.12em] -mb-[0.12em]">
+                  <div key={item.href} className="overflow-hidden pb-[0.3em] -mb-[0.3em]">
                     <motion.div
                       initial={{ y: "110%" }}
                       animate={{ y: 0 }}
