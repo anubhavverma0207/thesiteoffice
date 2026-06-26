@@ -92,12 +92,12 @@ export default function StudioPage() {
             <span className="label text-ash">(The people)</span>
             <AnimatedHeading
               as="h2"
-              text="A small team, on purpose."
+              text="Senior people, on every project."
               className="mt-4 font-serif text-display-md"
             />
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-md text-lg text-ash">
-                We keep the studio deliberately small. The designers and
+                Every project is led by senior people. The designers and
                 engineers who pitch your project are the same people who build
                 it. No layers of account managers, no juniors learning on your
                 budget, no work handed off to strangers.

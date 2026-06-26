@@ -25,7 +25,7 @@ export default function HomePage() {
             <span className="label text-ash">(About the studio)</span>
             <AnimatedHeading
               as="h2"
-              text="We are a small studio with outsized ambition, obsessed with craft, allergic to the generic."
+              text="We are a studio with outsized ambition, obsessed with craft, allergic to the generic."
               className="mt-6 font-serif text-display-md text-balance"
             />
           </div>
