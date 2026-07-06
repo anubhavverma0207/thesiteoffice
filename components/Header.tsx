@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "@/lib/site.config";
 import Magnetic from "./Magnetic";
+import LocalTime from "./LocalTime";
 
 export default function Header() {
   const pathname = usePathname();
@@ -102,7 +103,7 @@ export default function Header() {
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 flex flex-col justify-between bg-ink text-bone container-x pt-24 pb-10 md:pt-32"
+            className="fixed inset-0 z-40 flex flex-col justify-between gap-8 overflow-y-auto bg-ink text-bone container-x pt-24 pb-10 md:pt-32"
           >
             <nav className="mt-6 flex flex-col md:mt-10">
               {[...site.nav, { label: "Start a project", href: "/contact" }].map(
@@ -138,20 +139,22 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.6 }}
-              className="grid grid-cols-2 gap-8 border-t border-bone/15 pt-8 md:grid-cols-4"
+              className="grid grid-cols-1 gap-6 border-t border-bone/15 pt-6 min-[420px]:grid-cols-2 min-[420px]:gap-8 md:grid-cols-4 md:pt-8"
             >
               <div>
-                <div className="label text-bone/40">Email</div>
+                <div className="label text-bone/40">Get in touch</div>
                 <a
                   href={`mailto:${site.email}`}
-                  className="mt-2 block text-sm text-bone/85 hover:text-bone"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-bone/85 hover:text-bone"
                 >
-                  {site.email}
+                  Email us
+                  <span aria-hidden>↗</span>
                 </a>
               </div>
               <div>
                 <div className="label text-bone/40">Studios</div>
                 <p className="mt-2 text-sm text-bone/85">{site.location}</p>
+                <LocalTime className="mt-1 block text-xs text-bone/50" />
               </div>
               <div className="col-span-2">
                 <div className="label text-bone/40">Social</div>

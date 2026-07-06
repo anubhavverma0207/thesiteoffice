@@ -57,9 +57,11 @@ export function AnimatedHeading({
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   const words = text.split(" ");
   const Tag = motion[as] as any;
+  // Words wrapped in underscores (`_word_`) render in italic.
+  const plain = text.replace(/_/g, "");
 
   return (
-    <Tag ref={ref} className={className} aria-label={text}>
+    <Tag ref={ref} className={className} aria-label={plain}>
       {words.map((word, i) => (
         <span key={i} className="reveal-mask align-bottom">
           <motion.span
@@ -72,7 +74,11 @@ export function AnimatedHeading({
               ease: [0.33, 1, 0.68, 1],
             }}
           >
-            {word}
+            {word.startsWith("_") ? (
+              <em className="font-light italic">{word.replace(/_/g, "")}</em>
+            ) : (
+              word
+            )}
             {i < words.length - 1 ? " " : ""}
           </motion.span>
         </span>

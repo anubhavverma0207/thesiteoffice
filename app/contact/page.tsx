@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import FAQ from "@/components/FAQ";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
+import { faqs } from "@/lib/data";
 import { site } from "@/lib/site.config";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: `Start a project with ${site.name}. Tell us what you're building.`,
+  alternates: { canonical: "/contact/" },
 };
 
 export default function ContactPage() {
   return (
+    <>
     <section className="container-x pt-36 pb-28 md:pt-48">
       <div className="grid gap-16 md:grid-cols-12">
         {/* Left: intro + details */}
@@ -30,17 +34,14 @@ export default function ContactPage() {
           <Reveal delay={0.25}>
             <div className="mt-12 space-y-8">
               <div>
-                <span className="label text-ash">Email</span>
+                <span className="label text-ash">Prefer email?</span>
                 <a
                   href={`mailto:${site.email}`}
-                  className="mt-2 block text-lg underline underline-offset-4"
+                  className="mt-2 inline-flex items-center gap-2 text-lg underline underline-offset-4"
                 >
-                  {site.email}
+                  Email us
+                  <span aria-hidden>↗</span>
                 </a>
-              </div>
-              <div>
-                <span className="label text-ash">Phone</span>
-                <p className="mt-2 text-lg">{site.phone}</p>
               </div>
               <div>
                 <span className="label text-ash">Studios</span>
@@ -56,5 +57,19 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
+
+    {/* Common questions, so nobody has to wait for a reply to learn the basics */}
+    <section className="container-x border-t border-line py-20 md:py-28">
+      <span className="label text-ash">(Before you ask)</span>
+      <AnimatedHeading
+        as="h2"
+        text="Quick _answers._"
+        className="mt-4 font-serif text-display-md"
+      />
+      <div className="mt-10 max-w-3xl">
+        <FAQ items={faqs.slice(1, 4)} />
+      </div>
+    </section>
+    </>
   );
 }

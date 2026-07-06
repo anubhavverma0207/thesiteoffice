@@ -3,7 +3,16 @@
 import Link from "next/link";
 import { site } from "@/lib/site.config";
 import Magnetic from "./Magnetic";
+import LocalTime from "./LocalTime";
 import { AnimatedHeading } from "./Reveal";
+
+function scrollToTop() {
+  const lenis = (
+    window as unknown as { lenis?: { scrollTo: (t: number) => void } }
+  ).lenis;
+  if (lenis) lenis.scrollTo(0);
+  else window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -74,11 +83,19 @@ export default function Footer() {
             <div className="label text-bone/40">Contact</div>
             <ul className="mt-5 space-y-2 text-sm text-bone/80">
               <li>
-                <a href={`mailto:${site.email}`} className="hover:text-bone">
-                  {site.email}
+                <a
+                  href={`mailto:${site.email}`}
+                  className="inline-flex items-center gap-1.5 hover:text-bone"
+                >
+                  Email us
+                  <span aria-hidden>↗</span>
                 </a>
               </li>
-              <li>{site.phone}</li>
+              <li>
+                <Link href="/contact" className="hover:text-bone">
+                  Start a project
+                </Link>
+              </li>
               <li className="text-bone/50">{site.location}</li>
             </ul>
           </div>
@@ -89,9 +106,31 @@ export default function Footer() {
           <span>
             © {year} {site.legalName}. All rights reserved.
           </span>
-          <span className="label text-bone/35">Designed &amp; built in-house</span>
+          <LocalTime className="text-bone/60" />
+          <button
+            onClick={scrollToTop}
+            data-cursor="Top"
+            className="self-start text-left text-bone/60 transition-colors hover:text-bone md:self-auto"
+          >
+            Back to top ↑
+          </button>
         </div>
       </div>
+
+      {/* Giant wordmark: hollow type, fills on hover */}
+      <button
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        data-cursor="Top"
+        className="block w-full overflow-hidden pb-4 text-bone/90"
+      >
+        <span className="text-outline block select-none whitespace-nowrap text-center font-serif text-[12.5vw] leading-none tracking-tightest transition-colors duration-700 hover:text-bone hover:[-webkit-text-stroke-width:0px]">
+          {site.name}
+          <sup className="align-super text-[0.35em] text-flag [-webkit-text-stroke-width:0px]">
+            ®
+          </sup>
+        </span>
+      </button>
     </footer>
   );
 }

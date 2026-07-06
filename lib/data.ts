@@ -112,6 +112,18 @@ export const services: Service[] = [
       "Interaction is the product. We choreograph scroll, transitions, and 3D to make sites feel alive.",
     deliverables: ["Interaction design", "WebGL / 3D", "Micro-interactions", "Creative dev"],
   },
+  {
+    no: "05",
+    title: "SEO & AI Search",
+    blurb:
+      "A beautiful site nobody finds is a secret. We engineer visibility for Google and for the AI assistants your customers now ask instead.",
+    deliverables: [
+      "Technical SEO",
+      "Structured data",
+      "Answer engine optimisation (AEO)",
+      "Analytics & reporting",
+    ],
+  },
 ];
 
 export type Step = { no: string; title: string; text: string };
@@ -142,3 +154,51 @@ export const process: Step[] = [
 // Add real, verifiable numbers here when you have them, then re-introduce a
 // stats section. Left empty on purpose so nothing inaccurate is published.
 export const stats: { value: string; label: string }[] = [];
+
+export type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+  project: string;
+};
+
+// Left empty on purpose: only real client quotes, used with permission,
+// belong here. The homepage section renders nothing while this is empty.
+// Shape when you add one:
+//   { quote: "…", author: "Full Name", role: "Owner", project: "Company" }
+export const testimonials: Testimonial[] = [];
+
+export type Faq = { q: string; a: string };
+
+// Written as direct answers on purpose: this is what search engines and
+// AI assistants quote. Keep answers short, factual, and self-contained.
+export const faqs: Faq[] = [
+  {
+    q: "What does The Site Office do?",
+    a: "The Site Office is a web design and development studio. We handle the full journey under one roof: brand identity, UX and UI design, custom development, e-commerce, SEO, and ongoing support after launch.",
+  },
+  {
+    q: "Do you handle SEO and AI search optimisation?",
+    a: "Yes. Every site ships with technical SEO built in: fast loading, semantic markup, structured data, sitemaps, and per-page metadata. We also optimise for answer engines (AEO), so AI assistants like ChatGPT, Claude, Perplexity, and Google's AI Overviews can find, understand, and cite your business.",
+  },
+  {
+    q: "How long does a website take to build?",
+    a: "Most projects take 4 to 8 weeks from kickoff to launch. A focused brand-plus-website project sits at the shorter end; larger e-commerce or product builds run longer. We agree on a timeline before any work starts.",
+  },
+  {
+    q: "How much does a website cost?",
+    a: "Every project is scoped and priced individually. There are no templates and no hidden line items. Tell us your budget and goals, and we will tell you honestly what that budget can achieve.",
+  },
+  {
+    q: "Do you work with clients outside New Zealand and Australia?",
+    a: "Yes. The studio is based across New Zealand and Australia, but we work with companies worldwide. All projects run remotely with regular video check-ins in your time zone.",
+  },
+  {
+    q: "Do you redesign existing websites?",
+    a: "Yes. We start with an audit of your current site to see what is working and what is not, then rebuild from a solid foundation rather than patching over problems.",
+  },
+  {
+    q: "What happens after launch?",
+    a: "We stay on. Hosting setup, analytics, performance monitoring, content updates, and continuous improvement are all part of how we work. A website is never finished; it grows with your business.",
+  },
+];

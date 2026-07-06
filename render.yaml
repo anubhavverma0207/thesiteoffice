@@ -9,3 +9,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "20.18.0"
+      # Web3Forms delivery key. It is a PUBLIC key (like a form id), safe to
+      # commit and ship in client code — it only routes submissions to the
+      # studio inbox. Needed at build time so the static form is connected.
+      - key: NEXT_PUBLIC_WEB3FORMS_KEY
+        value: 92b64d24-983a-49c7-a320-4d8dd0693e3c

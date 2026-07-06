@@ -2,6 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import ProjectCard from "@/components/ProjectCard";
+import Testimonials from "@/components/Testimonials";
 import { Reveal, AnimatedHeading } from "@/components/Reveal";
 import { projects, services } from "@/lib/data";
 import { site } from "@/lib/site.config";
@@ -14,7 +15,7 @@ export default function HomePage() {
       {/* Marquee */}
       <section className="border-y border-line py-8">
         <Marquee
-          items={["Brand", "Web Design", "Development", "Motion", "Strategy"]}
+          items={["Brand", "Web Design", "Development", "Motion", "SEO & AI Search"]}
         />
       </section>
 
@@ -25,7 +26,7 @@ export default function HomePage() {
             <span className="label text-ash">(About the studio)</span>
             <AnimatedHeading
               as="h2"
-              text="We are a studio with outsized ambition, obsessed with craft, allergic to the generic."
+              text="We are a studio with outsized ambition, obsessed with craft, allergic to the _generic._"
               className="mt-6 font-serif text-display-md text-balance"
             />
           </div>
@@ -99,8 +100,8 @@ export default function HomePage() {
             />
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-xs text-ash">
-                Four disciplines, one team. We take you from a blank page to a
-                living, breathing website.
+                Five disciplines, one team. We take you from a blank page to a
+                living, breathing website that people actually find.
               </p>
             </Reveal>
           </div>
@@ -137,6 +138,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Client words */}
+      <Testimonials />
 
       {/* Closing marquee */}
       <section className="border-t border-line py-8">

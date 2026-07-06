@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
-import { services, process } from "@/lib/data";
+import FAQ from "@/components/FAQ";
+import JsonLd from "@/components/JsonLd";
+import { services, process, faqs } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
     "Brand, web design, development, and motion: a full-service studio for ambitious digital products.",
+  alternates: { canonical: "/services/" },
 };
 
 const serviceImages = [
@@ -14,6 +17,7 @@ const serviceImages = [
   "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1400&q=80",
   "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=1400&q=80",
   "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
 ];
 
 export default function ServicesPage() {
@@ -24,7 +28,7 @@ export default function ServicesPage() {
         <span className="label text-ash">(Services)</span>
         <AnimatedHeading
           as="h1"
-          text="Everything you need to launch and grow."
+          text="Everything you need to launch and _grow._"
           className="mt-6 font-serif text-display-lg text-balance"
         />
         <Reveal delay={0.2}>
@@ -88,7 +92,7 @@ export default function ServicesPage() {
             className="mt-4 font-serif text-display-md"
           />
         </div>
-        <div className="grid gap-px md:grid-cols-4">
+        <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
           {process.map((step, i) => (
             <Reveal key={step.no} delay={i * 0.08}>
               <div className="flex h-full flex-col gap-4 border-t border-line pt-6">
@@ -100,6 +104,41 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      {/* FAQ */}
+      <section className="container-x border-t border-line py-24 md:py-36">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <span className="label text-ash">(Questions)</span>
+            <AnimatedHeading
+              as="h2"
+              text="Asked, _answered._"
+              className="mt-4 font-serif text-display-md"
+            />
+            <Reveal delay={0.1}>
+              <p className="mt-6 max-w-xs text-ash">
+                The things every client asks before we start. Anything else,
+                just ask.
+              </p>
+            </Reveal>
+          </div>
+          <div className="md:col-span-7 md:col-start-6">
+            <FAQ items={faqs} />
+          </div>
+        </div>
+      </section>
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
     </>
   );
 }

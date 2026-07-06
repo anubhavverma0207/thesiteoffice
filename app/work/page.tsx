@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Selected projects: brand, web design, and development for ambitious companies.",
+  alternates: { canonical: "/work/" },
 };
 
 export default function WorkPage() {
@@ -18,7 +19,7 @@ export default function WorkPage() {
         <span className="label text-ash">(Selected work · 2023 / 2025)</span>
         <AnimatedHeading
           as="h1"
-          text="Work we're proud of."
+          text="Work we're _proud_ of."
           className="mt-6 font-serif text-display-lg"
         />
         <Reveal delay={0.2}>

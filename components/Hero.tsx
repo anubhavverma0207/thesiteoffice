@@ -22,12 +22,17 @@ export default function Hero() {
   const yTitle = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const lines = ["Websites that feel", "utterly inevitable."];
+  const lines: React.ReactNode[] = [
+    "Websites that feel",
+    <>
+      utterly <em className="font-light italic">inevitable.</em>
+    </>,
+  ];
 
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-28 pb-10 container-x"
+      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-24 pb-8 container-x md:pt-28 md:pb-10"
     >
       {/* Top meta row */}
       <motion.div

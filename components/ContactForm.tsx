@@ -2,14 +2,24 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { site } from "@/lib/site.config";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const services = ["Brand", "Web Design", "Development", "Motion / 3D"];
+const services = [
+  "Brand",
+  "Web Design",
+  "Development",
+  "Motion / 3D",
+  "SEO & AI Search",
+];
 
-// Web3Forms access key. Get a free key at https://web3forms.com (enter your
-// email, they email you a key). Paste it between the quotes below.
-const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
+// Web3Forms access key. Get a free key at https://web3forms.com (enter the
+// studio inbox address, they email you a key), then put it in .env.local:
+//   NEXT_PUBLIC_WEB3FORMS_KEY=xxxxxxxx-xxxx-...
+// The key is public by design (it only identifies which inbox to deliver to).
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -23,15 +33,36 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
-    setError(null);
 
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    // Honeypot: real people never see or fill this field. If it has a
+    // value, a bot did — pretend to succeed and deliver nothing.
+    if (String(data.get("botcheck") || "").length > 0) {
+      setStatus("success");
+      form.reset();
+      setSelected([]);
+      return;
+    }
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setStatus("error");
+      setError(
+        "The form isn't connected yet. Email us directly and we'll reply the same way."
+      );
+      return;
+    }
+
+    setStatus("submitting");
+    setError(null);
+
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "New enquiry from The Site Office website",
-      from_name: "The Site Office",
+      subject: `New enquiry: ${String(data.get("name") || "Website visitor")}`,
+      from_name: "The Site Office website",
+      // Lets you hit "Reply" in your inbox and write straight back.
+      replyto: String(data.get("email") || ""),
       name: String(data.get("name") || ""),
       email: String(data.get("email") || ""),
       company: String(data.get("company") || ""),
@@ -93,6 +124,16 @@ export default function ContactForm() {
           animate={{ opacity: 1 }}
           className="flex flex-col gap-10"
         >
+          {/* Honeypot — hidden from people, tempting to bots */}
+          <input
+            type="text"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute -left-[9999px] h-0 w-0 opacity-0"
+          />
+
           <div className="grid gap-10 sm:grid-cols-2">
             <label className="block">
               <span className="label text-ash">Your name *</span>
@@ -158,7 +199,17 @@ export default function ContactForm() {
             />
           </label>
 
-          {status === "error" && <p className="text-sm text-red-700">{error}</p>}
+          {status === "error" && (
+            <p className="text-sm text-flag">
+              {error}{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="underline underline-offset-4"
+              >
+                Email us directly ↗
+              </a>
+            </p>
+          )}
 
           <button
             type="submit"

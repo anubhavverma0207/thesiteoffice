@@ -14,6 +14,9 @@ const config: Config = {
         paper: "#faf8f3",
         ash: "#8a857c",
         line: "#e0dcd2",
+        // Surveyor's orange — the colour of the work site. Used sparingly:
+        // status dots, the scroll progress hairline, selection, one accent.
+        flag: "#ff4a00",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
@@ -41,10 +44,15 @@ const config: Config = {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        beacon: {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.35", transform: "scale(0.8)" },
+        },
       },
       animation: {
         marquee: "marquee 32s linear infinite",
         shimmer: "shimmer 2.4s linear infinite",
+        beacon: "beacon 2s ease-in-out infinite",
       },
     },
   },

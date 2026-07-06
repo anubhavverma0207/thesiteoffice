@@ -75,16 +75,35 @@ WebsiteBuilder/
 
 ---
 
-## The backend (`/api/contact`)
+## Receiving contact-form messages
 
-- `POST /api/contact` validates `{ name, email, company, services[], message }`,
-  stores the enquiry, returns `201 { ok, id }`. Validation errors return `422`.
-- `GET /api/contact` returns a simple health/info response.
+The site is a static export, so the form posts directly to
+**[Web3Forms](https://web3forms.com)** (free), which delivers each enquiry to
+your email inbox with Reply-To set to the visitor. Setup:
 
-For the demo, submissions are appended to `data/submissions.json`. **To go to
-production**, replace the `saveSubmission()` body in `app/api/contact/route.ts`
-with a database insert (Postgres / Prisma / Supabase) or an email/CRM call. The
-front-end contract stays identical.
+1. Get a free access key at web3forms.com (enter the inbox that should
+   receive enquiries).
+2. Copy `.env.local.example` to `.env.local` and paste the key.
+3. For production, set the same `NEXT_PUBLIC_WEB3FORMS_KEY` env var on your
+   host (see `DEPLOY.md`).
+
+Spam is filtered by a honeypot field. Until the key is configured the form
+shows an "email us directly" fallback instead of failing.
+
+---
+
+## SEO & AEO
+
+Built in, per page:
+
+- Titles, descriptions, canonical URLs, Open Graph + Twitter cards (`/og.png`)
+- `sitemap.xml` and `robots.txt` generated at build time
+- JSON-LD structured data: Organization/ProfessionalService + WebSite
+  (site-wide) and FAQPage (services page)
+- FAQ content written as direct, quotable answers so AI assistants
+  (ChatGPT, Claude, Perplexity, Google AI Overviews) can cite the studio
+- Set the production domain in `lib/site.config.ts` (`url:`) before launch,
+  then submit the sitemap in Google Search Console.
 
 ---
 

@@ -6,11 +6,17 @@ import { site } from "@/lib/site.config";
 
 /**
  * Cinematic landing intro.
- * The wordmark reveals full-screen and STAYS until the user scrolls
- * (or taps / presses a key). On exit it forces the page back to the very
- * top so the visitor always lands on the hero, never a scrolled position.
+ * Plays ONCE per browser session: the wordmark reveals full-screen and stays
+ * until the visitor scrolls (or taps / presses a key). After it is dismissed we
+ * remember it (sessionStorage) so navigating between pages, refreshing, or
+ * landing directly on a deep page does not replay it. A new tab / new session
+ * gets the moment again.
+ *
+ * The overlay is client-only (never in the static HTML), so a "seen" load shows
+ * no flash of the intro at all.
  */
-const GUARD = 800; // ms: let the reveal play before a scroll can dismiss
+const GUARD = 800; // ms: let the reveal play before a scroll can dismiss it
+const SEEN_KEY = "tso_intro_seen";
 
 const COLORS = [
   "#ff3b30",
@@ -30,11 +36,14 @@ function scrollToTop() {
 }
 
 export default function Intro() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const canDismiss = useRef(false);
 
   useEffect(() => {
-    // Start at the top and lock scrolling while the intro is visible.
+    // Already seen this session? Never show it again.
+    if (sessionStorage.getItem(SEEN_KEY) === "1") return;
+
+    setOpen(true);
     scrollToTop();
     document.body.style.overflow = "hidden";
 
@@ -60,6 +69,10 @@ export default function Intro() {
   }, []);
 
   const handleExitComplete = () => {
+    // Remember for the rest of the session so it never replays.
+    try {
+      sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {}
     document.body.style.overflow = "";
     scrollToTop();
     // Re-assert after Lenis' next frame so nothing snaps it back down.

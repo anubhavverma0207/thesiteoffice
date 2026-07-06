@@ -8,6 +8,7 @@ import { site } from "@/lib/site.config";
 export const metadata: Metadata = {
   title: "Studio",
   description: `Meet ${site.name}, a design and engineering studio building extraordinary websites.`,
+  alternates: { canonical: "/studio/" },
 };
 
 const values = [
@@ -38,7 +39,7 @@ export default function StudioPage() {
         <span className="label text-ash">(The studio)</span>
         <AnimatedHeading
           as="h1"
-          text="A studio built on craft, curiosity, and care."
+          text="A studio built on craft, curiosity, and _care._"
           className="mt-6 font-serif text-display-lg text-balance"
         />
       </header>
