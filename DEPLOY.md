@@ -16,21 +16,34 @@ custom domain later under Settings.)
 
 ---
 
-## Step 0 — Connect the contact form (one-time, 2 minutes)
+## Step 0: Connect the contact form (one-time)
 
 Enquiries are delivered by [Web3Forms](https://web3forms.com) straight to your
-email inbox — no server needed.
+email inbox. No server needed.
 
-1. Go to web3forms.com and enter the inbox that should **receive** enquiries.
-2. They email you an access key.
-3. Locally: copy `.env.local.example` to `.env.local` and paste the key.
-4. On Render: add an environment variable `NEXT_PUBLIC_WEB3FORMS_KEY` with the
-   same value (Dashboard → your static site → Environment).
+**Access key.** The current key is already set for this project: it lives in
+`render.yaml` (as `NEXT_PUBLIC_WEB3FORMS_KEY`) and in `.env.local` for local dev.
+It is a public key (like a form id), safe to commit. To point enquiries at a
+different inbox, create a new key at web3forms.com with that inbox and replace
+the value in both `render.yaml` and `.env.local`, then redeploy. Until a key is
+set, the form shows a friendly "Email us" fallback instead of failing silently.
 
-Until the key is set, the form shows a friendly "email us directly" fallback
-instead of failing silently.
+**Stop enquiries going to Spam (do this once, important).** Web3Forms sends from
+a shared address, so Gmail often files the first messages under Spam. Fix it with
+a filter in the receiving inbox (thesiteofficenz@gmail.com):
 
-## Step 1 — Put the code on GitHub
+1. In Gmail, click the filter icon in the search bar (the sliders icon).
+2. In "Has the words", paste:
+   `subject:("New enquiry") OR from:(web3forms.com)`
+3. Click **Create filter**, then tick:
+   - **Never send it to Spam**
+   - **Mark as important**
+   - **Also apply filter to matching conversations** (rescues any already in Spam)
+4. Click **Create filter**. Every enquiry now lands in the inbox.
+
+Also add the sender to Google Contacts once, which further stops spam filtering.
+
+## Step 1: Put the code on GitHub
 
 Render deploys from a Git repository. From this project folder:
 
@@ -42,7 +55,7 @@ git remote add origin https://github.com/<your-username>/thesiteoffice.git
 git push -u origin main
 ```
 
-## Step 2 — Create the site on Render
+## Step 2: Create the site on Render
 
 1. Go to https://dashboard.render.com -> **New** -> **Blueprint**.
 2. Connect GitHub and select the `thesiteoffice` repo.
@@ -50,9 +63,9 @@ git push -u origin main
    Click **Apply**.
 4. Add the `NEXT_PUBLIC_WEB3FORMS_KEY` environment variable (Step 0).
 
-## Step 3 — After the first deploy
+## Step 3: After the first deploy
 
-- Set the real domain in `lib/site.config.ts` (`url:`) and redeploy — this
+- Set the real domain in `lib/site.config.ts` (`url:`) and redeploy. This
   fixes canonical URLs, Open Graph, the sitemap, and structured data.
 - Submit `https://<your-domain>/sitemap.xml` in
   [Google Search Console](https://search.google.com/search-console) and
