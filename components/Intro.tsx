@@ -19,17 +19,6 @@ import IntroCritters from "@/components/IntroCritters";
 const GUARD = 800; // ms: let the reveal play before a scroll can dismiss it
 const SEEN_KEY = "tso_intro_seen";
 
-const COLORS = [
-  "#ff3b30",
-  "#ff9f0a",
-  "#ffd60a",
-  "#30d158",
-  "#0a84ff",
-  "#5e5ce6",
-  "#bf5af2",
-  "#ff3b30",
-];
-
 function scrollToTop() {
   const lenis = (window as unknown as { lenis?: { scrollTo: (t: number, o?: object) => void } }).lenis;
   if (lenis) lenis.scrollTo(0, { immediate: true });
@@ -105,8 +94,8 @@ export default function Intro() {
 
           {/* wordmark: rapid colour cycle (outer), reveal (inner) */}
           <motion.div
-            initial={{ color: "#f3f0e9" }}
-            animate={{ color: COLORS }}
+            initial={{ color: "#f5a623" }}
+            animate={{ color: "#f5a623" }}
             transition={{
               color: { duration: 2.8, ease: "linear", repeat: Infinity, delay: 1.3 },
             }}
