@@ -174,8 +174,8 @@ export type Faq = { q: string; a: string };
 // AI assistants quote. Keep answers short, factual, and self-contained.
 export const faqs: Faq[] = [
   {
-    q: "What does The Site Office do?",
-    a: "The Site Office is a web design and development studio. We handle the full journey under one roof: brand identity, UX and UI design, custom development, e-commerce, SEO, and ongoing support after launch.",
+    q: "What does AntCrow do?",
+    a: "AntCrow is a web design and development studio. We handle the full journey under one roof: brand identity, UX and UI design, custom development, e-commerce, SEO, and ongoing support after launch.",
   },
   {
     q: "Do you handle SEO and AI search optimisation?",
