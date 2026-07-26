@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "@/lib/site.config";
+import IntroCritters from "@/components/IntroCritters";
 
 /**
  * Cinematic landing intro.
@@ -90,7 +91,9 @@ export default function Intro() {
           exit={{ y: "-100%" }}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
-          {/* top meta (location only) */}
+          <IntroCritters />
+
+{/* top meta (location only) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -107,7 +110,8 @@ export default function Intro() {
             transition={{
               color: { duration: 2.8, ease: "linear", repeat: Infinity, delay: 1.3 },
             }}
-            className="container-x w-full text-center font-serif leading-[0.95]"
+            id="intro-wordmark"
+className="container-x w-full text-center font-serif leading-[0.95]"
           >
             {/* Mobile: stacked rows */}
             <h1 className="md:hidden">
