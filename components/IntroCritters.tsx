@@ -125,6 +125,7 @@ export default function IntroCritters() {
       };
       pickTarget(a);
       a.ang = Math.atan2(a.ty - a.y, a.tx - a.x);
+      el.style.transform = `translate(${a.x}px,${a.y}px) rotate(${a.ang}rad)`;
       ants.push(a);
       el.addEventListener("click", (e: MouseEvent) => {
         e.stopPropagation(); // playing with an ant must not dismiss the intro
@@ -250,6 +251,7 @@ export default function IntroCritters() {
       crow.style.height = crowH + "px";
       crow.innerHTML = CROW_SVG;
       root!.appendChild(crow);
+      crow.style.transform = "translate(-200px,140px)";
       crow.addEventListener("click", (e: MouseEvent) => {
         e.stopPropagation(); // petting the crow must not dismiss the intro
         takeOff();
