@@ -60,7 +60,7 @@ export default function ContactForm() {
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
       subject: `New enquiry: ${String(data.get("name") || "Website visitor")}`,
-      from_name: "The Site Office website",
+      from_name: "AntCrow website",
       // Lets you hit "Reply" in your inbox and write straight back.
       replyto: String(data.get("email") || ""),
       name: String(data.get("name") || ""),
