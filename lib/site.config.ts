@@ -6,15 +6,15 @@
  */
 
 export const site = {
-  name: "The Site Office",
+  name: "AntCrow",
   // Shown as the full legal/brand name in the footer
-  legalName: "The Site Office Limited",
+  legalName: "AntCrow Limited",
   tagline: "A design & engineering studio building extraordinary websites.",
   description:
-    "The Site Office is a web design and development studio serving New Zealand and Australia. We design and build brand identities, custom websites, and e-commerce for ambitious companies.",
+    "AntCrow is a web design and development studio serving New Zealand and Australia. We design and build brand identities, custom websites, and e-commerce for ambitious companies.",
   // Production domain. Drives canonical URLs, Open Graph, the sitemap, and
   // structured data. Update this to your custom domain once one is connected.
-  url: "https://thesiteoffice.onrender.com",
+  url: "https://antcrow.com",
   // Where enquiries are delivered. Used for the mail-app link and as the
   // Web3Forms delivery target. It is NEVER shown as text on the site: every
   // touchpoint reads "Email us" and opens the visitor's mail app instead.
