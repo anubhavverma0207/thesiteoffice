@@ -116,15 +116,45 @@ export const services: Service[] = [
     no: "05",
     title: "SEO & AI Search",
     blurb:
-      "A beautiful site nobody finds is a secret. We engineer visibility for Google and for the AI assistants your customers now ask instead.",
+      "Your website has two audiences now: humans, who feel, and AI, which cites. We engineer visibility for Google and for the AI assistants your customers ask instead.",
     deliverables: [
       "Technical SEO",
       "Structured data",
       "Answer engine optimisation (AEO)",
+      "AI citation monitoring",
       "Analytics & reporting",
     ],
   },
+  {
+    no: "06",
+    title: "AI Concierges & Agents",
+    blurb:
+      "A concierge, not a chatbot. We design and build assistants trained on your business that answer, book, and act, in your brand's voice.",
+    deliverables: [
+      "Custom AI concierges",
+      "Knowledge base design",
+      "Guardrails & tone of voice",
+      "Managed hosting",
+    ],
+  },
 ];
+
+// Entry offer shown on the Services page. Presented as a service for now;
+// add a `price` line back here when you are ready to publish one.
+export const auditOffer = {
+  name: "AI Visibility Audit",
+  turnaround: "Delivered in 10 working days",
+  blurb:
+    "A focused report on how visible your business is where customers now ask: ChatGPT, Perplexity, Gemini, and Google's AI Overviews. You get an evidence pack, a competitor comparison, and a prioritised fix list your team (or ours) can act on.",
+  includes: [
+    "AI citation presence across the major assistants",
+    "Entity recognition: how AI understands your brand",
+    "Content structure: what is quotable, what is invisible",
+    "Trust signals (EEAT) and where they leak",
+    "Technical readiness: schema, speed, machine readability",
+    "Head-to-head against three competitors",
+  ],
+} as const;
 
 export type Step = { no: string; title: string; text: string };
 
@@ -200,5 +230,17 @@ export const faqs: Faq[] = [
   {
     q: "What happens after launch?",
     a: "We stay on. Hosting setup, analytics, performance monitoring, content updates, and continuous improvement are all part of how we work. A website is never finished; it grows with your business.",
+  },
+  {
+    q: "Why do I need a studio when AI can build a website?",
+    a: "AI tools generate a website. A studio makes yours the one people remember and the one AI engines cite. We use AI where it is strong and craft where it matters: positioning, art direction, motion, structured content, and engineering that generators cannot reason about. And we ship exactly what was designed, no shortcuts.",
+  },
+  {
+    q: "What is AEO (answer engine optimisation)?",
+    a: "AEO is making your website quotable by AI assistants like ChatGPT, Perplexity, and Google's AI Overviews. In practice it means direct answers near the top of each page, clean structured data, machine-readable HTML, and content AI engines can safely cite. It matters because AI referrals convert several times better than classic search traffic.",
+  },
+  {
+    q: "What is an AI concierge?",
+    a: "An assistant on your website trained on your business: your services, pricing logic, availability, and voice. Unlike a scripted chatbot, a concierge understands context, answers real questions, and hands over to a human the moment it should. We design, build, and manage them for clients.",
   },
 ];

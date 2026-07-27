@@ -7,6 +7,7 @@ import Intro from "@/components/Intro";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import Concierge from "@/components/Concierge";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   description: site.description,
   keywords: [...site.keywords],
   creator: site.name,
-  publisher: site.legalName,
+  publisher: site.name,
   openGraph: {
     type: "website",
     url: site.url,
@@ -68,7 +69,6 @@ const orgJsonLd = {
       "@type": ["Organization", "ProfessionalService"],
       "@id": `${site.url}/#organization`,
       name: site.name,
-      legalName: site.legalName,
       url: site.url,
       // Contact routes through the on-site form, so no email is exposed here.
       contactPoint: {
@@ -129,6 +129,7 @@ export default function RootLayout({
           <main id="main">{children}</main>
           <Footer />
         </SmoothScroll>
+        <Concierge />
         <JsonLd data={orgJsonLd} />
       </body>
     </html>

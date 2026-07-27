@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
+import Link from "next/link";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
-import { services, process, faqs } from "@/lib/data";
+import { services, process, faqs, auditOffer } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -18,6 +19,7 @@ const serviceImages = [
   "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=1400&q=80",
   "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80",
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+  "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1400&q=80",
 ];
 
 export default function ServicesPage() {
@@ -34,7 +36,8 @@ export default function ServicesPage() {
         <Reveal delay={0.2}>
           <p className="mt-8 max-w-xl text-lg text-ash">
             From the first sketch to the final deploy, we handle brand, design,
-            and engineering under one roof, so nothing gets lost in translation.
+            and engineering under one roof. Built for humans to feel and for AI
+            to cite, because your website has two audiences now.
           </p>
         </Reveal>
       </header>
@@ -82,15 +85,71 @@ export default function ServicesPage() {
         ))}
       </section>
 
+      {/* Productized entry offer: the AI Visibility Audit */}
+      <section
+        data-cursor-theme="dark"
+        className="border-t border-line bg-ink text-bone"
+      >
+        <div className="container-x grid gap-12 py-20 md:grid-cols-12 md:py-28">
+          <div className="md:col-span-5">
+            <span className="inline-flex items-center gap-2 rounded-full border border-bone/25 px-3.5 py-1.5 label text-bone/80">
+              <span className="h-1.5 w-1.5 animate-beacon rounded-full bg-flag" />
+              Where to start
+            </span>
+            <AnimatedHeading
+              as="h2"
+              text="AI Visibility _Audit._"
+              className="mt-6 font-serif text-display-md"
+            />
+            <Reveal delay={0.1}>
+              <p className="mt-6 max-w-md text-bone/70">{auditOffer.blurb}</p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mt-6 text-sm text-bone/55">{auditOffer.turnaround}</p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <Link
+                href="/contact"
+                data-cursor="Book"
+                className="mt-8 inline-flex items-center gap-3 rounded-full bg-bone px-7 py-3.5 text-sm text-ink transition-colors hover:bg-bone/85"
+              >
+                Book an audit <span aria-hidden>→</span>
+              </Link>
+            </Reveal>
+          </div>
+          <div className="md:col-span-6 md:col-start-7">
+            <span className="label text-bone/45">What you get</span>
+            <ul className="mt-5">
+              {auditOffer.includes.map((item, i) => (
+                <Reveal key={item} delay={i * 0.05}>
+                  <li className="flex items-baseline gap-4 border-t border-bone/15 py-4 last:border-b">
+                    <span className="label text-bone/40">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-bone/85">{item}</span>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Process */}
       <section className="container-x border-t border-line py-24 md:py-36">
         <div className="mb-14">
-          <span className="label text-ash">(How we work)</span>
+          <span className="label text-ash">(How we work · The AntCrow Method)</span>
           <AnimatedHeading
             as="h2"
             text="A clear path, every time."
             className="mt-4 font-serif text-display-md"
           />
+          <Reveal delay={0.1}>
+            <p className="mt-6 max-w-xl text-ash">
+              We call it the AntCrow Method: many disciplined steps, one sharp
+              eye on the whole. The ants build. The crow watches.
+            </p>
+          </Reveal>
         </div>
         <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
           {process.map((step, i) => (

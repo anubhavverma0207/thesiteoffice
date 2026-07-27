@@ -78,13 +78,23 @@ type Ant = {
 };
 type Pt = { x: number; y: number };
 
-export default function IntroCritters() {
+export default function IntroCritters({
+  wordmarkId = "intro-wordmark",
+}: {
+  /** Element the crow perches on. Defaults to the intro wordmark. */
+  wordmarkId?: string;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Bounds come from the container, so the critters work full-screen
+    // (the intro) and inside smaller panels (the Lab) alike.
+    const W = () => root.clientWidth || window.innerWidth;
+    const H = () => root.clientHeight || window.innerHeight;
 
     const mobile = window.innerWidth < 760;
     const TARGET = mobile ? 3 : 5;
@@ -118,8 +128,8 @@ export default function IntroCritters() {
       const edge = Math.floor(Math.random() * 4);
       const a: Ant = {
         el,
-        x: edge === 0 ? -30 : edge === 1 ? window.innerWidth + 30 : rand(0, window.innerWidth),
-        y: edge === 2 ? -30 : edge === 3 ? window.innerHeight + 30 : rand(0, window.innerHeight),
+        x: edge === 0 ? -30 : edge === 1 ? W() + 30 : rand(0, W()),
+        y: edge === 2 ? -30 : edge === 3 ? H() + 30 : rand(0, H()),
         ang: 0, speed: rand(26, 44) / 1000,
         tx: 0, ty: 0, pauseUntil: 0, dead: false,
       };
@@ -137,8 +147,8 @@ export default function IntroCritters() {
       });
     }
     function pickTarget(a: Ant) {
-      a.tx = rand(30, window.innerWidth - 30);
-      a.ty = rand(40, window.innerHeight - 40);
+      a.tx = rand(30, W() - 30);
+      a.ty = rand(40, H() - 40);
     }
     let last = performance.now();
     function antTick(t: number) {
@@ -178,7 +188,8 @@ export default function IntroCritters() {
     let perch: Pt = { x: 0, y: 0 };
 
     function perchPoint(): Pt {
-      const wrap = document.getElementById("intro-wordmark");
+      const rootRect = root!.getBoundingClientRect();
+      const wrap = document.getElementById(wordmarkId);
       if (wrap) {
         const h1s = Array.from(wrap.querySelectorAll("h1"));
         const visible = h1s.find(h => h.getBoundingClientRect().height > 0);
@@ -186,10 +197,14 @@ export default function IntroCritters() {
           const range = document.createRange();
           range.selectNodeContents(visible);
           const r = range.getBoundingClientRect();
-          if (r.width > 0) return { x: r.right - crowW * 0.78, y: r.top - crowH * 0.74 };
+          if (r.width > 0)
+            return {
+              x: r.right - rootRect.left - crowW * 0.78,
+              y: r.top - rootRect.top - crowH * 0.74,
+            };
         }
       }
-      return { x: window.innerWidth * 0.62, y: window.innerHeight * 0.3 };
+      return { x: W() * 0.62, y: H() * 0.3 };
     }
     function setCrow(x: number, y: number, angleRad: number, facing: number) {
       if (!crow) return;
@@ -236,9 +251,9 @@ export default function IntroCritters() {
       perch = perchPoint();
       const lap: Pt[] = [perch,
         { x: perch.x - rand(200, 380), y: perch.y - rand(100, 180) },
-        { x: window.innerWidth * rand(0.12, 0.25), y: rand(90, 200) },
-        { x: window.innerWidth * rand(0.35, 0.55), y: rand(60, 140) },
-        { x: window.innerWidth * rand(0.7, 0.85), y: rand(140, 260) },
+        { x: W() * rand(0.12, 0.25), y: H() * rand(0.12, 0.3) },
+        { x: W() * rand(0.35, 0.55), y: H() * rand(0.08, 0.22) },
+        { x: W() * rand(0.7, 0.85), y: H() * rand(0.2, 0.4) },
         { x: perch.x + rand(100, 200), y: perch.y - rand(60, 120) },
         perch];
       flyPath(lap, rand(5200, 6800), land);
@@ -260,9 +275,9 @@ export default function IntroCritters() {
       every(() => { if (crow && crowState === "perched") { crow.classList.add("tilt"); later(() => crow && crow.classList.remove("tilt"), 900); } }, 11000);
       crowState = "flying";
       perch = perchPoint();
-      flyPath([{ x: -160, y: rand(80, 200) },
-        { x: window.innerWidth * 0.3, y: rand(60, 160) },
-        { x: window.innerWidth * 0.7, y: rand(120, 260) },
+      flyPath([{ x: -160, y: H() * rand(0.15, 0.35) },
+        { x: W() * 0.3, y: H() * rand(0.1, 0.28) },
+        { x: W() * 0.7, y: H() * rand(0.2, 0.42) },
         perch], 2800, land);
     }
 

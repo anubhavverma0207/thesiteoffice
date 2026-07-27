@@ -87,13 +87,23 @@
     @apply border-t border-line;
   }
 
-  /* Reveal mask used for line-by-line text animation */
+  /* Reveal mask used for line-by-line text animation (whole lines) */
   .reveal-mask {
     overflow: hidden;
     display: block;
     /* room so glyph descenders (y, g, p, j) are not clipped */
-    padding-bottom: 0.16em;
-    margin-bottom: -0.16em;
+    padding-bottom: 0.28em;
+    margin-bottom: -0.28em;
+  }
+
+  /* Word-level mask: same clipping trick but words keep flowing inline.
+     Extra horizontal room so slanted italics are not shaved either. */
+  .reveal-word {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 0 0.1em 0.28em;
+    margin: 0 -0.1em -0.28em;
   }
 
   .text-balance {
@@ -129,6 +139,21 @@
     .cursor-none-desktop * {
       cursor: none !important;
     }
+  }
+}
+
+/* Cross-document view transitions: full page loads get a soft native
+   cross-fade in supporting browsers. Zero JS; client-side navigations
+   keep their Framer Motion treatment. */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }
 

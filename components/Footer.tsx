@@ -104,7 +104,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-3 border-t border-bone/15 pt-6 text-xs text-bone/45 md:flex-row md:items-center md:justify-between">
           <span>
-            © {year} {site.legalName}. All rights reserved.
+            © {year} {site.name}. All rights reserved.
           </span>
           <LocalTime className="text-bone/60" />
           <button

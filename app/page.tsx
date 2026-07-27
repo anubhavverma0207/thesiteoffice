@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import ProjectCard from "@/components/ProjectCard";
 import Testimonials from "@/components/Testimonials";
+import TwoAudiences from "@/components/TwoAudiences";
 import { Reveal, AnimatedHeading } from "@/components/Reveal";
 import { projects, services } from "@/lib/data";
 import { site } from "@/lib/site.config";
@@ -100,7 +101,7 @@ export default function HomePage() {
             />
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-xs text-ash">
-                Five disciplines, one team. We take you from a blank page to a
+                Six disciplines, one team. We take you from a blank page to a
                 living, breathing website that people actually find.
               </p>
             </Reveal>
@@ -138,6 +139,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* The thesis: two audiences */}
+      <TwoAudiences />
 
       {/* Client words */}
       <Testimonials />

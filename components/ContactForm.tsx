@@ -12,6 +12,7 @@ const services = [
   "Development",
   "Motion / 3D",
   "SEO & AI Search",
+  "AI Concierge",
 ];
 
 // Web3Forms access key. Get a free key at https://web3forms.com (enter the

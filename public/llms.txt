@@ -1,0 +1,26 @@
+# AntCrow
+
+> AntCrow is a web design and development studio serving New Zealand and Australia. We design and build brand identities, custom websites, e-commerce, and AI-ready digital experiences for ambitious companies. Websites have two audiences now: humans, who feel, and AI, which cites. We build for both.
+
+Key facts:
+- Studio: AntCrow, based across New Zealand and Australia, working worldwide
+- Disciplines: Brand & Identity, Web Design, Development, Motion & 3D, SEO & AI Search, AI Concierges & Agents
+- Process: Discover, Design, Build, Launch & Evolve (the AntCrow Method)
+- Typical project timeline: 4 to 8 weeks from kickoff to launch
+- Productized offer: AI Visibility Audit, a fixed-fee report on how visible a business is in ChatGPT, Perplexity, Gemini, and Google's AI Overviews
+- Contact: via the form at https://antcrow.com/contact/
+
+## Pages
+
+- [Home](https://antcrow.com/): studio overview and selected work
+- [Work](https://antcrow.com/work/): selected projects across commerce, property, and culture
+- [Services](https://antcrow.com/services/): all six disciplines, the AI Visibility Audit, process, and FAQ
+- [Studio](https://antcrow.com/studio/): who we are and how we think
+- [Lab](https://antcrow.com/lab/): live interaction experiments from this site
+- [Contact](https://antcrow.com/contact/): start a project
+
+## Notes for agents
+
+- All page content is present in static HTML; no JavaScript rendering is required.
+- Structured data: Organization, WebSite, and FAQPage JSON-LD are embedded on the relevant pages.
+- The FAQ on https://antcrow.com/services/ contains direct, quotable answers about services, timelines, pricing approach, AEO, and AI concierges.

@@ -1,73 +1,71 @@
-# Deploying The Site Office to Render
+# Deploying AntCrow to Render
 
 The site is a fully **static** Next.js export (`output: "export"` writes plain
-HTML/CSS/JS to `./out`), so it deploys to Render as a **Static Site**: always
-on, free, no server to sleep. A Render Blueprint (`render.yaml`) is included,
-so most settings are filled in automatically.
+HTML/CSS/JS to `./out`), deployed on Render as a **Static Site**: always on,
+free, no server to sleep. A Render Blueprint (`render.yaml`) automates the
+settings.
 
-The service is named **thesiteoffice**, so your live URL will be:
-
-```
-https://thesiteoffice.onrender.com
-```
-
-(If that subdomain is taken, Render appends a few characters. You can add a
-custom domain later under Settings.)
+Current state: **live at https://antcrow.com** (www redirects to the apex).
+For historical reasons the Render service is named `thesiteoffice`
+(https://thesiteoffice.onrender.com). Do not rename it in `render.yaml`;
+renaming a blueprint service creates a brand-new service.
 
 ---
 
-## Step 0: Connect the contact form (one-time)
+## Email: the studio mailbox (hello@antcrow.com)
 
-Enquiries are delivered by [Web3Forms](https://web3forms.com) straight to your
-email inbox. No server needed.
+Email hosting for antcrow.com is purchased at **1st Domains**
+(5 mailboxes, 5GB, renews 26-07-2027). MX and SPF records are already set.
 
-**Access key.** The current key is already set for this project: it lives in
-`render.yaml` (as `NEXT_PUBLIC_WEB3FORMS_KEY`) and in `.env.local` for local dev.
-It is a public key (like a form id), safe to commit. To point enquiries at a
-different inbox, create a new key at web3forms.com with that inbox and replace
-the value in both `render.yaml` and `.env.local`, then redeploy. Until a key is
-set, the form shows a friendly "Email us" fallback instead of failing silently.
+**One-time setup, in order:**
 
-**Stop enquiries going to Spam (do this once, important).** Web3Forms sends from
-a shared address, so Gmail often files the first messages under Spam. Fix it with
-a filter in the receiving inbox (thesiteofficenz@gmail.com):
+1. **Create the mailbox.** Log in at 1stdomains.nz, then
+   Domain Manager > antcrow.com > **Email Manager** > add mailbox
+   `hello@antcrow.com` with a strong password.
+2. **Read it anywhere.** Webmail: use https://wm.mail.isx.net.nz (the
+   provider's real webmail; the friendly https://webmail.antcrow.com alias
+   currently throws a TLS certificate warning, so avoid it). Or add the
+   mailbox to Gmail / phone mail apps: IMAP + SMTP server
+   `mail.1stdomains.co.nz`, SMTP port 587 with authentication, login
+   `hello@antcrow.com`.
+   In Gmail: Settings > Accounts > "Check mail from other accounts" (to
+   receive) and "Send mail as" (to reply from hello@antcrow.com).
+3. **Move form delivery.** The contact form delivers via Web3Forms to the
+   inbox its access key is registered to (currently the old Gmail). Create a
+   new free key at web3forms.com using `hello@antcrow.com`, then replace
+   `NEXT_PUBLIC_WEB3FORMS_KEY` in both `render.yaml` and `.env.local` and
+   redeploy. The key is public (like a form id), safe to commit.
+4. **Site links.** `lib/site.config.ts` already points `email:` at
+   `hello@antcrow.com`. The address is never printed on the site; every
+   touchpoint reads "Email us" and opens the visitor's mail app.
 
-1. In Gmail, click the filter icon in the search bar (the sliders icon).
-2. In "Has the words", paste:
-   `subject:("New enquiry") OR from:(web3forms.com)`
-3. Click **Create filter**, then tick:
-   - **Never send it to Spam**
-   - **Mark as important**
-   - **Also apply filter to matching conversations** (rescues any already in Spam)
-4. Click **Create filter**. Every enquiry now lands in the inbox.
+**Stop enquiries going to Spam (do once per receiving inbox).** Web3Forms
+sends from a shared address, so first messages often land in Spam. In the
+receiving mailbox create a filter: match
+`subject:("New enquiry") OR from:(web3forms.com)`, action "Never send to
+Spam" + "Mark as important". In 1st Domains webmail the same is done via
+Settings > Filters, or whitelist `web3forms.com` in the Email Manager's
+spam settings.
 
-Also add the sender to Google Contacts once, which further stops spam filtering.
+---
 
-## Step 1: Put the code on GitHub
+## Deploying changes
 
-Render deploys from a Git repository. From this project folder:
+Auto-deploy is on: every push to `main` redeploys.
 
 ```bash
-git init -b main   # skip if already a repo
 git add -A
-git commit -m "The Site Office website"
-git remote add origin https://github.com/<your-username>/thesiteoffice.git
-git push -u origin main
+git commit -m "Describe the change"
+git push origin main
 ```
 
-## Step 2: Create the site on Render
+Render runs `npm install && npm run build` and publishes `./out`.
 
-1. Go to https://dashboard.render.com -> **New** -> **Blueprint**.
-2. Connect GitHub and select the `thesiteoffice` repo.
-3. Render reads `render.yaml` and proposes the **thesiteoffice** static site.
-   Click **Apply**.
-4. Add the `NEXT_PUBLIC_WEB3FORMS_KEY` environment variable (Step 0).
+## After significant changes
 
-## Step 3: After the first deploy
-
-- Set the real domain in `lib/site.config.ts` (`url:`) and redeploy. This
-  fixes canonical URLs, Open Graph, the sitemap, and structured data.
-- Submit `https://<your-domain>/sitemap.xml` in
+- Keep `url:` in `lib/site.config.ts` pointing at the production domain
+  (https://antcrow.com). It drives canonicals, Open Graph, the sitemap, and
+  structured data.
+- Submit https://antcrow.com/sitemap.xml in
   [Google Search Console](https://search.google.com/search-console) and
   [Bing Webmaster Tools](https://www.bing.com/webmasters).
-- Auto-deploy is on: every push to `main` redeploys.

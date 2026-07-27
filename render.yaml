@@ -1,5 +1,8 @@
-# Render Blueprint for "The Site Office" (static site - always on, free)
-# Next.js is exported to ./out and served as static files.
+# Render Blueprint for the AntCrow studio site (static, always on, free).
+# Next.js is exported to ./out and served as static files at antcrow.com.
+# NOTE: the service is still NAMED "thesiteoffice" on Render. Do not rename
+# it here: a renamed blueprint service would be created as a brand-new
+# service and the custom domain would stay on the old one.
 services:
   - type: web
     name: thesiteoffice
@@ -10,7 +13,7 @@ services:
       - key: NODE_VERSION
         value: "20.18.0"
       # Web3Forms delivery key. It is a PUBLIC key (like a form id), safe to
-      # commit and ship in client code — it only routes submissions to the
-      # studio inbox. Needed at build time so the static form is connected.
+      # commit and ship in client code; it only routes submissions to the
+      # studio inbox. "AntCrow website" form, delivers to hello@antcrow.com.
       - key: NEXT_PUBLIC_WEB3FORMS_KEY
-        value: 92b64d24-983a-49c7-a320-4d8dd0693e3c
+        value: 0b5b7d44-7768-4f87-8d18-2edb71abae56
