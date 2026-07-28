@@ -8,7 +8,10 @@ import { site } from "@/lib/site.config";
 export const metadata: Metadata = {
   title: "Contact",
   description: `Start a project with ${site.name}. Tell us what you're building.`,
-  alternates: { canonical: "/contact/" },
+  alternates: {
+    canonical: "/contact/",
+    languages: { "en-NZ": "/contact/", "x-default": "/contact/" },
+  },
 };
 
 export default function ContactPage() {
@@ -44,7 +47,7 @@ export default function ContactPage() {
                 </a>
               </div>
               <div>
-                <span className="label text-ash">Studios</span>
+                <span className="label text-ash">Reach</span>
                 <p className="mt-2 text-lg">{site.location}</p>
               </div>
             </div>

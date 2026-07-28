@@ -7,8 +7,11 @@ import { projects } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected projects: brand, web design, and development for ambitious companies.",
-  alternates: { canonical: "/work/" },
+    "Concept studio projects across brand, web design, and development: the standard of craft every AntCrow client build receives.",
+  alternates: {
+    canonical: "/work/",
+    languages: { "en-NZ": "/work/", "x-default": "/work/" },
+  },
 };
 
 export default function WorkPage() {
@@ -16,7 +19,7 @@ export default function WorkPage() {
     <>
       {/* Header */}
       <header className="container-x pt-36 pb-16 md:pt-48 md:pb-24">
-        <span className="label text-ash">(Selected work · 2023 / 2025)</span>
+        <span className="label text-ash">(Concept work)</span>
         <AnimatedHeading
           as="h1"
           text="Work we're _proud_ of."
@@ -24,9 +27,9 @@ export default function WorkPage() {
         />
         <Reveal delay={0.2}>
           <p className="mt-8 max-w-xl text-lg text-ash">
-            A selection of recent collaborations across commerce, property,
-            finance, and culture. Each one designed and built from the ground
-            up.
+            Concept studio projects that show our range across commerce,
+            trades, and culture: the level of craft every client build gets.
+            Your brand could be next.
           </p>
         </Reveal>
       </header>

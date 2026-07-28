@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { localAnswer, fallbackAnswer, suggestions } from "@/lib/concierge";
 import { site } from "@/lib/site.config";
+import { track } from "@/lib/analytics";
 
 /**
  * Ask the Crow: the studio concierge.
@@ -57,6 +58,7 @@ export default function Concierge() {
     setInput("");
     setMessages((m) => [...m, { role: "you", text: question }]);
     setThinking(true);
+    track("concierge_question");
 
     let reply: string | null = null;
 
@@ -105,7 +107,10 @@ export default function Concierge() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setOpen(true);
+              track("concierge_open");
+            }}
             data-cursor="Caw?"
             aria-label="Ask the Crow: open the studio concierge"
             className="group fixed bottom-5 right-5 z-[55] flex items-center gap-3 rounded-full border border-bone/25 bg-ink py-3 pl-4 pr-5 text-bone shadow-lg shadow-ink/25 transition-transform duration-300 ease-silk hover:-translate-y-0.5 md:bottom-8 md:right-8"

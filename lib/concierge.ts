@@ -50,7 +50,7 @@ export const knowledge: KnowledgeEntry[] = [
   {
     q: "Where are you based?",
     keywords: ["based", "located", "location", "country", "city", "zealand", "australia", "remote", "timezone"],
-    a: `The studio works across ${site.location}. Projects run remotely worldwide with regular video check-ins in your time zone.`,
+    a: "AntCrow serves clients worldwide, with deep coverage of New Zealand and Australia. Projects run remotely with regular video check-ins in your time zone, wherever you are.",
   },
   {
     q: "What is your process?",
@@ -76,6 +76,21 @@ export const knowledge: KnowledgeEntry[] = [
     q: "What is the Lab?",
     keywords: ["lab", "playground", "experiments", "exhibits"],
     a: "The Lab is our public playground: live interaction experiments from this site, including the ants and crow from the landing screen. Everything there is production code you can poke.",
+  },
+  {
+    q: "Where do you work? Which cities do you serve?",
+    keywords: ["auckland", "wellington", "christchurch", "sydney", "melbourne", "city", "cities", "serve", "area", "areas"],
+    a: "We serve clients worldwide, with dedicated coverage of Auckland, Wellington, Christchurch, and Sydney (see the Locations pages), and projects everywhere else run remotely with video sessions in your hours.",
+  },
+  {
+    q: "Do you have a website cost calculator?",
+    keywords: ["calculator", "estimate", "estimator", "tool", "budget"],
+    a: "Yes, and it is free with no email required. The NZ website cost calculator at /tools/website-cost-calculator turns your requirements into an honest market range in under a minute. The full pricing picture lives in our NZ website cost guide.",
+  },
+  {
+    q: "Which industries do you build for?",
+    keywords: ["industry", "industries", "builders", "construction", "tradies", "trades", "cafe", "restaurant", "hospitality", "law", "lawyer", "accountant", "consultant"],
+    a: "We have dedicated experience with builders and construction (our team also runs CheckMyBuilder), tradies, hospitality, and professional services like law and accounting firms. Other industries are welcome too: the disciplines transfer.",
   },
 ];
 

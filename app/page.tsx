@@ -62,8 +62,8 @@ export default function HomePage() {
       <section className="container-x py-12 md:py-20">
         <div className="mb-12 flex items-end justify-between border-b border-line pb-6">
           <div>
-            <span className="label text-ash">(Selected work)</span>
-            <h2 className="mt-3 font-serif text-display-md">Recent projects</h2>
+            <span className="label text-ash">(Concept work)</span>
+            <h2 className="mt-3 font-serif text-display-md">Studio concepts</h2>
           </div>
           <Link
             href="/work"

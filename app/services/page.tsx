@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Brand, web design, development, and motion: a full-service studio for ambitious digital products.",
-  alternates: { canonical: "/services/" },
+  alternates: {
+    canonical: "/services/",
+    languages: { "en-NZ": "/services/", "x-default": "/services/" },
+  },
 };
 
 const serviceImages = [

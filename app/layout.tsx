@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import Concierge from "@/components/Concierge";
+import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -20,6 +21,13 @@ export const metadata: Metadata = {
   keywords: [...site.keywords],
   creator: site.name,
   publisher: site.name,
+  // Self-referential hreflang: replaces the removed GSC country targeting
+  // as the NZ-relevance signal for a .com domain. Every page repeats this
+  // pattern with its own path.
+  alternates: {
+    canonical: "/",
+    languages: { "en-NZ": "/", "x-default": "/" },
+  },
   openGraph: {
     type: "website",
     url: site.url,
@@ -52,6 +60,19 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // Search Console / Bing Webmaster ownership tags; render only when set.
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? {
+          other: {
+            "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+          },
+        }
+      : {}),
+  },
 };
 
 export const viewport: Viewport = {
@@ -78,15 +99,27 @@ const orgJsonLd = {
       },
       description: site.description,
       slogan: site.tagline,
-      areaServed: ["NZ", "AU"],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Auckland",
+        addressCountry: "NZ",
+      },
+      areaServed: [
+        { "@type": "Country", name: "New Zealand" },
+        { "@type": "Country", name: "Australia" },
+        { "@type": "Country", name: "United States" },
+      ],
       knowsAbout: [
         "Web design",
         "Web development",
         "Brand identity",
         "E-commerce",
         "Motion design",
+        "Search engine optimisation",
+        "Answer engine optimisation",
       ],
-      sameAs: site.social.map((s) => s.href),
+      // sameAs deliberately omitted until real social profiles exist:
+      // placeholder links would poison the entity graph.
     },
     {
       "@type": "WebSite",
@@ -130,6 +163,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <Concierge />
+        <Analytics />
         <JsonLd data={orgJsonLd} />
       </body>
     </html>

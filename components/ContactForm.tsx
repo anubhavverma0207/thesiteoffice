@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "@/lib/site.config";
+import { track } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -84,10 +85,12 @@ export default function ContactForm() {
       if (!res.ok || !json.success)
         throw new Error(json?.message || "Something went wrong. Please try again.");
       setStatus("success");
+      track("generate_lead", { method: "contact_form" });
       form.reset();
       setSelected([]);
     } catch (err) {
       setStatus("error");
+      track("contact_form_error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
   }

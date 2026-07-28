@@ -3,15 +3,37 @@
  * with the site's URLs after a deploy.
  *
  * Usage: `npm run ping:indexnow` after pushing a content change.
- * Not run automatically so local builds stay silent.
+ * Note: Google does not use IndexNow; Google discovery relies on the
+ * sitemap and internal links.
  */
 
 const HOST = "antcrow.com";
 const KEY = "15e5dcccc26ca174901ae1aa1f50773c"; // must match public/<key>.txt
 
-const urls = ["", "work/", "services/", "studio/", "lab/", "contact/"].map(
-  (p) => `https://${HOST}/${p}`
-);
+const paths = [
+  "",
+  "work/",
+  "services/",
+  "studio/",
+  "lab/",
+  "contact/",
+  "locations/",
+  "locations/auckland/",
+  "locations/wellington/",
+  "locations/christchurch/",
+  "locations/sydney/",
+  "industries/",
+  "industries/builders/",
+  "industries/trades/",
+  "industries/hospitality/",
+  "industries/professional-services/",
+  "guides/website-cost-nz/",
+  "guides/squarespace-wix-vs-custom/",
+  "guides/ai-search-visibility-nz/",
+  "tools/website-cost-calculator/",
+];
+
+const urls = paths.map((p) => `https://${HOST}/${p}`);
 
 const res = await fetch("https://api.indexnow.org/indexnow", {
   method: "POST",

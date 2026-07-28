@@ -61,6 +61,32 @@ git push origin main
 
 Render runs `npm install && npm run build` and publishes `./out`.
 
+## Analytics setup (one-time)
+
+The site ships with a complete measurement layer that activates when the
+IDs exist. Create each account, paste the ID into `render.yaml` (and
+`.env.local` for local testing), redeploy, done.
+
+1. **GA4**: analytics.google.com > Admin > Create property "AntCrow"
+   (antcrow.com, NZ timezone, NZD) > Web data stream > copy the
+   Measurement ID (G-XXXXXXXXXX) into `NEXT_PUBLIC_GA_ID`. Conversion
+   events already fire: `generate_lead` (contact form success),
+   `concierge_open` / `concierge_question`, `calculator_base`,
+   `cta_click`. In GA4, mark `generate_lead` as a key event.
+2. **Microsoft Clarity** (free heatmaps + session recordings):
+   clarity.microsoft.com > New project > copy the project id into
+   `NEXT_PUBLIC_CLARITY_ID`.
+3. **Google Search Console**: search.google.com/search-console > Add
+   property (URL prefix https://antcrow.com) > choose HTML tag > copy the
+   `content` value into `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, deploy,
+   click Verify. Then submit https://antcrow.com/sitemap.xml.
+4. **Bing Webmaster**: bing.com/webmasters > easiest path is "Import from
+   Google Search Console" (no tag needed). Otherwise copy the meta tag
+   content into `NEXT_PUBLIC_BING_SITE_VERIFICATION`.
+
+The privacy page (/privacy) already discloses this data collection, as
+the NZ Privacy Act 2020 requires.
+
 ## After significant changes
 
 - Keep `url:` in `lib/site.config.ts` pointing at the production domain

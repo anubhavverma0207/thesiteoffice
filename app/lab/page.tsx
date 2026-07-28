@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "Lab",
   description:
     "The AntCrow Lab: interaction experiments from our studio. Autonomous critters, magnetic buttons, type in motion. Everything here runs in production on this site.",
-  alternates: { canonical: "/lab/" },
+  alternates: {
+    canonical: "/lab/",
+    languages: { "en-NZ": "/lab/", "x-default": "/lab/" },
+  },
 };
 
 export default function LabPage() {

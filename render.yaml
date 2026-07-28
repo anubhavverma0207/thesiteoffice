@@ -17,3 +17,14 @@ services:
       # studio inbox. "AntCrow website" form, delivers to hello@antcrow.com.
       - key: NEXT_PUBLIC_WEB3FORMS_KEY
         value: 0b5b7d44-7768-4f87-8d18-2edb71abae56
+      # Analytics and webmaster verification. Public identifiers, safe to
+      # commit. Fill in after creating each account (see DEPLOY.md), then
+      # redeploy; everything no-ops while a value is empty.
+      - key: NEXT_PUBLIC_GA_ID
+        value: G-S4MK85WD68
+      - key: NEXT_PUBLIC_CLARITY_ID
+        value: xta4cv60qb
+      - key: NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+        value: fw-TIKivfOZBqisqGKTjJRYEBhUvHPNyOXpzANrPchI
+      - key: NEXT_PUBLIC_BING_SITE_VERIFICATION
+        value: F26FA4F114D973DDD5BBE8AA50B159ED

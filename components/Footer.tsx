@@ -58,24 +58,73 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/locations" className="text-bone/80 hover:text-bone">
+                  Locations
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries" className="text-bone/80 hover:text-bone">
+                  Industries
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
-            <div className="label text-bone/40">Social</div>
+            <div className="label text-bone/40">
+              {site.social.length > 0 ? "Social" : "Explore"}
+            </div>
             <ul className="mt-5 space-y-2 text-sm">
-              {site.social.map((s) => (
-                <li key={s.label}>
-                  <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-bone/80 hover:text-bone"
-                  >
-                    {s.label}
-                  </a>
-                </li>
-              ))}
+              {site.social.length > 0 ? (
+                site.social.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-bone/80 hover:text-bone"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      href="/guides/website-cost-nz"
+                      className="text-bone/80 hover:text-bone"
+                    >
+                      Website cost guide (NZ)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/tools/website-cost-calculator"
+                      className="text-bone/80 hover:text-bone"
+                    >
+                      Cost calculator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/guides/ai-search-visibility-nz"
+                      className="text-bone/80 hover:text-bone"
+                    >
+                      AI search visibility
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/guides/squarespace-wix-vs-custom"
+                      className="text-bone/80 hover:text-bone"
+                    >
+                      DIY vs custom
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -96,7 +145,7 @@ export default function Footer() {
                   Start a project
                 </Link>
               </li>
-              <li className="text-bone/50">{site.location}</li>
+              <li className="text-bone/50">Serving clients worldwide</li>
             </ul>
           </div>
         </div>
@@ -104,7 +153,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-3 border-t border-bone/15 pt-6 text-xs text-bone/45 md:flex-row md:items-center md:justify-between">
           <span>
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.name}. All rights reserved. ·{" "}
+            <Link href="/privacy" className="hover:text-bone/80">
+              Privacy
+            </Link>
           </span>
           <LocalTime className="text-bone/60" />
           <button
@@ -127,7 +179,7 @@ export default function Footer() {
         <span className="text-outline block select-none whitespace-nowrap text-center font-serif text-[12.5vw] leading-none tracking-tightest transition-colors duration-700 hover:text-bone hover:[-webkit-text-stroke-width:0px]">
           {site.name}
           <sup className="align-super text-[0.35em] text-flag [-webkit-text-stroke-width:0px]">
-            ®
+            ™
           </sup>
         </span>
       </button>

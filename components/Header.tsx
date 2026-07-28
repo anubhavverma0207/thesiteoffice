@@ -53,7 +53,7 @@ export default function Header() {
             }`}
           >
             {site.name}
-            <sup className="ml-0.5 align-super text-[0.5em]">®</sup>
+            <sup className="ml-0.5 align-super text-[0.5em]">™</sup>
           </Link>
 
           <div className="flex items-center gap-5 md:gap-7">
@@ -152,26 +152,28 @@ export default function Header() {
                 </a>
               </div>
               <div>
-                <div className="label text-bone/40">Studios</div>
+                <div className="label text-bone/40">Reach</div>
                 <p className="mt-2 text-sm text-bone/85">{site.location}</p>
                 <LocalTime className="mt-1 block text-xs text-bone/50" />
               </div>
-              <div className="col-span-2">
-                <div className="label text-bone/40">Social</div>
-                <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm">
-                  {site.social.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-bone/85 hover:text-bone"
-                    >
-                      {s.label}
-                    </a>
-                  ))}
+              {site.social.length > 0 && (
+                <div className="col-span-2">
+                  <div className="label text-bone/40">Social</div>
+                  <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm">
+                    {site.social.map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-bone/85 hover:text-bone"
+                      >
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           </motion.div>
         )}

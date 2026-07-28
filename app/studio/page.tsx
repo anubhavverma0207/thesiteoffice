@@ -8,7 +8,10 @@ import { site } from "@/lib/site.config";
 export const metadata: Metadata = {
   title: "Studio",
   description: `Meet ${site.name}, a design and engineering studio building extraordinary websites.`,
-  alternates: { canonical: "/studio/" },
+  alternates: {
+    canonical: "/studio/",
+    languages: { "en-NZ": "/studio/", "x-default": "/studio/" },
+  },
 };
 
 const values = [
