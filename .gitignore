@@ -29,3 +29,6 @@ next-env.d.ts
 
 # local demo data written by the contact API
 /data/submissions.json
+
+# local tool settings
+.claude/settings.local.json
