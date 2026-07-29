@@ -217,7 +217,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "How much does a website cost?",
-    a: "In the New Zealand market in 2026, professionally built business websites typically run $3,000 to $15,000, custom-designed sites $5,000 to $25,000, and e-commerce from $8,000. We scope and price every project individually: tell us your budget and goals, and we will tell you honestly what that budget can achieve.",
+    a: "Across the New Zealand market in 2026, professionally built websites run from about $1,000 for simple freelancer work to $15,000 or more for custom design, with e-commerce from around $5,000. Those are market rates, not ours: AntCrow scopes and prices every project individually. Tell us your budget and goals, and we will tell you honestly what that budget can achieve.",
   },
   {
     q: "Do you work with clients worldwide?",

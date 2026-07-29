@@ -53,7 +53,7 @@ export const industries: Industry[] = [
       },
       {
         q: "How much does a builder website cost in NZ?",
-        a: "Builder websites follow the national market: professionally built sites typically run $3,000 to $15,000 depending on scope, with custom design at the upper part of that range. A builder site usually pays for itself with a single additional job won.",
+        a: "Builder websites follow the national market, which runs from about $1,000 for a simple freelancer-built site to $15,000 or more for custom design, depending on scope. Those are market rates rather than ours. Either way, a builder site usually pays for itself with a single additional job won.",
       },
       {
         q: "Why is AntCrow different for construction websites?",
@@ -91,7 +91,7 @@ export const industries: Industry[] = [
       },
       {
         q: "How much does a tradie website cost in NZ?",
-        a: "Professionally built trade websites typically run $3,000 to $10,000 in the current NZ market depending on scope. If it wins you one decent job a month, it has paid for itself.",
+        a: "In the current New Zealand market, trade websites run from about $1,000 for a simple freelancer build to $10,000 or more for custom work, depending on scope. Those are market figures, not a quote. If the site wins you one decent job a month, it has paid for itself.",
       },
       {
         q: "Can you make my trade business show up on Google and AI search?",
@@ -133,7 +133,7 @@ export const industries: Industry[] = [
       },
       {
         q: "How much does a hospitality website cost in NZ?",
-        a: "Typically $3,000 to $12,000 in the current market depending on scope, with bookings integrations and photography direction at the upper end. We scope each venue individually.",
+        a: "The market runs from about $1,500 for a simple site to $12,000 or more depending on scope, with bookings integrations and photography direction at the upper end. Those are market rates; we scope and price each venue individually.",
       },
     ],
   },
@@ -167,7 +167,7 @@ export const industries: Industry[] = [
       },
       {
         q: "How much does a professional services website cost in NZ?",
-        a: "Typically $5,000 to $20,000 in the current NZ market, reflecting the custom design and content depth credibility demands. We scope each practice individually and will say honestly what your budget achieves.",
+        a: "The New Zealand market runs from about $2,500 to $20,000 for this kind of work, with the upper end reflecting the custom design and content depth that credibility demands. Those are market rates; we scope each practice individually and will say honestly what your budget achieves.",
       },
       {
         q: "Can you help our firm appear in AI search answers?",

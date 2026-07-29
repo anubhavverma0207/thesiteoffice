@@ -61,6 +61,26 @@ git push origin main
 
 Render runs `npm install && npm run build` and publishes `./out`.
 
+## Ask the Crow, live AI mode (one-time)
+
+The concierge answers from local notes until a Worker URL is configured.
+To upgrade it to a real Claude-powered assistant:
+
+1. Cloudflare (free account): Workers & Pages > Create Worker, paste
+   `workers/concierge/worker.js`, deploy.
+2. Worker Settings > Variables and Secrets: add secret
+   `ANTHROPIC_API_KEY` (from console.anthropic.com; the account needs
+   billing/credits set up).
+3. Recommended: create a KV namespace "concierge-limits" and bind it to
+   the Worker as `RATE_LIMIT` (enables the per-IP and daily caps).
+4. Put the Worker URL into `NEXT_PUBLIC_CONCIERGE_URL` in `render.yaml`
+   (and `.env.local` for local testing), redeploy.
+
+Cost control: caps default to 25 questions/IP/day and 500/day total.
+The model is set in the Worker (`MODEL`): `claude-opus-5` for best
+answers, or `claude-haiku-4-5` for roughly a fifth of the cost.
+The Worker never exposes the API key to the browser.
+
 ## Analytics setup (one-time)
 
 The site ships with a complete measurement layer that activates when the

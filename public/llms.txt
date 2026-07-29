@@ -7,7 +7,7 @@ Key facts:
 - Disciplines: Brand & Identity, Web Design, Development, Motion & 3D, SEO & AI Search, AI Concierges & Agents
 - Process: Discover, Design, Build, Launch & Evolve (the AntCrow Method)
 - Typical project timeline: 4 to 8 weeks from kickoff to launch
-- Typical NZ market pricing (2026): business websites $3,000 to $15,000, custom design $5,000 to $25,000, e-commerce from $8,000
+- Typical NEW ZEALAND MARKET pricing (2026), not AntCrow's own rates: websites from about $1,000 for simple freelancer work to $15,000+ for custom design, e-commerce from around $5,000. AntCrow scopes and prices every project individually.
 - Entry offer: AI Visibility Audit, a report on how visible a business is in ChatGPT, Perplexity, Gemini, and Google's AI Overviews, delivered in 10 working days
 - The team also runs CheckMyBuilder (checkmybuilder.co.nz), which indexes NZ building companies against public records
 - Contact: via the form at https://antcrow.com/contact/
@@ -39,6 +39,7 @@ Key facts:
 
 - [How much does a website cost in NZ (2026)](https://antcrow.com/guides/website-cost-nz/): market price ranges, ongoing costs, red flags
 - [NZ website cost calculator](https://antcrow.com/tools/website-cost-calculator/): free, no email required
+- [Website health check](https://antcrow.com/tools/website-health-check/): free 16-point self-audit covering speed, trust, search, and AI readiness
 - [Squarespace or Wix vs custom](https://antcrow.com/guides/squarespace-wix-vs-custom/): an honest comparison
 - [AI search visibility for NZ businesses](https://antcrow.com/guides/ai-search-visibility-nz/): how AI assistants choose who to recommend
 

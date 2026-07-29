@@ -7,8 +7,12 @@ import { track } from "@/lib/analytics";
 
 /**
  * NZ Website Cost Calculator. Runs entirely in the browser, no backend,
- * no email gate. Ranges mirror the published market brackets in the
- * cost guide; output is an indicative estimate, never a quote.
+ * no email gate.
+ *
+ * IMPORTANT: every figure here is a published NEW ZEALAND MARKET range,
+ * not AntCrow's own pricing. The UI says so in three places (banner,
+ * result heading, result body) because visitors otherwise read these as
+ * our rates. Keep that framing if you edit the numbers.
  */
 
 type Range = [number, number];
@@ -18,25 +22,25 @@ const BASES: { id: string; label: string; note: string; range: Range }[] = [
     id: "presence",
     label: "Simple presence",
     note: "A few pages that introduce the business",
-    range: [3000, 6000],
+    range: [1000, 4000],
   },
   {
     id: "business",
     label: "Business website",
     note: "Custom design that wins you work",
-    range: [5000, 12000],
+    range: [2500, 10000],
   },
   {
     id: "ecommerce",
     label: "E-commerce",
     note: "Products, payments, and fulfilment",
-    range: [8000, 18000],
+    range: [5000, 18000],
   },
   {
     id: "platform",
     label: "Web app / platform",
     note: "Accounts, dashboards, custom logic",
-    range: [15000, 40000],
+    range: [12000, 40000],
   },
 ];
 
@@ -45,37 +49,37 @@ const ADDONS: { id: string; label: string; note: string; range: Range }[] = [
     id: "cms",
     label: "Content management (CMS)",
     note: "Edit your own content",
-    range: [1500, 3000],
+    range: [800, 3000],
   },
   {
     id: "copy",
     label: "Professional copywriting",
     note: "Words that sell, written for you",
-    range: [1000, 3000],
+    range: [600, 3000],
   },
   {
     id: "booking",
     label: "Bookings or payments",
     note: "Appointments, deposits, checkout",
-    range: [1500, 4000],
+    range: [1000, 4000],
   },
   {
     id: "motion",
     label: "Custom motion & interaction",
     note: "The feel this site has",
-    range: [1500, 5000],
+    range: [1000, 5000],
   },
   {
     id: "seo",
     label: "SEO & AI search setup",
     note: "Found on Google and cited by AI",
-    range: [1500, 4000],
+    range: [800, 4000],
   },
   {
     id: "brand",
     label: "Brand identity",
     note: "Logo, type, and visual system",
-    range: [2500, 8000],
+    range: [1500, 8000],
   },
 ];
 
@@ -115,7 +119,20 @@ export default function CostCalculator() {
   }, [base, addons, pages]);
 
   return (
-    <div className="grid gap-10 lg:grid-cols-12">
+    <div>
+      {/* Whose prices these are: stated before anything else */}
+      <div className="mb-10 rounded-2xl border-l-4 border-flag bg-paper p-6">
+        <p className="font-medium">
+          These are New Zealand market rates, not AntCrow&apos;s prices.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-ash">
+          This tool shows what the wider New Zealand market charges, so you
+          can budget with real numbers before you talk to anyone. AntCrow
+          scopes and prices every project individually.
+        </p>
+      </div>
+
+      <div className="grid gap-10 lg:grid-cols-12">
       {/* Inputs */}
       <div className="lg:col-span-7">
         <div>
@@ -199,17 +216,19 @@ export default function CostCalculator() {
             data-cursor-theme="dark"
             className="sticky top-28 rounded-2xl bg-ink p-8 text-bone"
           >
-            <span className="label text-bone/50">Indicative NZ range</span>
+            <span className="label text-bone/50">Typical NZ market range</span>
             <p className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
               {nzd(estimate[0])}
               <span className="text-bone/40"> to </span>
               {nzd(estimate[1])}
             </p>
+            <p className="mt-2 text-xs text-bone/45">
+              What the market charges, not an AntCrow quote.
+            </p>
             <p className="mt-5 text-sm leading-relaxed text-bone/60">
-              An honest market estimate based on published New Zealand
-              pricing in 2026, not a quote. Your actual price depends on
-              scope, and a good studio will tell you when you need less
-              than you think.
+              Based on published New Zealand market pricing in 2026. We
+              scope and price every project individually, and will tell
+              you honestly when you need less than this.
             </p>
             <Link
               href="/contact"
@@ -236,6 +255,7 @@ export default function CostCalculator() {
             </p>
           </div>
         </Reveal>
+      </div>
       </div>
     </div>
   );

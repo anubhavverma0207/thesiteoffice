@@ -85,7 +85,12 @@ export const knowledge: KnowledgeEntry[] = [
   {
     q: "Do you have a website cost calculator?",
     keywords: ["calculator", "estimate", "estimator", "tool", "budget"],
-    a: "Yes, and it is free with no email required. The NZ website cost calculator at /tools/website-cost-calculator turns your requirements into an honest market range in under a minute. The full pricing picture lives in our NZ website cost guide.",
+    a: "Yes, and it is free with no email required. The calculator at /tools/website-cost-calculator shows what the wider New Zealand market charges for a project like yours, from about $1,000 upward. Those are market figures rather than our prices: we scope and quote every project individually.",
+  },
+  {
+    q: "Do you have a website health check?",
+    keywords: ["health", "check", "audit", "score", "grade", "test", "checkup"],
+    a: "Yes, free and two minutes long. The website health check at /tools/website-health-check scores your site out of 100 across speed, trust, search visibility, and AI readiness, and gives you a prioritised fix list. No email required.",
   },
   {
     q: "Which industries do you build for?",

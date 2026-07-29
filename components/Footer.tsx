@@ -109,6 +109,14 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
+                      href="/tools/website-health-check"
+                      className="text-bone/80 hover:text-bone"
+                    >
+                      Website health check
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/guides/ai-search-visibility-nz"
                       className="text-bone/80 hover:text-bone"
                     >

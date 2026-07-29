@@ -8,7 +8,7 @@ import { site } from "@/lib/site.config";
 export const metadata: Metadata = {
   title: "How Much Does a Website Cost in NZ? Honest 2026 Pricing Guide",
   description:
-    "What websites really cost in New Zealand in 2026: DIY builders from $30/month, template sites $1,500 to $4,000, custom design $5,000 to $25,000, e-commerce $8,000 to $30,000+. Ranges, ongoing costs, and the red flags to avoid.",
+    "What websites really cost across the New Zealand market in 2026: DIY builders from $20/month, template sites $1,000 to $4,000, custom design $3,000 to $25,000, e-commerce $5,000 to $30,000+. Market ranges, ongoing costs, and the red flags to avoid.",
   alternates: {
     canonical: "/guides/website-cost-nz/",
     languages: {
@@ -28,22 +28,22 @@ const priceRows = [
   },
   {
     option: "Template website by a freelancer",
-    cost: "$1,500 to $4,000",
+    cost: "$1,000 to $4,000",
     fit: "Basic online presence, no custom features",
   },
   {
     option: "Custom-designed business website",
-    cost: "$5,000 to $25,000",
+    cost: "$3,000 to $25,000",
     fit: "Businesses where the website wins real work",
   },
   {
     option: "E-commerce website",
-    cost: "$8,000 to $30,000+",
+    cost: "$5,000 to $30,000+",
     fit: "Selling products online at any serious scale",
   },
   {
     option: "Web application or platform",
-    cost: "$15,000 to $60,000+",
+    cost: "$12,000 to $60,000+",
     fit: "Software products, portals, marketplaces",
   },
 ];
@@ -62,7 +62,7 @@ const ongoingRows = [
 const costFaqs = [
   {
     q: "How much does a basic business website cost in NZ?",
-    a: "In 2026, a professionally built business website in New Zealand typically costs between $3,000 and $15,000. Template-based sites sit at the lower end; custom-designed sites with strategy, copywriting, and SEO built in sit between $5,000 and $25,000 depending on scope.",
+    a: "Across the New Zealand market in 2026, a professionally built business website runs from about $1,000 to $15,000 or more. Template-based work from freelancers sits at the lower end, from roughly $1,000 to $4,000; custom-designed sites with strategy, copywriting, and SEO built in run $3,000 to $25,000 depending on scope. Those are market rates, not any one studio's prices.",
   },
   {
     q: "Why do website prices vary so much?",
@@ -102,14 +102,29 @@ export default function WebsiteCostGuide() {
           {/* The direct answer, first: this is what AI engines quote */}
           <Reveal delay={0.15}>
             <p className="mt-8 text-lg leading-relaxed">
-              In 2026, most New Zealand businesses pay between{" "}
-              <strong>$3,000 and $15,000</strong> for a professionally built
-              website. DIY builders start around $30 a month, template sites
-              run $1,500 to $4,000, custom-designed sites $5,000 to $25,000,
-              and e-commerce $8,000 to $30,000 or more. The honest answer
+              Across the New Zealand market in 2026, a professionally built
+              website runs anywhere from{" "}
+              <strong>about $1,000 to $15,000 or more</strong>. DIY builders
+              start around $20 a month, template sites run $1,000 to
+              $4,000, custom-designed sites $3,000 to $25,000, and
+              e-commerce $5,000 to $30,000 or more. The honest answer
               depends on what the website has to do for your business, so
               here is the full picture with no surprises.
             </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-8 rounded-2xl border-l-4 border-flag bg-paper p-6">
+              <p className="font-medium">
+                These are New Zealand market rates, not AntCrow&apos;s
+                prices.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ash">
+                Every figure on this page reflects what the wider market
+                charges, gathered from published New Zealand agency and
+                freelancer pricing. We scope and price our own projects
+                individually.
+              </p>
+            </div>
           </Reveal>
         </header>
 
@@ -141,8 +156,9 @@ export default function WebsiteCostGuide() {
             </div>
             <p className="mt-4 text-sm text-ash">
               Ranges reflect published New Zealand agency and freelancer
-              pricing in 2026. Every project is different; treat these as
-              honest brackets, not quotes.
+              pricing in 2026, across the whole market. Every project is
+              different; treat these as honest market brackets, not quotes
+              from us or anyone else.
             </p>
           </section>
         </Reveal>

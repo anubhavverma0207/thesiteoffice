@@ -31,6 +31,7 @@ const paths = [
   "guides/squarespace-wix-vs-custom/",
   "guides/ai-search-visibility-nz/",
   "tools/website-cost-calculator/",
+  "tools/website-health-check/",
 ];
 
 const urls = paths.map((p) => `https://${HOST}/${p}`);

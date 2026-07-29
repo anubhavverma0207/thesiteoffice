@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/squarespace-wix-vs-custom",
     "/guides/ai-search-visibility-nz",
     "/tools/website-cost-calculator",
+    "/tools/website-health-check",
   ];
   const spokes = [
     ...locations.map((l) => `/locations/${l.slug}`),

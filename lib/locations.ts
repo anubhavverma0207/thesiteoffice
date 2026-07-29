@@ -53,7 +53,7 @@ export const locations: Location[] = [
     faqs: [
       {
         q: "How much does web design cost in Auckland?",
-        a: "Auckland pricing follows the national market: professionally built business websites typically run $3,000 to $15,000, with custom-designed sites between $5,000 and $25,000 and e-commerce from $8,000. We scope and price every project individually and will tell you honestly what your budget can achieve.",
+        a: "Auckland follows the national market, where professionally built websites run from about $1,000 for simple freelancer work to $15,000 or more for custom design, and e-commerce from around $5,000. Those are market rates rather than ours: we scope and price every project individually and will tell you honestly what your budget can achieve.",
       },
       {
         q: "Do you meet clients in person in Auckland?",
@@ -104,7 +104,7 @@ export const locations: Location[] = [
       },
       {
         q: "What does a website cost for a Wellington business?",
-        a: "The same honest national ranges apply: most professionally built business sites run $3,000 to $15,000, custom work $5,000 to $25,000, and e-commerce from $8,000. Location does not change our pricing.",
+        a: "The same national market ranges apply: professionally built sites run from about $1,000 for simple freelancer work up to $15,000 or more for custom design. Those are market figures, and location does not change how we price: we scope every project individually.",
       },
     ],
   },
@@ -143,7 +143,7 @@ export const locations: Location[] = [
       },
       {
         q: "What do Christchurch business websites cost?",
-        a: "National market ranges apply: professionally built business sites typically run $3,000 to $15,000, custom-designed sites $5,000 to $25,000, and e-commerce from $8,000. We price by scope, not postcode.",
+        a: "National market ranges apply: professionally built sites run from about $1,000 for simple freelancer work to $15,000 or more for custom design, with e-commerce from around $5,000. Those are market rates; we price by scope, not postcode.",
       },
     ],
   },
