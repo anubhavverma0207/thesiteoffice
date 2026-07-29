@@ -23,6 +23,20 @@ export const site = {
   location: "Serving clients worldwide",
   // Studio clock shown in the footer / menu
   timeZone: "Pacific/Auckland",
+  /**
+   * Editorial attribution.
+   * ----------------------------------------------------------------
+   * DO NOT put a personal name here. Content on this site is published
+   * and reviewed under the studio's name, not an individual's. If a
+   * named byline is ever wanted, that is the owner's decision to make
+   * explicitly, not something to add because it helps search.
+   */
+  author: {
+    name: "AntCrow",
+    role: "Studio",
+    bio: "AntCrow is a web design and engineering studio. The studio also builds CheckMyBuilder, a public tool that indexes New Zealand building companies against the Companies Register, which is where much of our understanding of how customers vet businesses online comes from.",
+    sameAs: [] as string[],
+  },
   keywords: [
     "AntCrow",
     "web design studio",

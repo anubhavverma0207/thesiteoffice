@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import Marquee from "@/components/Marquee";
+import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
 
 export const metadata: Metadata = {
@@ -147,9 +148,84 @@ export default function StudioPage() {
         </div>
       </section>
 
+      {/* What we publish. Attributed to the studio, never to an individual.
+          No personal names on this site. */}
+      <section className="container-x border-t border-line py-20 md:py-28">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <span className="label text-ash">(What we publish)</span>
+          </div>
+          <div className="md:col-span-7 md:col-start-6">
+            <h2 className="font-serif text-3xl md:text-4xl">
+              Written to be checked
+            </h2>
+            <Reveal delay={0.1}>
+              <p className="mt-6 text-lg leading-relaxed text-ash">
+                Everything in our guides and glossary carries a real review
+                date, and every factual claim links to the source it came from.
+                Where the evidence is thin or contested, we say so rather than
+                filling the gap with confidence.
+              </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mt-5 leading-relaxed text-ash">
+                If something we have published is wrong or out of date, we would
+                rather hear it and fix it than leave it standing.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                <Link
+                  href="/editorial-standards"
+                  className="text-ink underline underline-offset-4 hover:text-ash"
+                >
+                  Editorial standards
+                </Link>
+                <Link
+                  href="/guides"
+                  className="text-ink underline underline-offset-4 hover:text-ash"
+                >
+                  Read the guides
+                </Link>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-ink underline underline-offset-4 hover:text-ash"
+                >
+                  Get in touch
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-line py-8">
         <Marquee items={["Craft", "Curiosity", "Care"]} separator="✦" />
       </section>
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "AboutPage",
+              name: `Studio | ${site.name}`,
+              url: `${site.url}/studio/`,
+              isPartOf: { "@id": `${site.url}/#website` },
+              about: { "@id": `${site.url}/#organization` },
+            },
+            {
+              // Content is attributed to the organisation, never to a named
+              // individual. Do not add a Person node here.
+              "@type": "Organization",
+              "@id": `${site.url}/#organization`,
+              name: site.name,
+              url: site.url,
+              description: site.author.bio,
+            },
+          ],
+        }}
+      />
     </>
   );
 }

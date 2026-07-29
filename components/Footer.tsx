@@ -92,11 +92,21 @@ export default function Footer() {
               ) : (
                 <>
                   <li>
+                    <Link href="/guides" className="text-bone/80 hover:text-bone">
+                      Guides
+                    </Link>
+                  </li>
+                  <li>
                     <Link
-                      href="/guides/website-cost-nz"
+                      href="/glossary"
                       className="text-bone/80 hover:text-bone"
                     >
-                      Website cost guide (NZ)
+                      Glossary
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/compare" className="text-bone/80 hover:text-bone">
+                      Comparisons
                     </Link>
                   </li>
                   <li>
@@ -117,18 +127,10 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/guides/ai-search-visibility-nz"
+                      href="/guides/website-cost-nz"
                       className="text-bone/80 hover:text-bone"
                     >
-                      AI search visibility
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/guides/squarespace-wix-vs-custom"
-                      className="text-bone/80 hover:text-bone"
-                    >
-                      DIY vs custom
+                      Website cost guide (NZ)
                     </Link>
                   </li>
                 </>

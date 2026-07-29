@@ -81,11 +81,14 @@ export type Service = {
   title: string;
   blurb: string;
   deliverables: string[];
+  /** Slug of the matching detail page in lib/services-catalog.ts */
+  slug: string;
 };
 
 export const services: Service[] = [
   {
     no: "01",
+    slug: "brand-identity",
     title: "Brand & Identity",
     blurb:
       "We craft visual systems with intent: typography, motion, and art direction that make a brand unmistakable.",
@@ -93,6 +96,7 @@ export const services: Service[] = [
   },
   {
     no: "02",
+    slug: "web-design",
     title: "Web Design",
     blurb:
       "Editorial, immersive interfaces designed pixel-by-pixel for desire, not templates, never generic.",
@@ -100,6 +104,7 @@ export const services: Service[] = [
   },
   {
     no: "03",
+    slug: "web-development",
     title: "Development",
     blurb:
       "Hand-built front-ends and resilient back-ends. Fast, accessible, and engineered to scale with you.",
@@ -107,6 +112,7 @@ export const services: Service[] = [
   },
   {
     no: "04",
+    slug: "motion-design",
     title: "Motion & 3D",
     blurb:
       "Interaction is the product. We choreograph scroll, transitions, and 3D to make sites feel alive.",
@@ -114,6 +120,7 @@ export const services: Service[] = [
   },
   {
     no: "05",
+    slug: "seo",
     title: "SEO & AI Search",
     blurb:
       "Your website has two audiences now: humans, who feel, and AI, which cites. We engineer visibility for Google and for the AI assistants your customers ask instead.",
@@ -127,6 +134,7 @@ export const services: Service[] = [
   },
   {
     no: "06",
+    slug: "ai-concierges",
     title: "AI Concierges & Agents",
     blurb:
       "A concierge, not a chatbot. We design and build assistants trained on your business that answer, book, and act, in your brand's voice.",

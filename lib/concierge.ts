@@ -94,8 +94,23 @@ export const knowledge: KnowledgeEntry[] = [
   },
   {
     q: "Which industries do you build for?",
-    keywords: ["industry", "industries", "builders", "construction", "tradies", "trades", "cafe", "restaurant", "hospitality", "law", "lawyer", "accountant", "consultant"],
-    a: "We have dedicated experience with builders and construction (our team also runs CheckMyBuilder), tradies, hospitality, and professional services like law and accounting firms. Other industries are welcome too: the disciplines transfer.",
+    keywords: ["industry", "industries", "builders", "construction", "tradies", "trades", "cafe", "restaurant", "hospitality", "law", "lawyer", "accountant", "consultant", "winery", "wine", "orchard", "horticulture", "engineering", "manufacturing", "real estate", "dentist", "clinic", "medical", "physio", "tourism", "freight", "logistics", "courier"],
+    a: "There are dedicated pages for twelve sectors at /industries: builders and construction (our team also runs CheckMyBuilder), trades, hospitality, professional services, wineries, horticulture, engineering and manufacturing, accountants, real estate, health and medical practices, tourism, and freight and logistics. Other industries are welcome too, because the disciplines transfer.",
+  },
+  {
+    q: "Where do you work?",
+    keywords: ["location", "locations", "where", "city", "auckland", "wellington", "christchurch", "hamilton", "tauranga", "dunedin", "queenstown", "nelson", "napier", "rotorua"],
+    a: "AntCrow serves clients worldwide, with deep coverage across New Zealand and Australia. There are city pages at /locations covering Auckland, Wellington, Christchurch, Hamilton, Tauranga, Dunedin, Palmerston North, Napier and Hastings, New Plymouth, Whangarei, Nelson, Queenstown, Rotorua, Invercargill, Marlborough, Timaru, and Sydney. Projects run remotely with video check-ins in your time zone, and in-person sessions can be arranged where a project genuinely benefits.",
+  },
+  {
+    q: "Do you have guides or free resources?",
+    keywords: ["guide", "guides", "resource", "learn", "article", "blog", "glossary", "definition", "free"],
+    a: "Yes, all free and with no email required. /guides has sourced long-form guides covering choosing an agency, website redesign, AI crawlers, Core Web Vitals, the Privacy Act 2020, web accessibility, NZ hosting and data sovereignty, selling online in New Zealand, and address handling at checkout. /glossary has plain definitions of the jargon. Every factual claim links to a primary source.",
+  },
+  {
+    q: "Do New Zealand websites need a cookie consent banner?",
+    keywords: ["cookie", "cookies", "banner", "consent", "gdpr", "privacy act", "privacy law"],
+    a: "Generally no. New Zealand has no equivalent of the European ePrivacy Directive and no specific statutory requirement for cookie consent banners; the Privacy Commissioner's position is transparency rather than consent. If your site has a significant European or UK audience, GDPR may apply to those visitors separately. There is a full explanation at /guides/nz-privacy-act-websites. That is general information rather than legal advice.",
   },
 ];
 

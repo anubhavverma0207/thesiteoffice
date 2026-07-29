@@ -5,6 +5,8 @@ import Link from "next/link";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { services, process, faqs, auditOffer } from "@/lib/data";
+import { serviceCatalog } from "@/lib/services-catalog";
+import { site } from "@/lib/site.config";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -74,6 +76,21 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </Reveal>
+                <Reveal delay={0.2}>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    data-cursor="Read"
+                    className="group mt-8 inline-flex items-center gap-2 text-sm text-ink underline-offset-4 hover:underline"
+                  >
+                    More on {s.title.toLowerCase()}
+                    <span
+                      aria-hidden
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </Reveal>
               </div>
               <div className="md:col-span-6 md:col-start-7">
                 <ParallaxImage
@@ -86,6 +103,44 @@ export default function ServicesPage() {
             </div>
           </div>
         ))}
+      </section>
+
+      {/* Full catalogue. The six blocks above are the showroom; this is the
+          index, and it covers the services people actually search for by
+          name (e-commerce, redesign, maintenance) that do not warrant their
+          own showroom block. */}
+      <section className="container-x border-t border-line py-24 md:py-32">
+        <div className="mb-12">
+          <span className="label text-ash">(Every service)</span>
+          <AnimatedHeading
+            as="h2"
+            text="In detail."
+            className="mt-4 font-serif text-display-md"
+          />
+        </div>
+        <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+          {serviceCatalog.map((s, i) => (
+            <Reveal key={s.slug} delay={i * 0.04}>
+              <li className="h-full border-t border-line">
+                <Link
+                  href={`/services/${s.slug}`}
+                  data-cursor="Open"
+                  className="group flex h-full flex-col gap-3 py-6 transition-opacity hover:opacity-70"
+                >
+                  <span className="label text-ash">{s.no}</span>
+                  <h3 className="font-serif text-2xl">{s.name}</h3>
+                  <p className="text-sm text-ash">{s.definition.body.slice(0, 130)}…</p>
+                  <span
+                    aria-hidden
+                    className="mt-auto pt-3 text-sm text-ink transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
       </section>
 
       {/* Productized entry offer: the AI Visibility Audit */}
@@ -193,12 +248,28 @@ export default function ServicesPage() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
+          "@graph": [
+            {
+              "@type": "FAQPage",
+              mainEntity: faqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+            {
+              // Tells search engines and AI assistants the full shape of what
+              // we offer, in one machine-readable list.
+              "@type": "ItemList",
+              name: `${site.name} services`,
+              itemListElement: serviceCatalog.map((s, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: s.name,
+                url: `${site.url}/services/${s.slug}/`,
+              })),
+            },
+          ],
         }}
       />
     </>
