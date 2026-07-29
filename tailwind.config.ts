@@ -14,9 +14,11 @@ const config: Config = {
         paper: "#faf8f3",
         ash: "#8a857c",
         line: "#e0dcd2",
-        // Surveyor's orange — the colour of the work site. Used sparingly:
-        // status dots, the scroll progress hairline, selection, one accent.
+        // Surveyor's orange. Used sparingly: status dots, the scroll
+        // progress hairline, selection, one accent.
         flag: "#ff4a00",
+        // The crow's beak. Belongs to the logo and the landing intro.
+        crow: "#f5a623",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

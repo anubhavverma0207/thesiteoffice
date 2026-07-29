@@ -48,12 +48,17 @@ export default function Header() {
             href="/"
             data-cursor="Home"
             data-cursor-theme={open ? "dark" : undefined}
-            className={`font-serif text-2xl tracking-tightest transition-colors duration-300 md:text-3xl ${
+            className={`group inline-flex items-center font-serif text-2xl tracking-tightest transition-colors duration-300 md:text-3xl ${
               open ? "text-bone" : "text-ink"
             }`}
           >
             {site.name}
-            <sup className="ml-0.5 align-super text-[0.5em]">™</sup>
+            {/* The crow's beak: the wordmark's one piece of colour */}
+            <span
+              aria-hidden
+              className="ml-[0.14em] mt-[0.1em] h-[0.3em] w-[0.46em] bg-crow transition-transform duration-500 ease-silk group-hover:translate-x-[0.1em]"
+              style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+            />
           </Link>
 
           <div className="flex items-center gap-5 md:gap-7">

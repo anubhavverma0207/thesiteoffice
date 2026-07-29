@@ -160,8 +160,12 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-3 border-t border-bone/15 pt-6 text-xs text-bone/45 md:flex-row md:items-center md:justify-between">
+          {/* The trademark claim lives here, in the legal line, so the
+              logo itself can stay clean everywhere else. */}
           <span>
-            © {year} {site.name}. All rights reserved. ·{" "}
+            {`© ${year} ${site.name}`}
+            <sup className="align-super text-[0.8em]">™</sup>
+            {". All rights reserved. · "}
             <Link href="/privacy" className="hover:text-bone/80">
               Privacy
             </Link>
@@ -186,9 +190,12 @@ export default function Footer() {
       >
         <span className="text-outline block select-none whitespace-nowrap text-center font-serif text-[12.5vw] leading-none tracking-tightest transition-colors duration-700 hover:text-bone hover:[-webkit-text-stroke-width:0px]">
           {site.name}
-          <sup className="align-super text-[0.35em] text-flag [-webkit-text-stroke-width:0px]">
-            ™
-          </sup>
+          {/* Same beak as the header, scaled to the display type */}
+          <span
+            aria-hidden
+            className="ml-[0.05em] inline-block h-[0.17em] w-[0.26em] bg-crow align-[0.26em] [-webkit-text-stroke-width:0px]"
+            style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+          />
         </span>
       </button>
     </footer>
