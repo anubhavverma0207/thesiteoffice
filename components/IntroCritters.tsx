@@ -203,10 +203,21 @@ export default function IntroCritters({
 
     /* ---------------- crow ---------------- */
     let crow: HTMLDivElement | null = null;
-    let crowState: "off" | "flying" | "perched" = "off";
-    let perch: Pt = { x: 0, y: 0 };
+    let crowState: "off" | "flying" = "off";
+    /** Where the crow was last drawn. Used to start a path from the
+     *  current position rather than teleporting. */
+    let lastCrowPos: Pt = { x: -200, y: 140 };
 
-    function perchPoint(): Pt {
+    /**
+     * A point just above the wordmark, used to route the occasional low
+     * pass across it. This was previously a perch position; the crow no
+     * longer lands, but flying over the logotype is a nicer beat than
+     * circling empty space, so the measurement is still worth taking.
+     *
+     * Measured from a Range rather than the element, because the h1 box
+     * is full width while the text inside it is centred and narrower.
+     */
+    function wordmarkPoint(): Pt {
       const rootRect = root!.getBoundingClientRect();
       const wrap = document.getElementById(wordmarkId);
       if (wrap) {
@@ -229,8 +240,18 @@ export default function IntroCritters({
       if (!crow) return;
       const deg = angleRad * 57.29578;
       crow.style.transform = `translate(${x}px,${y}px) scaleX(${facing}) rotate(${facing * deg}deg)`;
+      lastCrowPos = { x, y };
     }
-    function flyPath(pts: Pt[], dur: number, done?: () => void) {
+    /**
+     * @param cruise Use a constant speed instead of easing in and out.
+     *
+     * The ease-in-out curve is right for an arrival, which should settle,
+     * and wrong for a continuous circuit: it decelerates at the end of
+     * every lap and accelerates at the start of the next, so the crow
+     * appears to hover for a moment every few seconds. Measured as a dip
+     * to ~3px of travel per 500ms between laps. Linear keeps it cruising.
+     */
+    function flyPath(pts: Pt[], dur: number, done?: () => void, cruise = false) {
       const t0 = performance.now();
       const pos = (k: number): Pt => {
         const n = pts.length - 1, f = k * n, i = Math.min(n - 1, Math.floor(f)), u = f - i;
@@ -243,7 +264,7 @@ export default function IntroCritters({
       function step(t: number) {
         if (!alive || !crow) return;
         const k = Math.min(1, (t - t0) / dur);
-        const e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        const e = cruise ? k : k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
         const p = pos(e);
         const vx = p.x - prev.x, vy = p.y - prev.y;
         const facing = vx >= 0 ? 1 : -1;
@@ -255,27 +276,48 @@ export default function IntroCritters({
       }
       requestAnimationFrame(step);
     }
-    function land() {
-      if (!alive || !crow) return;
-      crowState = "perched";
-      crow.classList.remove("flying");
-      perch = perchPoint();
-      setCrow(perch.x, perch.y, 0, 1);
-      later(takeOff, rand(14000, 26000));
+    /**
+     * The crow never lands. It circles the frame continuously.
+     *
+     * It used to perch on the wordmark 2.85s after arriving and sit there
+     * for 14 to 26 seconds. Since the intro is dismissed on the first
+     * scroll, most visitors only ever saw a stationary bird, which is a
+     * waste of the one moving thing in the composition.
+     *
+     * Every circuit is generated fresh, so it never traces a visible loop.
+     * Paths are biased to the upper band of the screen so the crow reads
+     * as flying above the wordmark rather than through it, and each
+     * circuit ends where the next begins, so there is no seam between laps.
+     */
+    function randomLap(from: Pt): Pt[] {
+      const w = W();
+      const h = H();
+      // Occasionally swoop low across the wordmark rather than staying
+      // high. Keeps the circuit from settling into one altitude.
+      const low = Math.random() < 0.35;
+      const wm = wordmarkPoint();
+      return [
+        from,
+        { x: rand(0.06, 0.28) * w, y: rand(0.1, 0.3) * h },
+        low
+          ? { x: wm.x - rand(40, 160), y: wm.y - rand(10, 60) }
+          : { x: rand(0.34, 0.6) * w, y: rand(0.06, 0.24) * h },
+        { x: rand(0.66, 0.94) * w, y: rand(0.12, 0.38) * h },
+        { x: rand(0.4, 0.75) * w, y: rand(0.28, 0.52) * h },
+        { x: rand(0.12, 0.4) * w, y: rand(0.16, 0.42) * h },
+      ];
     }
-    function takeOff() {
-      if (!alive || !crow || crowState !== "perched") return;
+
+    function flyLap(from: Pt) {
+      if (!alive || !crow) return;
       crowState = "flying";
       crow.classList.add("flying");
-      perch = perchPoint();
-      const lap: Pt[] = [perch,
-        { x: perch.x - rand(200, 380), y: perch.y - rand(100, 180) },
-        { x: W() * rand(0.12, 0.25), y: H() * rand(0.12, 0.3) },
-        { x: W() * rand(0.35, 0.55), y: H() * rand(0.08, 0.22) },
-        { x: W() * rand(0.7, 0.85), y: H() * rand(0.2, 0.4) },
-        { x: perch.x + rand(100, 200), y: perch.y - rand(60, 120) },
-        perch];
-      flyPath(lap, rand(5200, 6800), land);
+      const pts = randomLap(from);
+      const end = pts[pts.length - 1];
+      // Varied pace: a circuit that always took the same time would read
+      // as a loop even with a different path. Cruise, so the speed stays
+      // even across the seam between laps.
+      flyPath(pts, rand(4600, 7200), () => flyLap(end), true);
     }
     function crowArrive() {
       if (!alive || crow) return;
@@ -288,50 +330,39 @@ export default function IntroCritters({
       crow.style.transform = "translate(-200px,140px)";
       crow.addEventListener("click", (e: MouseEvent) => {
         e.stopPropagation(); // petting the crow must not dismiss the intro
-        takeOff();
+        // A startled dart upward, then straight back into the circuit.
+        const p = { x: rand(0.2, 0.8) * W(), y: rand(0.08, 0.2) * H() };
+        flyPath([lastCrowPos, p], 700, () => flyLap(p));
       });
-      every(() => { if (crow && crowState === "perched") { crow.classList.add("blink"); later(() => crow && crow.classList.remove("blink"), 140); } }, 4200);
-      every(() => { if (crow && crowState === "perched") { crow.classList.add("tilt"); later(() => crow && crow.classList.remove("tilt"), 900); } }, 11000);
+      // Blinks while flying now, since it no longer perches.
+      every(() => {
+        if (!crow) return;
+        crow.classList.add("blink");
+        later(() => crow && crow.classList.remove("blink"), 140);
+      }, 4200);
+
       crowState = "flying";
 
       /**
-       * Two-stage arrival.
+       * Arrival, then straight into the circuit without stopping.
        *
-       * The crow now launches on the first frame, which means the wordmark
-       * is still mid-reveal and its perch position is not yet measurable:
-       * perchPoint() reads the text's client rect, and during the reveal
-       * that rect is translated 115% down inside its mask. Flying straight
-       * to a perch measured at t=0 would end with the crow snapping about
-       * a hundred pixels when land() re-measures.
-       *
-       * So: sweep across the screen first, then measure and make a short
-       * final approach once the wordmark has settled. It also reads better,
-       * because the crow crosses the frame before choosing where to sit.
+       * The crow launches on the first frame, so it sweeps in from off
+       * the left edge and simply keeps going. There is no landing to
+       * measure a position for any more, which incidentally removed the
+       * old hazard here: the wordmark is still mid-reveal at this point,
+       * and reading its rect during the reveal gave a position ~115% of
+       * a line-height out.
        */
-      const holdX = W() * 0.55;
-      const holdY = H() * 0.22;
-
+      const entry: Pt = { x: W() * 0.55, y: H() * 0.22 };
       flyPath(
         [
           { x: -160, y: H() * rand(0.15, 0.35) },
           { x: W() * 0.3, y: H() * rand(0.1, 0.28) },
           { x: W() * 0.72, y: H() * rand(0.2, 0.42) },
-          { x: holdX, y: holdY },
+          entry,
         ],
         2000,
-        () => {
-          if (!alive || !crow) return;
-          const p = perchPoint();
-          flyPath(
-            [
-              { x: holdX, y: holdY },
-              { x: (holdX + p.x) / 2, y: Math.min(holdY, p.y) - 50 },
-              p,
-            ],
-            850,
-            land
-          );
-        }
+        () => flyLap(entry)
       );
     }
 
