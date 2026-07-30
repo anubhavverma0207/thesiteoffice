@@ -26,26 +26,22 @@ const GUARD = 550;
 const SEEN_KEY = "tso_intro_seen";
 
 /**
- * ms since navigation after which the intro is abandoned.
+ * The intro plays on EVERY device. It is never skipped.
  *
- * The overlay is client-only, so it cannot exist until React hydrates.
- * Measured first-appearance, with the critters following ~35ms behind:
+ * It previously bailed out when hydration was slow, because the overlay
+ * is client-only and on a mid-range phone it appeared 4.3s in, dropping
+ * over a page the visitor had already started reading.
  *
- *   fast desktop      404ms
- *   2x slower CPU    1231ms
- *   mid-range phone  4328ms
- *   slow phone       5444ms
+ * That is now solved properly rather than by skipping: a static shell in
+ * layout.tsx paints the black opening frame with the first frame on every
+ * device, driven by CSS and a synchronous inline script. This component
+ * then mounts on top of it and adds the wordmark reveal, the crow, the
+ * ants, and dismissal. So the opening is instant everywhere, and the
+ * detail arrives when React is ready.
  *
- * On the slower two, the visitor has already been reading the actual page
- * for seconds when a black screen drops over it and demands a scroll to
- * get back. That is not a cinematic opening, it is a page hijack.
- *
- * So if hydration was slow, the moment is simply skipped and marked as
- * seen. The flourish is worth having when it is instant and worth losing
- * when it is not. This is deliberately biased toward not interrupting
- * someone who is already reading.
+ * Do not reintroduce a hydration cutoff here. If the opening feels late
+ * again, the fix belongs in the shell, not in skipping the moment.
  */
-const MAX_HYDRATION_WAIT = 1200;
 
 function scrollToTop() {
   const lenis = (window as unknown as { lenis?: { scrollTo: (t: number, o?: object) => void } }).lenis;
@@ -60,16 +56,6 @@ export default function Intro() {
   useEffect(() => {
     // Already seen this session? Never show it again.
     if (sessionStorage.getItem(SEEN_KEY) === "1") return;
-
-    // Too late to be an opening. performance.now() here is ms since
-    // navigation start, so it measures exactly how long hydration took.
-    // Mark it seen so a later route change does not spring it either.
-    if (performance.now() > MAX_HYDRATION_WAIT) {
-      try {
-        sessionStorage.setItem(SEEN_KEY, "1");
-      } catch {}
-      return;
-    }
 
     setOpen(true);
     scrollToTop();
@@ -95,6 +81,33 @@ export default function Intro() {
       window.removeEventListener("click", dismiss);
     };
   }, []);
+
+  /**
+   * Hand over from the static shell, once this overlay is really up.
+   *
+   * Timing here is the whole trick, and getting it wrong is visible. The
+   * first attempt removed the attribute from the mount effect on the next
+   * animation frame, which fired before React had committed the overlay:
+   * a trace at 4x CPU throttling caught the shell hidden at 3897ms while
+   * the React layer did not exist until 3994ms, exposing the hero for
+   * about a hundred milliseconds.
+   *
+   * Keying the effect to `open` means it cannot run until the render that
+   * contains the overlay has committed. The extra frame is belt and
+   * braces. Both layers are opaque, so overlapping briefly costs nothing
+   * while a gap costs a visible flash of the page.
+   *
+   * It has to happen here rather than on dismissal: the exit slides this
+   * overlay upward, and a shell still sitting behind it would reveal
+   * another black screen instead of the site.
+   */
+  useEffect(() => {
+    if (!open) return;
+    const id = requestAnimationFrame(() => {
+      document.documentElement.removeAttribute("data-intro");
+    });
+    return () => cancelAnimationFrame(id);
+  }, [open]);
 
   const handleExitComplete = () => {
     // Remember for the rest of the session so it never replays.

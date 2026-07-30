@@ -161,6 +161,55 @@
   }
 }
 
+/* Pre-paint intro shell.
+   ------------------------------------------------------------------
+   The React intro cannot exist until hydration, which on a mid-range
+   phone was measured at 4.3s. That meant the page painted, the visitor
+   started reading, and then a black overlay dropped over it.
+
+   This shell is in the STATIC HTML and styled entirely in CSS, so it
+   paints on the first frame on every device. A tiny inline script in
+   layout.tsx decides whether to show it, before first paint, by reading
+   the same sessionStorage key the React component uses. The React intro
+   then mounts on top at a higher z-index and this is removed.
+
+   It deliberately shows only the wordmark. The crow, ants, tagline and
+   scroll cue arrive with the React layer, so the shell is the opening
+   frame rather than a duplicate of the whole scene.
+
+   Hidden by default: if scripting is unavailable the attribute is never
+   set and this never appears. */
+#intro-shell {
+  display: none;
+}
+
+html[data-intro="pending"] #intro-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 79;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+}
+
+#intro-shell span {
+  font-family: var(--font-serif);
+  font-size: 20vw;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #f5a623;
+  text-align: center;
+  animation: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 768px) {
+  #intro-shell span {
+    font-size: 7.5vw;
+    white-space: nowrap;
+  }
+}
+
 /* Hero entrance, in CSS rather than JavaScript.
    ------------------------------------------------------------------
    These were Framer Motion `initial`/`animate` pairs. The problem is

@@ -195,6 +195,30 @@ export default function RootLayout({
             }
           `}</style>
         </noscript>
+        {/* Intro shell decision, made before first paint.
+            Runs synchronously so the black opening frame is painted with
+            the very first frame on every device, rather than dropping over
+            an already-visible page once React hydrates (measured at 4.3s
+            on a mid-range phone).
+
+            The fallback timeout matters: if this script runs but the
+            bundle never loads, the shell would otherwise leave the site as
+            a permanent black screen. It no-ops when React has already
+            taken over, because the attribute is gone by then.
+
+            12s is chosen against measurement, not taste. Hydration took
+            7.8s at 6x CPU throttling, so a shorter fallback would yank the
+            shell away mid-opening on a genuinely slow phone. The cost is
+            that a total script failure shows black for 12s, which is the
+            rarer and less likely case of the two. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("tso_intro_seen")!=="1"){var d=document.documentElement;d.setAttribute("data-intro","pending");setTimeout(function(){if(d.getAttribute("data-intro")==="pending")d.removeAttribute("data-intro")},12000)}}catch(e){}`,
+          }}
+        />
+        <div id="intro-shell" aria-hidden="true">
+          <span>{site.name}</span>
+        </div>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
