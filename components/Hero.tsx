@@ -34,42 +34,40 @@ export default function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-24 pb-8 container-x md:pt-28 md:pb-10"
     >
-      {/* Top meta row */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 1 }}
-        className="flex items-start justify-between"
+      {/* Top meta row. CSS entrance: paints without waiting for hydration. */}
+      <div
+        className="fade-up flex items-start justify-between"
+        style={{ animationDelay: "0.1s" }}
       >
         <span className="label max-w-[12rem] text-ash">
           Digital design &amp; engineering studio
         </span>
         <span className="hidden label text-ash md:block">{site.location}</span>
-      </motion.div>
+      </div>
 
-      {/* Headline */}
+      {/* Headline. The scroll-linked parallax stays in Framer Motion, since
+          it responds to input rather than running on load, and it does not
+          hide anything at scroll position zero. */}
       <motion.div style={{ y: yTitle, opacity }}>
         <h1 className="font-serif text-display-lg">
           {lines.map((l, i) => (
             <span key={i} className="reveal-mask">
-              <motion.span
-                custom={i}
-                variants={line}
-                initial="hidden"
-                animate="show"
-                className="block"
+              <span
+                className="hero-rise block"
+                style={{ animationDelay: `${0.05 + i * 0.1}s` }}
               >
                 {l}
-              </motion.span>
+              </span>
             </span>
           ))}
         </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.9 }}
-          className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        {/* This block contains the LCP element. Delay kept deliberately
+            short: every millisecond here is a millisecond of blank space
+            for someone on a slow connection. */}
+        <div
+          className="fade-up mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          style={{ animationDelay: "0.3s" }}
         >
           <p className="max-w-md text-base text-ash md:text-lg">
             {site.name} partners with ambitious companies to design and build
@@ -89,15 +87,13 @@ export default function Hero() {
               →
             </span>
           </Link>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.3, duration: 1 }}
-        className="flex items-center justify-center"
+      <div
+        className="fade-up flex items-center justify-center"
+        style={{ animationDelay: "0.6s" }}
       >
         <div className="flex flex-col items-center gap-2 text-ash">
           <span className="label">Scroll</span>
@@ -109,7 +105,7 @@ export default function Hero() {
             ↓
           </motion.span>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

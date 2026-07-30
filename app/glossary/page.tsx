@@ -25,7 +25,7 @@ export default function GlossaryHub() {
           text="The words, without the _fog._"
           className="mt-6 font-serif text-display-lg text-balance"
         />
-        <Reveal delay={0.2}>
+        <Reveal immediate delay={0.2}>
           <p className="mt-8 max-w-xl text-lg text-ash">
             Our industry hides a lot behind vocabulary, some of it deliberately.
             These are plain definitions of the terms you will meet when buying
@@ -51,22 +51,20 @@ export default function GlossaryHub() {
               </div>
               <ul className="grid gap-x-8 gap-y-0 md:col-span-9 md:grid-cols-2">
                 {terms.map((t, i) => (
-                  <Reveal key={t.slug} delay={i * 0.03}>
-                    <li className="h-full border-t border-line">
-                      <Link
-                        href={`/glossary/${t.slug}`}
-                        data-cursor="Read"
-                        className="group flex h-full flex-col py-6"
-                      >
-                        <h3 className="font-serif text-xl transition-opacity group-hover:opacity-60">
-                          {t.term}
-                        </h3>
-                        {/* The one-line definition is shown here rather than
-                            hidden behind a click. The hub should be useful on
-                            its own, not merely an index. */}
-                        <p className="mt-2 text-sm text-ash">{t.short}</p>
-                      </Link>
-                    </li>
+                  <Reveal key={t.slug} delay={i * 0.03} as="li" className="h-full border-t border-line">
+                    <Link
+                      href={`/glossary/${t.slug}`}
+                      data-cursor="Read"
+                      className="group flex h-full flex-col py-6"
+                    >
+                      <h3 className="font-serif text-xl transition-opacity group-hover:opacity-60">
+                        {t.term}
+                      </h3>
+                      {/* The one-line definition is shown here rather than
+                          hidden behind a click. The hub should be useful on
+                          its own, not merely an index. */}
+                      <p className="mt-2 text-sm text-ash">{t.short}</p>
+                    </Link>
                   </Reveal>
                 ))}
               </ul>

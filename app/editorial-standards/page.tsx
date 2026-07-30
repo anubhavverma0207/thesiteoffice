@@ -89,14 +89,14 @@ export default function EditorialStandardsPage() {
             text="How we decide what to publish."
             className="mt-6 font-serif text-display-md text-balance"
           />
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-lg leading-relaxed">
               We publish guidance that people make spending decisions on, some
               of it touching legal obligations. These are the rules we hold
               ourselves to, written down so you can hold us to them as well.
             </p>
           </Reveal>
-          <Reveal delay={0.2}>
+          <Reveal immediate delay={0.2}>
             <ContentMeta
               updated="2026-07-30"
               className="mt-8 border-t border-line pt-6"

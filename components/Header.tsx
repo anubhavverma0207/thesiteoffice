@@ -127,7 +127,7 @@ export default function Header() {
                         href={item.href}
                         className="group flex items-baseline gap-4 py-1 md:gap-6"
                       >
-                        <span className="text-xs text-bone/40 md:text-sm">
+                        <span className="text-xs text-bone/60 md:text-sm">
                           0{i + 1}
                         </span>
                         <span className="font-serif text-[15vw] leading-[1.04] transition-opacity duration-300 group-hover:opacity-50 md:text-[8vw]">
@@ -147,7 +147,7 @@ export default function Header() {
               className="grid grid-cols-1 gap-6 border-t border-bone/15 pt-6 min-[420px]:grid-cols-2 min-[420px]:gap-8 md:grid-cols-4 md:pt-8"
             >
               <div>
-                <div className="label text-bone/40">Get in touch</div>
+                <div className="label text-bone/60">Get in touch</div>
                 <a
                   href={`mailto:${site.email}`}
                   className="mt-2 inline-flex items-center gap-1.5 text-sm text-bone/85 hover:text-bone"
@@ -157,13 +157,13 @@ export default function Header() {
                 </a>
               </div>
               <div>
-                <div className="label text-bone/40">Reach</div>
+                <div className="label text-bone/60">Reach</div>
                 <p className="mt-2 text-sm text-bone/85">{site.location}</p>
                 <LocalTime className="mt-1 block text-xs text-bone/50" />
               </div>
               {site.social.length > 0 && (
                 <div className="col-span-2">
-                  <div className="label text-bone/40">Social</div>
+                  <div className="label text-bone/60">Social</div>
                   <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm">
                     {site.social.map((s) => (
                       <a

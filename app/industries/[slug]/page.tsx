@@ -49,7 +49,7 @@ export default function IndustryPage({
             text={ind.h1}
             className="mt-6 font-serif text-display-md text-balance"
           />
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-lg leading-relaxed">{ind.intro}</p>
           </Reveal>
         </header>

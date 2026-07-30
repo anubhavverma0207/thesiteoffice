@@ -54,7 +54,7 @@ export default function GuidesHub() {
           text="Everything we know, _written down._"
           className="mt-6 font-serif text-display-lg text-balance"
         />
-        <Reveal delay={0.2}>
+        <Reveal immediate delay={0.2}>
           <p className="mt-8 max-w-xl text-lg text-ash">
             Practical guides on buying, building, and running a website, with a
             New Zealand focus. Every factual claim traces to a primary source
@@ -102,19 +102,17 @@ export default function GuidesHub() {
               </div>
               <ul className="md:col-span-7 md:col-start-6">
                 {entries.map((e, i) => (
-                  <Reveal key={e.href} delay={i * 0.05}>
-                    <li className="border-t border-line first:border-t-0 md:first:border-t">
-                      <Link
-                        href={e.href}
-                        data-cursor="Read"
-                        className="group block py-7"
-                      >
-                        <h3 className="font-serif text-xl transition-opacity group-hover:opacity-60 md:text-2xl">
-                          {e.name}
-                        </h3>
-                        <p className="mt-3 text-sm text-ash">{e.blurb}</p>
-                      </Link>
-                    </li>
+                  <Reveal key={e.href} delay={i * 0.05} as="li" className="border-t border-line first:border-t-0 md:first:border-t">
+                    <Link
+                      href={e.href}
+                      data-cursor="Read"
+                      className="group block py-7"
+                    >
+                      <h3 className="font-serif text-xl transition-opacity group-hover:opacity-60 md:text-2xl">
+                        {e.name}
+                      </h3>
+                      <p className="mt-3 text-sm text-ash">{e.blurb}</p>
+                    </Link>
                   </Reveal>
                 ))}
               </ul>

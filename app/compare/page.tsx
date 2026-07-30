@@ -27,7 +27,7 @@ export default function CompareHub() {
           text="This or _that._"
           className="mt-6 font-serif text-display-lg text-balance"
         />
-        <Reveal delay={0.2}>
+        <Reveal immediate delay={0.2}>
           <p className="mt-8 max-w-xl text-lg text-ash">
             Head-to-head comparisons that commit to an answer. Every one of
             these states its recommendation before the evidence, names the kind
@@ -50,19 +50,17 @@ export default function CompareHub() {
               {comparisons
                 .filter((c) => c.category === category)
                 .map((c, i) => (
-                  <Reveal key={c.slug} delay={i * 0.06}>
-                    <li className="border-t border-line first:border-t-0 md:first:border-t">
-                      <Link
-                        href={`/compare/${c.slug}`}
-                        data-cursor="Read"
-                        className="group block py-7"
-                      >
-                        <h3 className="font-serif text-xl transition-opacity group-hover:opacity-60 md:text-2xl">
-                          {c.name}
-                        </h3>
-                        <p className="mt-3 text-sm text-ash">{c.standfirst}</p>
-                      </Link>
-                    </li>
+                  <Reveal key={c.slug} delay={i * 0.06} as="li" className="border-t border-line first:border-t-0 md:first:border-t">
+                    <Link
+                      href={`/compare/${c.slug}`}
+                      data-cursor="Read"
+                      className="group block py-7"
+                    >
+                      <h3 className="font-serif text-xl transition-opacity group-hover:opacity-60 md:text-2xl">
+                        {c.name}
+                      </h3>
+                      <p className="mt-3 text-sm text-ash">{c.standfirst}</p>
+                    </Link>
                   </Reveal>
                 ))}
             </ul>

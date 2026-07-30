@@ -23,7 +23,7 @@ export default function IndustriesHub() {
           text="Built for your _industry._"
           className="mt-6 font-serif text-display-md"
         />
-        <Reveal delay={0.15}>
+        <Reveal immediate delay={0.15}>
           <p className="mt-8 text-lg text-ash">
             Every industry's customers choose differently. A homeowner vets
             a builder differently to how a diner picks a restaurant or a

@@ -53,7 +53,7 @@ export default function TermPage({ params }: { params: { slug: string } }) {
             className="mt-6 font-serif text-display-md text-balance"
           />
           {t.aka && t.aka.length > 0 && (
-            <Reveal delay={0.1}>
+            <Reveal immediate delay={0.1}>
               <p className="mt-4 text-sm text-ash">
                 Also known as: {t.aka.join(", ")}
               </p>
@@ -61,13 +61,16 @@ export default function TermPage({ params }: { params: { slug: string } }) {
           )}
           {/* The one-sentence definition. This is the passage most likely
               to be extracted, so it has to be complete on its own. */}
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-xl leading-relaxed">{t.short}</p>
           </Reveal>
         </header>
 
         <div className="mt-14 max-w-3xl space-y-12">
-          <Reveal>
+          {/* immediate: on a phone this definition is the largest text block
+              on the page and sits at the fold, so it is the LCP element.
+              Leaving it on the scroll-triggered reveal measured 6.0s. */}
+          <Reveal immediate>
             <section>
               <h2 className="font-serif text-2xl md:text-3xl">
                 In full

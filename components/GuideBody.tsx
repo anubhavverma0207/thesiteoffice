@@ -272,7 +272,7 @@ export default function GuideBody({ blocks }: { blocks: Block[] }) {
                   </div>
                   <p className="mt-2 max-w-md text-ash">{b.label}</p>
                   {b.source && (
-                    <p className="mt-2 text-xs text-ash/70">{b.source}</p>
+                    <p className="mt-2 text-xs text-ash">{b.source}</p>
                   )}
                 </div>
               </Reveal>

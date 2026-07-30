@@ -45,7 +45,7 @@ export default function TwoAudiences() {
           {columns.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.1}>
               <div className="border-t border-bone/20 pt-8">
-                <span className="label text-bone/45">{c.label}</span>
+                <span className="label text-bone/60">{c.label}</span>
                 <h3 className="mt-3 font-serif text-4xl md:text-5xl">
                   {c.title}
                   {i === 1 && (

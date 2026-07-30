@@ -50,7 +50,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             className="mt-6 font-serif text-display-md text-balance"
           />
           {/* Direct answer: written to be quotable verbatim by AI engines */}
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-lg leading-relaxed">{svc.intro}</p>
           </Reveal>
         </header>
@@ -100,7 +100,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             </section>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal immediate delay={0.1}>
             <section className="rounded-2xl border border-line p-8">
               <span className="label text-ash">A good fit if</span>
               <ul className="mt-6 space-y-3">

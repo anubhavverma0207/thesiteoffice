@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="label text-bone/40">Menu</div>
+            <div className="label text-bone/60">Menu</div>
             <ul className="mt-5 space-y-2 text-sm">
               {site.nav.map((item) => (
                 <li key={item.href}>
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="label text-bone/40">
+            <div className="label text-bone/60">
               {site.social.length > 0 ? "Social" : "Explore"}
             </div>
             <ul className="mt-5 space-y-2 text-sm">
@@ -139,7 +139,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="label text-bone/40">Contact</div>
+            <div className="label text-bone/60">Contact</div>
             <ul className="mt-5 space-y-2 text-sm text-bone/80">
               <li>
                 <a
@@ -161,7 +161,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-bone/15 pt-6 text-xs text-bone/45 md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-bone/15 pt-6 text-xs text-bone/60 md:flex-row md:items-center md:justify-between">
           {/* The trademark claim lives here, in the legal line, so the
               logo itself can stay clean everywhere else. */}
           <span>
@@ -183,10 +183,14 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Giant wordmark: hollow type, fills on hover */}
+      {/* Giant wordmark: hollow type, fills on hover.
+          The accessible name must contain the visible text. It previously
+          read "Back to top" while the button visibly says "AntCrow",
+          which fails WCAG 2.5.3 Label in Name and breaks voice control:
+          someone saying "click AntCrow" would not activate it. */}
       <button
         onClick={scrollToTop}
-        aria-label="Back to top"
+        aria-label={`${site.name}, back to top`}
         data-cursor="Top"
         className="block w-full overflow-hidden pb-4 text-bone/90"
       >

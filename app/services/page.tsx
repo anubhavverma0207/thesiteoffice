@@ -38,7 +38,7 @@ export default function ServicesPage() {
           text="Everything you need to launch and _grow._"
           className="mt-6 font-serif text-display-lg text-balance"
         />
-        <Reveal delay={0.2}>
+        <Reveal immediate delay={0.2}>
           <p className="mt-8 max-w-xl text-lg text-ash">
             From the first sketch to the final deploy, we handle brand, design,
             and engineering under one roof. Built for humans to feel and for AI
@@ -61,10 +61,10 @@ export default function ServicesPage() {
                   text={s.title}
                   className="mt-2 font-serif text-display-md"
                 />
-                <Reveal delay={0.1}>
+                <Reveal immediate delay={0.1}>
                   <p className="mt-6 max-w-md text-lg text-ash">{s.blurb}</p>
                 </Reveal>
-                <Reveal delay={0.15}>
+                <Reveal immediate delay={0.15}>
                   <ul className="mt-8 flex flex-wrap gap-2">
                     {s.deliverables.map((d) => (
                       <li
@@ -120,24 +120,22 @@ export default function ServicesPage() {
         </div>
         <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
           {serviceCatalog.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 0.04}>
-              <li className="h-full border-t border-line">
-                <Link
-                  href={`/services/${s.slug}`}
-                  data-cursor="Open"
-                  className="group flex h-full flex-col gap-3 py-6 transition-opacity hover:opacity-70"
+            <Reveal key={s.slug} delay={i * 0.04} as="li" className="h-full border-t border-line">
+              <Link
+                href={`/services/${s.slug}`}
+                data-cursor="Open"
+                className="group flex h-full flex-col gap-3 py-6 transition-opacity hover:opacity-70"
+              >
+                <span className="label text-ash">{s.no}</span>
+                <h3 className="font-serif text-2xl">{s.name}</h3>
+                <p className="text-sm text-ash">{s.definition.body.slice(0, 130)}…</p>
+                <span
+                  aria-hidden
+                  className="mt-auto pt-3 text-sm text-ink transition-transform duration-300 group-hover:translate-x-1"
                 >
-                  <span className="label text-ash">{s.no}</span>
-                  <h3 className="font-serif text-2xl">{s.name}</h3>
-                  <p className="text-sm text-ash">{s.definition.body.slice(0, 130)}…</p>
-                  <span
-                    aria-hidden
-                    className="mt-auto pt-3 text-sm text-ink transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </Link>
-              </li>
+                  →
+                </span>
+              </Link>
             </Reveal>
           ))}
         </ul>
@@ -176,16 +174,14 @@ export default function ServicesPage() {
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <span className="label text-bone/45">What you get</span>
+            <span className="label text-bone/60">What you get</span>
             <ul className="mt-5">
               {auditOffer.includes.map((item, i) => (
-                <Reveal key={item} delay={i * 0.05}>
-                  <li className="flex items-baseline gap-4 border-t border-bone/15 py-4 last:border-b">
-                    <span className="label text-bone/40">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-bone/85">{item}</span>
-                  </li>
+                <Reveal key={item} delay={i * 0.05} as="li" className="flex items-baseline gap-4 border-t border-bone/15 py-4 last:border-b">
+                  <span className="label text-bone/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-bone/85">{item}</span>
                 </Reveal>
               ))}
             </ul>

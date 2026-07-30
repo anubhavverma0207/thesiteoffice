@@ -57,10 +57,10 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
             text={c.h1}
             className="mt-6 font-serif text-display-md text-balance"
           />
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-xl leading-relaxed">{c.standfirst}</p>
           </Reveal>
-          <Reveal delay={0.2}>
+          <Reveal immediate delay={0.2}>
             <ContentMeta
               updated={c.updated}
               reviewNote={`${c.readingTime} min read`}
@@ -89,13 +89,11 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
           </h2>
           <ul className="mt-8 space-y-0">
             {c.bestFor.map((b, i) => (
-              <Reveal key={b.option} delay={i * 0.06}>
-                <li className="grid gap-2 border-t border-line py-6 md:grid-cols-3 md:gap-6">
-                  <span className="font-serif text-xl text-ink">
-                    {b.option}
-                  </span>
-                  <span className="text-ash md:col-span-2">{b.who}</span>
-                </li>
+              <Reveal key={b.option} delay={i * 0.06} as="li" className="grid gap-2 border-t border-line py-6 md:grid-cols-3 md:gap-6">
+                <span className="font-serif text-xl text-ink">
+                  {b.option}
+                </span>
+                <span className="text-ash md:col-span-2">{b.who}</span>
               </Reveal>
             ))}
           </ul>

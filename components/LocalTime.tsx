@@ -27,7 +27,13 @@ export default function LocalTime({ className = "" }: { className?: string }) {
 
   return (
     <span className={className} suppressHydrationWarning>
-      {time} <span className="opacity-60">Studio time</span>
+      {/* No nested opacity here. The callers already pass a dimmed colour
+          such as text-bone/60, and an inner opacity-60 multiplies with it
+          (0.6 x 0.6 = 0.36 effective), which dropped this label to 2.99:1
+          against the ink background and failed WCAG AA. The label reads as
+          secondary from its size and position; it does not need to be
+          faded as well. */}
+      {time} <span>Studio time</span>
     </span>
   );
 }

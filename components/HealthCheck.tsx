@@ -211,23 +211,21 @@ export default function HealthCheck() {
             </h2>
             <ul className="mt-6 space-y-6">
               {result.fixes.map((c, i) => (
-                <Reveal key={c.id} delay={i * 0.04}>
-                  <li className="flex gap-5 border-t border-line pt-5">
-                    <span className="label pt-1 text-flag">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <p className="font-medium">
-                        {c.question}
-                        {answers[c.id] === "unsure" && (
-                          <span className="ml-2 rounded-full border border-line px-2 py-0.5 text-xs text-ash">
-                            worth checking
-                          </span>
-                        )}
-                      </p>
-                      <p className="mt-1 text-sm text-ash">{c.fix}</p>
-                    </div>
-                  </li>
+                <Reveal key={c.id} delay={i * 0.04} as="li" className="flex gap-5 border-t border-line pt-5">
+                  <span className="label pt-1 text-flag">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <p className="font-medium">
+                      {c.question}
+                      {answers[c.id] === "unsure" && (
+                        <span className="ml-2 rounded-full border border-line px-2 py-0.5 text-xs text-ash">
+                          worth checking
+                        </span>
+                      )}
+                    </p>
+                    <p className="mt-1 text-sm text-ash">{c.fix}</p>
+                  </div>
                 </Reveal>
               ))}
             </ul>

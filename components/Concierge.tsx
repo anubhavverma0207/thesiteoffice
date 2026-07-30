@@ -34,7 +34,36 @@ export default function Concierge() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
+  const [atFooter, setAtFooter] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Stand down at the footer.
+   * ----------------------------------------------------------------
+   * The launcher is position: fixed, so on a phone it sat directly on
+   * top of the giant footer wordmark, and on shorter screens over the
+   * footer links as well. A floating button covering navigation is a
+   * genuine obstruction, not only an aesthetic problem.
+   *
+   * Rather than nudging the offset and hoping, the launcher withdraws
+   * once the footer is actually on screen. The footer contains its own
+   * contact route, so nothing is lost by getting out of the way there.
+   *
+   * The observer is attached to the footer element rather than to a
+   * scroll position, so it keeps working regardless of page length.
+   */
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setAtFooter(entry.isIntersecting),
+      // Fire a little before the footer's top edge arrives, so the
+      // button is already gone rather than fading out under a thumb.
+      { rootMargin: "0px 0px -12% 0px", threshold: 0 }
+    );
+    io.observe(footer);
+    return () => io.disconnect();
+  }, []);
 
   // Greet once when first opened
   useEffect(() => {
@@ -100,7 +129,7 @@ export default function Concierge() {
     <>
       {/* Launcher */}
       <AnimatePresence>
-        {!open && (
+        {!open && !atFooter && (
           <motion.button
             key="launcher"
             initial={{ opacity: 0, y: 16 }}
@@ -143,7 +172,7 @@ export default function Concierge() {
                   <div className="font-serif text-lg leading-tight">
                     Ask the Crow
                   </div>
-                  <div className="text-[0.7rem] uppercase tracking-widelabel text-bone/45">
+                  <div className="text-[0.7rem] uppercase tracking-widelabel text-bone/60">
                     {ENDPOINT ? "Studio concierge" : "Instant studio notes"}
                   </div>
                 </div>
@@ -228,7 +257,7 @@ export default function Concierge() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about services, process, pricing…"
                   aria-label="Your question"
-                  className="w-full rounded-full border border-bone/20 bg-transparent px-4 py-2.5 text-sm text-bone outline-none transition-colors placeholder:text-bone/35 focus:border-bone/50"
+                  className="w-full rounded-full border border-bone/20 bg-transparent px-4 py-2.5 text-sm text-bone outline-none transition-colors placeholder:text-bone/60 focus:border-bone/50"
                 />
                 <button
                   type="submit"
@@ -239,7 +268,7 @@ export default function Concierge() {
                   →
                 </button>
               </div>
-              <p className="mt-2 px-2 text-[0.65rem] text-bone/35">
+              <p className="mt-2 px-2 text-[0.65rem] text-bone/60">
                 Quick answers from the studio&apos;s notes. Something bigger?{" "}
                 <Link
                   href="/contact"

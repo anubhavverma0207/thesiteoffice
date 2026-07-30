@@ -110,19 +110,17 @@ export default function HomePage() {
           <div className="md:col-span-7 md:col-start-6">
             <ul>
               {services.map((s, i) => (
-                <Reveal key={s.no} delay={i * 0.05}>
-                  <li className="group flex items-start gap-6 border-t border-line py-8 transition-colors last:border-b hover:bg-ink/[0.02]">
-                    <span className="label pt-2 text-ash">{s.no}</span>
-                    <div className="flex-1">
-                      <h3 className="font-serif text-3xl transition-transform duration-500 ease-silk group-hover:translate-x-2 md:text-4xl">
-                        {s.title}
-                      </h3>
-                      <p className="mt-3 max-w-md text-ash">{s.blurb}</p>
-                    </div>
-                    <span className="hidden pt-3 text-xl text-ash transition-all duration-500 ease-silk group-hover:translate-x-1 group-hover:text-ink md:block">
-                      →
-                    </span>
-                  </li>
+                <Reveal key={s.no} delay={i * 0.05} as="li" className="group flex items-start gap-6 border-t border-line py-8 transition-colors last:border-b hover:bg-ink/[0.02]">
+                  <span className="label pt-2 text-ash">{s.no}</span>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-3xl transition-transform duration-500 ease-silk group-hover:translate-x-2 md:text-4xl">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 max-w-md text-ash">{s.blurb}</p>
+                  </div>
+                  <span className="hidden pt-3 text-xl text-ash transition-all duration-500 ease-silk group-hover:translate-x-1 group-hover:text-ink md:block">
+                    →
+                  </span>
                 </Reveal>
               ))}
             </ul>

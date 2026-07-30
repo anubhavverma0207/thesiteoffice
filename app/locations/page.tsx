@@ -23,7 +23,7 @@ export default function LocationsHub() {
           text="Where we _work._"
           className="mt-6 font-serif text-display-md"
         />
-        <Reveal delay={0.15}>
+        <Reveal immediate delay={0.15}>
           <p className="mt-8 text-lg text-ash">
             One studio, serving clients worldwide, with dedicated coverage
             across New Zealand and Australia. Most projects run remotely

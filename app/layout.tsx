@@ -1,6 +1,44 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site.config";
+
+/**
+ * Fonts, self-hosted at build time.
+ * ------------------------------------------------------------------
+ * These were previously loaded with a <link> to fonts.googleapis.com,
+ * which is a render-blocking request to a third-party origin. On a page
+ * whose Largest Contentful Paint element is a paragraph of text, that
+ * stylesheet sits directly in the critical path: nothing paints until it
+ * resolves, and an audit measured LCP at 7.3s on a throttled mobile
+ * connection because of it.
+ *
+ * next/font downloads the files at build time and serves them from our
+ * own origin, so there is no extra DNS lookup, no TLS handshake to
+ * Google, and no blocking stylesheet. It also generates fallback metrics
+ * matched to each face, which is what keeps Cumulative Layout Shift at
+ * zero while the real font swaps in.
+ *
+ * The CSS variable names match what tailwind.config.ts and globals.css
+ * already expect, so nothing downstream changes. Do NOT also define
+ * --font-sans or --font-serif in globals.css: these would then compete
+ * at equal specificity and which one wins would depend on injection
+ * order.
+ */
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+});
+
+const serif = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+});
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
 import Intro from "@/components/Intro";
@@ -8,6 +46,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import Concierge from "@/components/Concierge";
+import MotionProvider from "@/components/MotionProvider";
 import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
 
@@ -137,32 +176,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="cursor-none-desktop">
+        {/* No-JavaScript safety net.
+            Scroll-reveal animations are prerendered with inline
+            `opacity:0` so they can animate in once hydrated. The text is
+            all present in the HTML, so extraction and indexing are
+            unaffected, but a visitor whose JavaScript fails or is blocked
+            would see a page that is technically complete and visually
+            blank. This forces those elements visible when scripting is
+            unavailable. `!important` is required because the values it
+            overrides are inline styles. */}
+        <noscript>
+          <style>{`
+            [style*="opacity:0"] {
+              opacity: 1 !important;
+              transform: none !important;
+            }
+          `}</style>
+        </noscript>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Intro />
-        <Cursor />
-        <ScrollProgress />
-        <SmoothScroll>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-        </SmoothScroll>
-        <Concierge />
+        {/* MotionProvider must wrap everything that animates, which is why
+            it sits above Intro, Cursor, and the Concierge rather than
+            inside the page tree. See the component for why. */}
+        <MotionProvider>
+          <Intro />
+          <Cursor />
+          <ScrollProgress />
+          <SmoothScroll>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+          </SmoothScroll>
+          <Concierge />
+        </MotionProvider>
         <Analytics />
         <JsonLd data={orgJsonLd} />
       </body>

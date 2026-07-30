@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  /* --font-sans and --font-serif are NOT defined here. They are supplied
+     by next/font in app/layout.tsx, which self-hosts the files and sets
+     each variable to its generated family plus matched fallback metrics.
+     Redefining them here would compete at equal specificity with that
+     class, so which value won would depend on stylesheet injection order.
+     Fallback chains belong in the `fallback` option in layout.tsx. */
   --bone: #f3f0e9;
   --ink: #0b0b0b;
   --flag: #ff4a00;
@@ -154,6 +158,85 @@
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
+  }
+}
+
+/* Hero entrance, in CSS rather than JavaScript.
+   ------------------------------------------------------------------
+   These were Framer Motion `initial`/`animate` pairs. The problem is
+   that a JS-driven animation cannot start until the bundle has loaded,
+   parsed, and hydrated, and until then the element sits at its initial
+   state. The hero paragraph started at opacity 0 with a one second
+   delay, so on a throttled mobile connection it was invisible for
+   several seconds: an audit measured Largest Contentful Paint at 7.3s
+   with 93% of that being render delay, against a server response of
+   only 480ms.
+
+   Moving the entrance to CSS means the browser starts it at first
+   paint, with no dependency on JavaScript at all. Delays are also cut
+   right down, because "dramatic" is not worth a visitor staring at an
+   empty space on a slow phone.
+
+   `both` fill mode matters: it holds the from-state during the delay
+   and the to-state afterwards, so nothing flashes. It also means the
+   reduced-motion block below lands these on their final state instantly
+   rather than freezing them mid-animation. */
+@keyframes hero-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+.fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Reduced-motion safety net.
+   ------------------------------------------------------------------
+   Framer Motion is handled separately by MotionConfig in
+   components/MotionProvider.tsx. This block catches everything that
+   never passes through it: CSS keyframe animations (the marquee, the
+   shimmer, the beacon), CSS transitions, and smooth scrolling.
+
+   Values are near-zero rather than `none` on purpose. Setting
+   animation-duration to 0s can leave an element stuck on its first
+   keyframe, which for a marquee means a row of text frozen mid-slide.
+   0.01ms completes immediately and lands on the final state.
+
+   `scroll-behavior: auto` matters here too: Lenis is already disabled
+   under reduced motion, and this stops the native smooth scroll from
+   taking over in its place. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html,
+  body {
+    scroll-behavior: auto !important;
   }
 }
 

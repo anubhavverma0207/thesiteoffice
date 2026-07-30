@@ -219,10 +219,10 @@ export default function CostCalculator() {
             <span className="label text-bone/50">Typical NZ market range</span>
             <p className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
               {nzd(estimate[0])}
-              <span className="text-bone/40"> to </span>
+              <span className="text-bone/60"> to </span>
               {nzd(estimate[1])}
             </p>
-            <p className="mt-2 text-xs text-bone/45">
+            <p className="mt-2 text-xs text-bone/60">
               What the market charges, not an AntCrow quote.
             </p>
             <p className="mt-5 text-sm leading-relaxed text-bone/60">
@@ -244,7 +244,7 @@ export default function CostCalculator() {
             >
               Get an exact quote <span aria-hidden>→</span>
             </Link>
-            <p className="mt-4 text-xs text-bone/40">
+            <p className="mt-4 text-xs text-bone/60">
               Full pricing context:{" "}
               <Link
                 href="/guides/website-cost-nz"

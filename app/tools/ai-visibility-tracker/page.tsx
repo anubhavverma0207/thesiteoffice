@@ -29,7 +29,7 @@ export default function AiVisibilityTrackerPage() {
           text="Does AI recommend _you?_"
           className="mt-6 font-serif text-display-lg text-balance"
         />
-        <Reveal delay={0.2}>
+        <Reveal immediate delay={0.2}>
           <p className="mt-8 max-w-2xl text-lg text-ash">
             Ten prompts, four assistants, one honest baseline. This generates
             the questions your customers actually ask an AI, tells you exactly
@@ -38,7 +38,7 @@ export default function AiVisibilityTrackerPage() {
             browser.
           </p>
         </Reveal>
-        <Reveal delay={0.25}>
+        <Reveal immediate delay={0.25}>
           <ContentMeta
             updated="2026-07-30"
             className="mt-8 border-t border-line pt-6"

@@ -62,10 +62,10 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           />
           {/* The standfirst is the direct answer. Written so an assistant
               can quote it on its own and still be accurate. */}
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-xl leading-relaxed">{guide.standfirst}</p>
           </Reveal>
-          <Reveal delay={0.2}>
+          <Reveal immediate delay={0.2}>
             <ContentMeta
               updated={guide.updated}
               reviewNote={`${guide.readingTime} min read`}

@@ -96,7 +96,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full border-b border-line bg-transparent pb-3 pt-2 text-lg outline-none transition-colors placeholder:text-ash/60 focus:border-ink";
+    "w-full border-b border-line bg-transparent pb-3 pt-2 text-lg outline-none transition-colors placeholder:text-ash focus:border-ink";
 
   return (
     <AnimatePresence mode="wait">

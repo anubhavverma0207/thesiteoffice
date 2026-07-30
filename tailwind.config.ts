@@ -12,7 +12,20 @@ const config: Config = {
         ink: "#0b0b0b",
         bone: "#f3f0e9",
         paper: "#faf8f3",
-        ash: "#8a857c",
+        /**
+         * Secondary text. Darkened from #8a857c after an audit.
+         *
+         * The original value scored 3.46:1 on paper and 3.22:1 on bone.
+         * WCAG 2.2 AA requires 4.5:1 for normal-size text, so every
+         * body paragraph on the site was failing, on a site that
+         * publishes a guide telling people to meet that standard.
+         *
+         * This value scores 5.06:1 on paper and 4.72:1 on bone, so it
+         * passes on both grounds with margin. Do not lighten it without
+         * re-running the contrast maths against BOTH backgrounds; bone
+         * is the harder of the two.
+         */
+        ash: "#6f6a60",
         line: "#e0dcd2",
         // Surveyor's orange. Used sparingly: status dots, the scroll
         // progress hairline, selection, one accent.

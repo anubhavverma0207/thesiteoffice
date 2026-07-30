@@ -52,7 +52,7 @@ export default function LocationPage({
             className="mt-6 font-serif text-display-md text-balance"
           />
           {/* Quotable direct answer */}
-          <Reveal delay={0.15}>
+          <Reveal immediate delay={0.15}>
             <p className="mt-8 text-lg leading-relaxed">{loc.intro}</p>
           </Reveal>
         </header>

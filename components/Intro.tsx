@@ -87,7 +87,7 @@ export default function Intro() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="absolute inset-x-0 top-0 flex items-center justify-end container-x py-8 label text-bone/45"
+            className="absolute inset-x-0 top-0 flex items-center justify-end container-x py-8 label text-bone/60"
           >
             <span className="hidden sm:block">{site.location}</span>
           </motion.div>
