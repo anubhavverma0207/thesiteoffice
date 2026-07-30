@@ -16,8 +16,36 @@ import IntroCritters from "@/components/IntroCritters";
  * The overlay is client-only (never in the static HTML), so a "seen" load shows
  * no flash of the intro at all.
  */
-const GUARD = 800; // ms: let the reveal play before a scroll can dismiss it
+/**
+ * ms before a scroll can dismiss the intro. Exists so a visitor who is
+ * already scrolling as the page lands does not blink past the moment
+ * entirely. Trimmed from 800ms because the reveal itself is now much
+ * quicker, so holding them longer would just feel like a stuck page.
+ */
+const GUARD = 550;
 const SEEN_KEY = "tso_intro_seen";
+
+/**
+ * ms since navigation after which the intro is abandoned.
+ *
+ * The overlay is client-only, so it cannot exist until React hydrates.
+ * Measured first-appearance, with the critters following ~35ms behind:
+ *
+ *   fast desktop      404ms
+ *   2x slower CPU    1231ms
+ *   mid-range phone  4328ms
+ *   slow phone       5444ms
+ *
+ * On the slower two, the visitor has already been reading the actual page
+ * for seconds when a black screen drops over it and demands a scroll to
+ * get back. That is not a cinematic opening, it is a page hijack.
+ *
+ * So if hydration was slow, the moment is simply skipped and marked as
+ * seen. The flourish is worth having when it is instant and worth losing
+ * when it is not. This is deliberately biased toward not interrupting
+ * someone who is already reading.
+ */
+const MAX_HYDRATION_WAIT = 1200;
 
 function scrollToTop() {
   const lenis = (window as unknown as { lenis?: { scrollTo: (t: number, o?: object) => void } }).lenis;
@@ -32,6 +60,16 @@ export default function Intro() {
   useEffect(() => {
     // Already seen this session? Never show it again.
     if (sessionStorage.getItem(SEEN_KEY) === "1") return;
+
+    // Too late to be an opening. performance.now() here is ms since
+    // navigation start, so it measures exactly how long hydration took.
+    // Mark it seen so a later route change does not spring it either.
+    if (performance.now() > MAX_HYDRATION_WAIT) {
+      try {
+        sessionStorage.setItem(SEEN_KEY, "1");
+      } catch {}
+      return;
+    }
 
     setOpen(true);
     scrollToTop();
@@ -86,7 +124,7 @@ export default function Intro() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.12, duration: 0.5 }}
             className="absolute inset-x-0 top-0 flex items-center justify-end container-x py-8 label text-bone/60"
           >
             <span className="hidden sm:block">{site.location}</span>
@@ -111,9 +149,9 @@ className="container-x w-full text-center font-serif leading-[0.95]"
                     initial={{ y: "115%" }}
                     animate={{ y: 0 }}
                     transition={{
-                      duration: 1.1,
+                      duration: 0.85,
                       ease: [0.22, 1, 0.36, 1],
-                      delay: 0.2 + i * 0.12,
+                      delay: 0.04 + i * 0.07,
                     }}
                   >
                     {w}
@@ -129,7 +167,7 @@ className="container-x w-full text-center font-serif leading-[0.95]"
                   className="block whitespace-nowrap text-[7.5vw]"
                   initial={{ y: "115%" }}
                   animate={{ y: 0 }}
-                  transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+                  transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
                 >
                   {site.name}
                 </motion.span>
@@ -140,7 +178,7 @@ className="container-x w-full text-center font-serif leading-[0.95]"
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.9 }}
+            transition={{ delay: 0.45, duration: 0.55 }}
             className="mt-8 label text-bone/55"
           >
             Digital design &amp; engineering studio
@@ -150,7 +188,7 @@ className="container-x w-full text-center font-serif leading-[0.95]"
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.9, duration: 0.8 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
             className="absolute bottom-10 flex flex-col items-center gap-2 text-bone/55"
           >
             <span className="label">Scroll to enter</span>

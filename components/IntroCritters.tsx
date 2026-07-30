@@ -117,7 +117,14 @@ export default function IntroCritters({
     root.appendChild(style);
 
     /* ---------------- ants ---------------- */
-    function spawnAnt() {
+    /**
+     * @param onScreen Place the ant somewhere inside the viewport rather
+     * than off an edge. Used for the opening colony so the screen is
+     * already inhabited on the first frame. Ants that arrive later still
+     * walk in from an edge, which is what makes the colony feel alive
+     * rather than placed.
+     */
+    function spawnAnt(onScreen = false) {
       if (!alive || ants.length >= MAX) return;
       const el = document.createElement("div");
       el.className = "ac-critter ac-ant";
@@ -128,8 +135,20 @@ export default function IntroCritters({
       const edge = Math.floor(Math.random() * 4);
       const a: Ant = {
         el,
-        x: edge === 0 ? -30 : edge === 1 ? W() + 30 : rand(0, W()),
-        y: edge === 2 ? -30 : edge === 3 ? H() + 30 : rand(0, H()),
+        x: onScreen
+          ? rand(antW, W() - antW)
+          : edge === 0
+            ? -30
+            : edge === 1
+              ? W() + 30
+              : rand(0, W()),
+        y: onScreen
+          ? rand(antH + 40, H() - antH - 40)
+          : edge === 2
+            ? -30
+            : edge === 3
+              ? H() + 30
+              : rand(0, H()),
         ang: 0, speed: rand(26, 44) / 1000,
         tx: 0, ty: 0, pauseUntil: 0, dead: false,
       };
@@ -274,18 +293,72 @@ export default function IntroCritters({
       every(() => { if (crow && crowState === "perched") { crow.classList.add("blink"); later(() => crow && crow.classList.remove("blink"), 140); } }, 4200);
       every(() => { if (crow && crowState === "perched") { crow.classList.add("tilt"); later(() => crow && crow.classList.remove("tilt"), 900); } }, 11000);
       crowState = "flying";
-      perch = perchPoint();
-      flyPath([{ x: -160, y: H() * rand(0.15, 0.35) },
-        { x: W() * 0.3, y: H() * rand(0.1, 0.28) },
-        { x: W() * 0.7, y: H() * rand(0.2, 0.42) },
-        perch], 2800, land);
+
+      /**
+       * Two-stage arrival.
+       *
+       * The crow now launches on the first frame, which means the wordmark
+       * is still mid-reveal and its perch position is not yet measurable:
+       * perchPoint() reads the text's client rect, and during the reveal
+       * that rect is translated 115% down inside its mask. Flying straight
+       * to a perch measured at t=0 would end with the crow snapping about
+       * a hundred pixels when land() re-measures.
+       *
+       * So: sweep across the screen first, then measure and make a short
+       * final approach once the wordmark has settled. It also reads better,
+       * because the crow crosses the frame before choosing where to sit.
+       */
+      const holdX = W() * 0.55;
+      const holdY = H() * 0.22;
+
+      flyPath(
+        [
+          { x: -160, y: H() * rand(0.15, 0.35) },
+          { x: W() * 0.3, y: H() * rand(0.1, 0.28) },
+          { x: W() * 0.72, y: H() * rand(0.2, 0.42) },
+          { x: holdX, y: holdY },
+        ],
+        2000,
+        () => {
+          if (!alive || !crow) return;
+          const p = perchPoint();
+          flyPath(
+            [
+              { x: holdX, y: holdY },
+              { x: (holdX + p.x) / 2, y: Math.min(holdY, p.y) - 50 },
+              p,
+            ],
+            850,
+            land
+          );
+        }
+      );
     }
 
-    /* ---------------- boot ---------------- */
-    later(crowArrive, 2000);
-    const stagger = mobile ? [1500, 3200, 5200] : [1200, 2600, 4200, 6000, 8000];
-    stagger.forEach(t => later(spawnAnt, t));
-    later(antLoop, 9000);
+    /* ---------------- boot ----------------
+     * Everything starts on the first frame.
+     *
+     * This used to hold the crow back for 2000ms and trickle ants in from
+     * the edges on a stagger ending at 8000ms, so the opening seconds of
+     * the site's one cinematic moment were an empty black screen. The
+     * intro is dismissed on the first scroll, which many visitors do
+     * almost straight away, meaning most people never saw the crow at all.
+     *
+     * Now: the colony is already on screen and mid-walk when the overlay
+     * appears, and the crow is already in flight. Nothing to wait for.
+     */
+
+    // Ants first, so they are painted in the same frame the overlay is.
+    // Spawned on-screen, with a few frames between each so they do not
+    // all pop in on the identical tick.
+    for (let i = 0; i < TARGET; i++) later(() => spawnAnt(true), i * 70);
+
+    // Crow launches immediately. 0ms still defers to the next task, which
+    // is what we want: the root element needs its dimensions first.
+    later(crowArrive, 0);
+
+    // Top the colony up from the edges once the opening is established.
+    later(antLoop, 3000);
 
     return () => {
       alive = false;
