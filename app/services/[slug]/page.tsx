@@ -6,6 +6,7 @@ import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { serviceCatalog, getService } from "@/lib/services-catalog";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export function generateStaticParams() {
   return serviceCatalog.map((s) => ({ slug: s.slug }));
@@ -24,7 +25,7 @@ export function generateMetadata({
     description: svc.metaDescription,
     alternates: {
       canonical: path,
-      languages: { "en-NZ": path, "x-default": path },
+      languages: hreflangFor(path),
     },
   };
 }

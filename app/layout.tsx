@@ -49,6 +49,7 @@ import Concierge from "@/components/Concierge";
 import MotionProvider from "@/components/MotionProvider";
 import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
   // pattern with its own path.
   alternates: {
     canonical: "/",
-    languages: { "en-NZ": "/", "x-default": "/" },
+    languages: hreflangFor("/"),
   },
   openGraph: {
     type: "website",

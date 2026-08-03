@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site.config";
-import { locations } from "@/lib/locations";
+import { allLocations as locations } from "@/lib/locations";
 import { industries } from "@/lib/industries";
 import { serviceCatalog } from "@/lib/services-catalog";
 import { guides, standaloneGuides, standaloneTools } from "@/lib/guides";

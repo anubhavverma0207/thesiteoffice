@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { guides, getGuide } from "@/lib/guides";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -27,7 +28,17 @@ export function generateMetadata({
     description: guide.metaDescription,
     alternates: {
       canonical: path,
-      languages: { "en-NZ": path, "x-default": path },
+      // Country-specific guides declare only the market they are written
+      // for. A guide about the NZ Privacy Act is not relevant to an
+      // Australian audience, and saying otherwise misleads search engines.
+      languages: hreflangFor(
+        path,
+        guide.category === "New Zealand"
+          ? "NZ"
+          : guide.category === "Australia"
+            ? "AU"
+            : "both"
+      ),
     },
     openGraph: {
       type: "article",
@@ -180,7 +191,8 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
               publisher: { "@id": `${site.url}/#organization` },
               datePublished: guide.published,
               dateModified: guide.updated,
-              inLanguage: "en-NZ",
+              inLanguage:
+                guide.category === "Australia" ? "en-AU" : "en-NZ",
               isAccessibleForFree: true,
               mainEntityOfPage: {
                 "@type": "WebPage",

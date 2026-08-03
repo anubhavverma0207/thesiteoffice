@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import { services, process, faqs, auditOffer } from "@/lib/data";
 import { serviceCatalog } from "@/lib/services-catalog";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     "Brand, web design, development, and motion: a full-service studio for ambitious digital products.",
   alternates: {
     canonical: "/services/",
-    languages: { "en-NZ": "/services/", "x-default": "/services/" },
+    languages: hreflangFor("/services/"),
   },
 };
 

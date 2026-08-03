@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Squarespace or Wix vs a Custom Website: Which Is Right for Your NZ Business?",
@@ -11,10 +12,7 @@ export const metadata: Metadata = {
     "An honest comparison for NZ businesses in 2026: when Squarespace or Wix is genuinely the right call, when custom design pays for itself, and the real costs of each over three years.",
   alternates: {
     canonical: "/guides/squarespace-wix-vs-custom/",
-    languages: {
-      "en-NZ": "/guides/squarespace-wix-vs-custom/",
-      "x-default": "/guides/squarespace-wix-vs-custom/",
-    },
+    languages: hreflangFor("/guides/squarespace-wix-vs-custom/"),
   },
 };
 

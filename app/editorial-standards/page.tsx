@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import ContentMeta from "@/components/ContentMeta";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Editorial standards",
@@ -11,10 +12,7 @@ export const metadata: Metadata = {
     "How AntCrow researches, sources, and corrects the content it publishes, including what we will not publish and how to tell us we are wrong.",
   alternates: {
     canonical: "/editorial-standards/",
-    languages: {
-      "en-NZ": "/editorial-standards/",
-      "x-default": "/editorial-standards/",
-    },
+    languages: hreflangFor("/editorial-standards/"),
   },
 };
 

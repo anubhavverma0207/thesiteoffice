@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Will AI Recommend Your Business? An NZ Guide to AI Search Visibility",
@@ -11,10 +12,7 @@ export const metadata: Metadata = {
     "New Zealand customers now ask ChatGPT, Perplexity, and Google's AI Overviews who to buy from. This guide explains how AI assistants choose which NZ businesses to recommend, and how to become one of them.",
   alternates: {
     canonical: "/guides/ai-search-visibility-nz/",
-    languages: {
-      "en-NZ": "/guides/ai-search-visibility-nz/",
-      "x-default": "/guides/ai-search-visibility-nz/",
-    },
+    languages: hreflangFor("/guides/ai-search-visibility-nz/", "NZ"),
   },
 };
 

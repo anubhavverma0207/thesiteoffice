@@ -6,6 +6,7 @@ import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { industries, getIndustry } from "@/lib/industries";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -24,7 +25,7 @@ export function generateMetadata({
     description: ind.metaDescription,
     alternates: {
       canonical: path,
-      languages: { "en-NZ": path, "x-default": path },
+      languages: hreflangFor(path, "NZ"),
     },
   };
 }

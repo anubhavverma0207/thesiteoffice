@@ -4,13 +4,14 @@ import FAQ from "@/components/FAQ";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import { faqs } from "@/lib/data";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: `Start a project with ${site.name}. Tell us what you're building.`,
   alternates: {
     canonical: "/contact/",
-    languages: { "en-NZ": "/contact/", "x-default": "/contact/" },
+    languages: hreflangFor("/contact/"),
   },
 };
 

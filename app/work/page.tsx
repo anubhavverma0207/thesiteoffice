@@ -3,6 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import Marquee from "@/components/Marquee";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import { projects } from "@/lib/data";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     "Concept studio projects across brand, web design, and development: the standard of craft every AntCrow client build receives.",
   alternates: {
     canonical: "/work/",
-    languages: { "en-NZ": "/work/", "x-default": "/work/" },
+    languages: hreflangFor("/work/"),
   },
 };
 

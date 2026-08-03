@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
-import { locations, getLocation } from "@/lib/locations";
+import { allLocations as locations, getLocation } from "@/lib/locations";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export function generateStaticParams() {
   return locations.map((l) => ({ slug: l.slug }));
@@ -24,7 +25,12 @@ export function generateMetadata({
     description: loc.metaDescription,
     alternates: {
       canonical: path,
-      languages: { "en-NZ": path, "x-default": path },
+      // A page about an Australian city should not declare itself relevant
+      // to a New Zealand audience, or the reverse. Derive it from the city.
+      languages: hreflangFor(
+        path,
+        loc.country === "Australia" ? "AU" : "NZ"
+      ),
     },
   };
 }
@@ -86,7 +92,12 @@ export default function LocationPage({
                 { label: "AI Visibility Audit", href: "/services" },
                 {
                   label: "What does a website cost?",
-                  href: "/guides/website-cost-nz",
+                  // Send Australian cities to the Australian pricing
+                  // research, not the New Zealand figures.
+                  href:
+                    loc.country === "Australia"
+                      ? "/guides/website-cost-australia"
+                      : "/guides/website-cost-nz",
                 },
               ].map((t) => (
                 <Link

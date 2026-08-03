@@ -29,7 +29,12 @@ export type Guide = {
   slug: string;
   /** Short label for cards, breadcrumbs, and related links */
   name: string;
-  category: "Buying a website" | "Search & AI" | "Running a website" | "New Zealand";
+  category:
+    | "Buying a website"
+    | "Search & AI"
+    | "Running a website"
+    | "New Zealand"
+    | "Australia";
   metaTitle: string;
   metaDescription: string;
   h1: string;
@@ -1865,6 +1870,265 @@ export const guides: Guide[] = [
     ],
     related: ["nz-ecommerce-compliance", "core-web-vitals-explained"],
   },
+
+  // =================================================================
+  {
+    slug: "website-cost-australia",
+    name: "What a website costs in Australia",
+    category: "Australia",
+    metaTitle: "How Much Does a Website Cost in Australia",
+    metaDescription:
+      "What Australian agencies actually publish, where their figures agree, and where they disagree by a factor of forty. Every number sourced.",
+    h1: "What a website costs in Australia",
+    standfirst:
+      "There is no independent survey of Australian web design pricing. Every guide currently ranking for this question is an agency marketing its own services. So rather than add another one, this page collects what they all publish, shows where they agree, and shows where they contradict each other by a factor of forty.",
+    published: "2026-08-03",
+    updated: "2026-08-03",
+    readingTime: 11,
+    blocks: [
+      {
+        type: "callout",
+        title: "What this page is, and what it is not",
+        body: "This is a survey of published Australian agency pricing guides, each one linked at the foot of the page. It is not an independent study, because no independent study of this market appears to exist. It is also not AntCrow's pricing: we scope and quote every project individually. Where the sources disagree, this page shows the disagreement rather than averaging it away, because the disagreement is the most useful thing in the data.",
+      },
+      {
+        type: "p",
+        text: "We went looking for a rigorous price survey of the Australian web design market: something from the Australian Bureau of Statistics, an industry body, or an independent publisher. There is not one. What exists is agency blog content, most of it written by firms selling the services being priced. That is worth knowing before you treat any figure you find, including these, as authoritative.",
+      },
+      {
+        type: "h2",
+        text: "The category where every source disagrees",
+      },
+      {
+        type: "p",
+        text: "A simple small-business website is the most commonly quoted project in Australia and the one where published guides diverge most wildly. Seven sources put it anywhere from $500 to $20,000. That is a fortyfold spread for what is nominally the same thing, and it tells you something real: the phrase does not describe a product. It describes a budget, and what you get for it varies enormously.",
+      },
+      {
+        type: "table",
+        caption:
+          "Published ranges for a template-based or small business website, in AUD. Each figure is quoted from a live Australian agency pricing guide, all linked below.",
+        headers: ["Source", "Published range"],
+        rows: [
+          ["Webics", "$500 to $2,000"],
+          ["Phil Kurth", "$1,500 to $5,000"],
+          ["Digital Nomads HQ", "$2,997 to $5,997 for 1 to 3 pages"],
+          ["Spark Interact", "$3,000 to $8,000"],
+          ["WP Creative", "$3,000 to $10,000"],
+          ["SGD", "$5,000 to $20,000"],
+          ["Titanblue", "$5,000 to $12,000"],
+        ],
+      },
+      {
+        type: "p",
+        text: "If you take the middle of that spread rather than its edges, most Australian guides land a small business website somewhere between $1,500 and $10,000. We are deliberately not publishing a single average, because averaging seven marketing pages produces a number with the appearance of authority and none of the substance.",
+      },
+      {
+        type: "h2",
+        text: "Where the sources actually agree",
+      },
+      {
+        type: "p",
+        text: "Agreement improves sharply as projects get larger and better defined. A custom-designed business website is the tightest consensus in the whole dataset, with four independent sources converging on roughly the same band. E-commerce and large platform work also cluster, though with wider bands because the scope genuinely varies more.",
+      },
+      {
+        type: "table",
+        caption:
+          "Consensus bands in AUD across the published Australian guides listed below. Most Australian agencies quote exclusive of GST.",
+        headers: ["Type of project", "Consensus band", "Agreement"],
+        rows: [
+          ["Template or small business site", "$1,500 to $10,000", "Very poor, sources span $500 to $20,000"],
+          ["Custom-designed business website", "$5,000 to $15,000", "Strong, the tightest in the data"],
+          ["E-commerce store", "$10,000 to $40,000", "Reasonable"],
+          ["Large platform or web application", "$30,000 to $150,000 and above", "Reasonable, smaller focused tools from about $15,000"],
+          ["Website care and maintenance", "$100 to $300 a month", "Strong for small sites, $500 to $2,000 for e-commerce"],
+          ["SEO retainer", "$1,500 to $3,000 a month", "Strong across three specialist agencies"],
+        ],
+      },
+      {
+        type: "h2",
+        text: "GST is quoted differently here than in New Zealand",
+      },
+      {
+        type: "p",
+        text: "Australian GST is 10 percent, against New Zealand's 15 percent, and Australian agencies commonly quote business-to-business work exclusive of GST. That matters when comparing quotes across the Tasman, and it matters when comparing two Australian quotes against each other: if one includes GST and the other does not, the cheaper-looking one may not be. Ask explicitly. For consumer-facing prices the rules are stricter, and the Australian Competition and Consumer Commission requires a single total price to be prominently displayed.",
+      },
+      {
+        type: "h2",
+        text: "A cross-country comparison that avoids the currency trap",
+      },
+      {
+        type: "p",
+        text: "Comparing Australian and New Zealand prices by exchange rate is unreliable, because the rate moves and because the underlying figures come from marketing material on both sides. There is one genuinely like-for-like source: Clutch lists agencies from both countries with the same rate bands, in the same currency. Read those bands as United States dollars, which Clutch states explicitly and which is a detail almost every citation of Clutch gets wrong.",
+      },
+      {
+        type: "statGroup",
+        items: [
+          { value: "48%", label: "of listed Australian agencies bill at USD 150 an hour or more" },
+          { value: "31%", label: "of listed New Zealand agencies do the same" },
+          { value: "4.4x", label: "more businesses in Australia than New Zealand" },
+        ],
+      },
+      {
+        type: "p",
+        text: "The honest conclusion is that Australia is more expensive, modestly at the entry level and materially at the top. Both the nominal figures and the currency push in the same direction. Two caveats worth carrying: the Clutch sample is small and self-selected at 27 Australian agencies, and the Australian Bureau of Statistics counts 2.73 million actively trading businesses against roughly 617,000 New Zealand enterprises, so the two markets are not comparable in scale either.",
+      },
+      {
+        type: "h2",
+        text: "What actually moves the number",
+      },
+      {
+        type: "ol",
+        items: [
+          "Whether the design is custom or adapted from a template. This is the single largest factor and the main reason the small business band is so wide.",
+          "How many pages genuinely need designing, as opposed to repeating an existing layout with different content.",
+          "Whether content and photography exist. Waiting on content is the most common cause of a project running long, and writing it is often quoted separately.",
+          "Integrations: payments, bookings, inventory, a CRM. Each one adds scope that is easy to underestimate at quoting time.",
+          "Whether search visibility is built in or added later. Retrofitting is more expensive than doing it during the build.",
+          "Who does the work. Published Australian hourly rates run from about $50 for freelancers to $200 or more for established agencies.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The market you are buying in",
+      },
+      {
+        type: "p",
+        text: "IBISWorld sizes Australian web design services at about $1.5 billion in revenue for 2025-26, across roughly 3,581 businesses, and notes that price competition from overseas providers has limited the sector's pricing power. That last point explains a lot about the spread above: a market with 3,581 suppliers and offshore pressure does not converge on a price. It is also worth knowing that CPA Australia's annual small business survey found only 44 percent of Australian small businesses earn more than a tenth of their revenue online, against an Asia-Pacific average of 63 percent, and that just 17 percent use an IT consultant.",
+      },
+      {
+        type: "callout",
+        title: "One statistic to be sceptical of",
+        body: "You will see it claimed everywhere that 59 percent of Australian small businesses have no website. That figure comes from a GoDaddy and YouGov Galaxy study of 425 respondents published in April 2019, which makes it seven years old. The Australian Bureau of Statistics alternative is worse: its 51.1 percent web presence figure has a reference period of 2016-17 and the survey was discontinued. There is no current, credible Australian website adoption statistic. We are not going to pretend otherwise, and neither should anyone quoting one at you.",
+      },
+      {
+        type: "h2",
+        text: "Warning signs when comparing Australian quotes",
+      },
+      {
+        type: "ul",
+        items: [
+          "A price with no discovery behind it. If a studio can quote before understanding what the site must do, they are quoting a template or they will manage the gap later through variations.",
+          "GST left ambiguous. Ask whether the figure is inclusive or exclusive before comparing anything.",
+          "Guaranteed search rankings. Nobody controls Google's ranking systems, and the promise is either meaningless or aimed at searches with no competition.",
+          "Ownership left unwritten. Who holds the domain, the code, the design files, and the hosting account at the end should be in writing, and the answer should be you.",
+          "A quote far below the bands above. It usually means a template, offshore production, or a scope that will grow.",
+          "Any provider citing a market average without naming a source. As this page has established, there is no source to cite.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "How much does a website cost in Australia?",
+        a: "Across published Australian agency pricing guides in 2026, a small business website runs from about $1,500 to $10,000, a custom-designed business website from about $5,000 to $15,000, an e-commerce store from about $10,000 to $40,000, and a large platform build from about $30,000 upward. Those are consensus bands drawn from agency marketing content, because no independent survey of this market exists. Most Australian agencies quote exclusive of GST.",
+      },
+      {
+        q: "Why do Australian website prices vary so much?",
+        a: "Because the phrase describes a budget rather than a product. Published guides put a small business website anywhere from $500 to $20,000, a fortyfold spread for nominally the same thing. The difference is whether the design is custom or templated, how many pages genuinely need designing, whether content exists, and who does the work. IBISWorld also notes that competition from overseas providers limits pricing power across the sector.",
+      },
+      {
+        q: "Is a website more expensive in Australia than New Zealand?",
+        a: "Yes, modestly at the entry level and materially at the top end. The clearest like-for-like evidence is Clutch, which lists agencies from both countries in the same currency: 48 percent of listed Australian agencies bill at USD 150 an hour or more, against 31 percent of New Zealand agencies. Nominal figures and the exchange rate push in the same direction. Both samples are small and self-selected.",
+      },
+      {
+        q: "Do Australian web design quotes include GST?",
+        a: "Often not. Australian GST is 10 percent and agencies commonly quote business-to-business work exclusive of it, so two quotes can look different by a tenth purely on presentation. Always ask which you are being shown. Consumer-facing pricing is stricter: the ACCC requires a single total price to be displayed prominently.",
+      },
+      {
+        q: "How much does website maintenance cost in Australia?",
+        a: "Published Australian guides converge on roughly $100 to $300 a month for a small business site, rising to between $500 and $2,000 a month for e-commerce or complex builds. Statically built sites generally sit at the lower end, because they have far fewer components requiring routine patching than a plugin-based site does.",
+      },
+      {
+        q: "What do Australian SEO agencies charge?",
+        a: "Three established Australian SEO agencies publish broadly consistent tiers: roughly $500 to $1,000 a month at entry level, $1,500 to $3,000 for typical small and medium business work, and $5,000 or more for enterprise engagements. Hourly consulting sits around $150 to $300. One-off technical audits are commonly quoted from about $2,000 to $5,000.",
+      },
+    ],
+    sources: [
+      {
+        title: "How much does a website cost in Australia",
+        publisher: "WP Creative",
+        href: "https://wpcreative.com.au/how-much-does-a-website-cost-in-australia/",
+        date: "Updated April 2026",
+      },
+      {
+        title: "How much does a website cost, Australia",
+        publisher: "Phil Kurth",
+        href: "https://philkurth.com.au/how-much-does-a-website-cost-australia/",
+        date: "July 2026",
+      },
+      {
+        title: "How much does a website cost in Australia, 2026 guide",
+        publisher: "Webics",
+        href: "https://www.webics.com.au/blog/website-design/how-much-does-a-website-cost-in-australia-2026-guide/",
+        date: "July 2026",
+      },
+      {
+        title: "Web design pricing guide",
+        publisher: "SGD",
+        href: "https://sgd.com.au/web-design-pricing-guide/",
+      },
+      {
+        title: "Website design cost in Australia",
+        publisher: "Digital Nomads HQ",
+        href: "https://digitalnomadshq.com.au/blog/website-design-cost-in-australia/",
+        date: "February 2026",
+      },
+      {
+        title: "Website designers cost",
+        publisher: "Spark Interact",
+        href: "https://www.sparkinteract.com.au/web/website-designers-cost/",
+        date: "October 2025",
+      },
+      {
+        title: "Web design fees in Australia, the complete 2026 pricing guide",
+        publisher: "Titanblue",
+        href: "https://titanblue.com.au/web-design-fees-in-australia-the-complete-2026-pricing-guide/",
+        date: "May 2026",
+      },
+      {
+        title: "SEO pricing",
+        publisher: "StudioHawk",
+        href: "https://studiohawk.com.au/blog/seo-pricing/",
+        date: "December 2025",
+      },
+      {
+        title: "SEO pricing guide",
+        publisher: "First Page",
+        href: "https://firstpage.com.au/learning-centre/seo/seo-pricing-guide/",
+        date: "January 2026",
+      },
+      {
+        title: "Web design pricing, hourly rates by country (stated in USD)",
+        publisher: "Clutch",
+        href: "https://clutch.co/web-designers/pricing",
+      },
+      {
+        title: "Web Design Services in Australia, industry report",
+        publisher: "IBISWorld",
+        href: "https://www.ibisworld.com/australia/industry/web-design-services/5166/",
+        date: "May 2026",
+      },
+      {
+        title: "Counts of Australian Businesses, including entries and exits",
+        publisher: "Australian Bureau of Statistics",
+        href: "https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/latest-release",
+        date: "At 30 June 2025",
+      },
+      {
+        title: "Asia-Pacific Small Business Survey",
+        publisher: "CPA Australia",
+        href: "https://www.cpaaustralia.com.au/about-cpa-australia/media/media-releases/aussie-productivity-crisis-deepens",
+      },
+      {
+        title: "Study reveals why 59% of Australian small businesses do not have a website",
+        publisher: "GoDaddy and YouGov Galaxy, cited here only to date it",
+        href: "https://www.godaddy.com/resources/au/stories/study-reveals-why-59-of-australian-small-businesses-dont-have-a-website",
+        date: "April 2019, n=425",
+      },
+    ],
+    // website-cost-nz lives in standaloneGuides, not this array, so it
+    // would silently filter out of the related list. Link real slugs.
+    related: ["choosing-a-web-design-agency-nz", "nz-ecommerce-compliance"],
+  },
 ];
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug);
@@ -1935,4 +2199,5 @@ export const guideCategories: Guide["category"][] = [
   "Search & AI",
   "Running a website",
   "New Zealand",
+  "Australia",
 ];

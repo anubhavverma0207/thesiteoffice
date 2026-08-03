@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import CostCalculator from "@/components/CostCalculator";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "NZ Website Cost Calculator: What the Market Charges (2026)",
@@ -11,10 +12,7 @@ export const metadata: Metadata = {
     "Free New Zealand website cost calculator showing what the wider NZ market charges, from about $1,000 for a simple site upward. Choose what you are building and get an honest NZD range in under a minute. No email required.",
   alternates: {
     canonical: "/tools/website-cost-calculator/",
-    languages: {
-      "en-NZ": "/tools/website-cost-calculator/",
-      "x-default": "/tools/website-cost-calculator/",
-    },
+    languages: hreflangFor("/tools/website-cost-calculator/"),
   },
 };
 

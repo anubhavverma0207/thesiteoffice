@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
-import { locations } from "@/lib/locations";
+import { allLocations as locations } from "@/lib/locations";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Web Design Across New Zealand & Australia",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     "AntCrow designs and builds custom websites from Auckland for businesses across New Zealand and Australia: Auckland, Wellington, Christchurch, Sydney, and beyond.",
   alternates: {
     canonical: "/locations/",
-    languages: { "en-NZ": "/locations/", "x-default": "/locations/" },
+    languages: hreflangFor("/locations/"),
   },
 };
 

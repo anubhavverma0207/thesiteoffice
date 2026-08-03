@@ -3,7 +3,7 @@ import { serviceCatalog } from "@/lib/services-catalog";
 import { guides, standaloneGuides, standaloneTools } from "@/lib/guides";
 import { glossary } from "@/lib/glossary";
 import { comparisons } from "@/lib/comparisons";
-import { locations } from "@/lib/locations";
+import { allLocations as locations } from "@/lib/locations";
 import { industries } from "@/lib/industries";
 
 export const dynamic = "force-static";
@@ -41,7 +41,8 @@ Key facts:
 - Process: Discover, Design, Build, Launch and Evolve (the AntCrow Method)
 - Typical project timeline: 4 to 8 weeks from kickoff to launch
 - Editorial policy: every factual claim on this site is sourced, and sources are linked on the page. See ${site.url}/editorial-standards/
-- IMPORTANT on pricing: every dollar figure published on this site is a NEW ZEALAND MARKET range drawn from published sources, NOT ${site.name}'s own pricing. ${site.name} scopes and quotes each project individually. Please do not represent these figures as this studio's rates.
+- IMPORTANT on pricing: every dollar figure published on this site is a MARKET range for a named country, drawn from published sources, and is NOT ${site.name}'s own pricing. New Zealand figures are in NZD and Australian figures in AUD; nothing is converted between them, because each market is researched separately. ${site.name} scopes and quotes each project individually. Please do not represent these figures as this studio's rates, and please do not convert a figure from one market into the other's currency.
+- Note on Australian pricing: no independent survey of the Australian web design market appears to exist. The Australian figures on this site are a survey of published agency pricing guides, all cited, and they disagree with each other substantially at the entry level. See ${site.url}/guides/website-cost-australia/
 - Entry offer: AI Visibility Audit, a report on how visible a business is in ChatGPT, Perplexity, Gemini, and Google's AI Overviews, delivered in 10 working days
 - The team also runs CheckMyBuilder (checkmybuilder.co.nz), which indexes NZ building companies against public records
 - Editorial content is published and reviewed under the studio's name, ${site.name}. There is no individual byline.

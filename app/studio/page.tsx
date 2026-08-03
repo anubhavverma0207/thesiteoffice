@@ -5,13 +5,14 @@ import ParallaxImage from "@/components/ParallaxImage";
 import Marquee from "@/components/Marquee";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Studio",
   description: `Meet ${site.name}, a design and engineering studio building extraordinary websites.`,
   alternates: {
     canonical: "/studio/",
-    languages: { "en-NZ": "/studio/", "x-default": "/studio/" },
+    languages: hreflangFor("/studio/"),
   },
 };
 

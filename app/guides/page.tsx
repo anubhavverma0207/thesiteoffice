@@ -9,6 +9,7 @@ import {
   standaloneTools,
 } from "@/lib/guides";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Guides",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     "Practical, sourced guides on buying, building, and running a website in New Zealand. Every factual claim is traceable to a primary source.",
   alternates: {
     canonical: "/guides/",
-    languages: { "en-NZ": "/guides/", "x-default": "/guides/" },
+    languages: hreflangFor("/guides/"),
   },
 };
 

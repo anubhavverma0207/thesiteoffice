@@ -5,6 +5,7 @@ import AiVisibilityTracker from "@/components/AiVisibilityTracker";
 import ContentMeta from "@/components/ContentMeta";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "AI Visibility Tracker",
@@ -12,10 +13,7 @@ export const metadata: Metadata = {
     "Free tool to measure whether ChatGPT, Perplexity, Google AI Mode, and Copilot recommend your business. Runs in your browser, no account, no email.",
   alternates: {
     canonical: "/tools/ai-visibility-tracker/",
-    languages: {
-      "en-NZ": "/tools/ai-visibility-tracker/",
-      "x-default": "/tools/ai-visibility-tracker/",
-    },
+    languages: hreflangFor("/tools/ai-visibility-tracker/"),
   },
 };
 

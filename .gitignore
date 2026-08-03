@@ -32,3 +32,6 @@ next-env.d.ts
 
 # local tool settings
 .claude/settings.local.json
+
+# agent debris
+.playwright-mcp/

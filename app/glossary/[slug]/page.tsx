@@ -6,6 +6,7 @@ import ContentMeta from "@/components/ContentMeta";
 import JsonLd from "@/components/JsonLd";
 import { glossary, getTerm } from "@/lib/glossary";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 /** One shared review date for the glossary. Bump it when terms are reviewed. */
 const GLOSSARY_REVIEWED = "2026-07-30";
@@ -29,7 +30,7 @@ export function generateMetadata({
     description: t.short,
     alternates: {
       canonical: path,
-      languages: { "en-NZ": path, "x-default": path },
+      languages: hreflangFor(path),
     },
   };
 }

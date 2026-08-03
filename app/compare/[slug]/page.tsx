@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { comparisons, getComparison } from "@/lib/comparisons";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export function generateStaticParams() {
   return comparisons.map((c) => ({ slug: c.slug }));
@@ -27,7 +28,7 @@ export function generateMetadata({
     description: c.metaDescription,
     alternates: {
       canonical: path,
-      languages: { "en-NZ": path, "x-default": path },
+      languages: hreflangFor(path),
     },
     openGraph: {
       type: "article",

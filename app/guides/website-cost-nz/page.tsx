@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "How Much Does a Website Cost in NZ? Honest 2026 Pricing Guide",
@@ -11,10 +12,7 @@ export const metadata: Metadata = {
     "What websites really cost across the New Zealand market in 2026: DIY builders from $20/month, template sites $1,000 to $4,000, custom design $3,000 to $25,000, e-commerce $5,000 to $30,000+. Market ranges, ongoing costs, and the red flags to avoid.",
   alternates: {
     canonical: "/guides/website-cost-nz/",
-    languages: {
-      "en-NZ": "/guides/website-cost-nz/",
-      "x-default": "/guides/website-cost-nz/",
-    },
+    languages: hreflangFor("/guides/website-cost-nz/", "NZ"),
   },
 };
 

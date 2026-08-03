@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     "How AntCrow collects, uses, and protects personal information: contact form details, analytics, and your rights under the New Zealand Privacy Act 2020.",
   alternates: {
     canonical: "/privacy/",
-    languages: { "en-NZ": "/privacy/", "x-default": "/privacy/" },
+    languages: hreflangFor("/privacy/"),
   },
 };
 

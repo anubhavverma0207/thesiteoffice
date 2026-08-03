@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { glossary, glossaryCategories } from "@/lib/glossary";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Glossary",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     "Plain definitions of web design, development, search, and AI terms, with the New Zealand specifics most glossaries leave out.",
   alternates: {
     canonical: "/glossary/",
-    languages: { "en-NZ": "/glossary/", "x-default": "/glossary/" },
+    languages: hreflangFor("/glossary/"),
   },
 };
 

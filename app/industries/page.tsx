@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import { industries } from "@/lib/industries";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Industries We Build Websites For",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     "AntCrow builds websites for NZ builders, tradies, hospitality, and professional services: industry-specific design grounded in how each industry's customers actually choose.",
   alternates: {
     canonical: "/industries/",
-    languages: { "en-NZ": "/industries/", "x-default": "/industries/" },
+    languages: hreflangFor("/industries/", "NZ"),
   },
 };
 

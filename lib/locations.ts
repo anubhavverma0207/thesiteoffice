@@ -167,11 +167,19 @@ export const locations: Location[] = [
         body: "A Sydney business needs to be found by Australian customers. We build for that from the start: Australian market signals in your content, structured data that tells Google and AI assistants exactly where you operate, and performance that holds up on Australian mobile networks. Your site is engineered to be quoted when customers ask AI assistants who to use, not just to look good in a portfolio.",
       },
       {
+        heading: "Finance concentration in the inner city sets the tone",
+        body: "Modelled regional estimates put financial and insurance services at 34.0 percent of value added in the City of Sydney local government area, which is the inner city council area rather than Greater Sydney. That concentration shapes what the surrounding market expects from a website: precision, restraint, clear entity and licensing detail, plain explanations of complicated products, and accessibility handled properly rather than merely claimed. It raises the bar for everyone selling into that ecosystem too, from law and accounting practices to technology vendors and recruiters. We build for readers who are assessing risk as much as capability, and we structure the evidence so it can be checked quickly.",
+      },
+      {
         heading: "How cross-Tasman projects actually run",
         body: "Honestly, and over video. Kickoff, weekly working sessions, and launch all happen on scheduled calls in Sydney hours, with a shared project space you can check any time. Contracts can be invoiced in AUD or NZD. The only thing we cannot do is meet you for a flat white on George Street, and we are working on an excuse to fix that too.",
       },
     ],
     faqs: [
+      {
+        q: "What does a business website cost in Sydney?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, with figures commonly quoted exclusive of GST, which is 10 percent in Australia. Those are market ranges rather than ours. We scope and price every project individually, and our guide at /guides/website-cost-australia explains what moves the number.",
+      },
       {
         q: "Do you work with Australian clients?",
         a: "Yes. AntCrow serves both New Zealand and Australia, and cross-Tasman projects run remotely with video sessions in Australian hours. The time difference with Sydney is two hours or less year-round.",
@@ -799,5 +807,178 @@ export const locations: Location[] = [
   },
 ];
 
+/**
+ * AUSTRALIAN CITIES.
+ * ------------------------------------------------------------------
+ * Two rules that are easy to break and expensive to get wrong.
+ *
+ * 1. The economic figures below come from economy.id profiles, which are
+ *    NIEIR MODELLED data in 2023/24 base-year dollars, not ABS survey
+ *    data. They are phrased as "modelled regional estimates" throughout.
+ *    NIEIR revises prior years with each release, so re-check before
+ *    treating any figure as current.
+ *
+ * 2. City of Melbourne, City of Sydney, City of Perth and City of
+ *    Adelaide are INNER CITY COUNCIL AREAS, not the metro areas. City of
+ *    Brisbane is unusual: it covers most of metropolitan Brisbane. Never
+ *    compare these council areas to each other by size, because the
+ *    boundaries are not equivalent. "Brisbane's economy is larger than
+ *    Melbourne's" would be sourceable and false.
+ */
+export const australianLocations: Location[] = [
+  {
+    slug: "melbourne",
+    city: "Melbourne",
+    country: "Australia",
+    metaTitle: "Web Design Melbourne | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow designs and builds custom websites for Melbourne businesses, from professional services and finance to health technology, with senior design and engineering end to end.",
+    h1: "Web design in Melbourne",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Melbourne businesses. Melbourne's inner city runs on professional services and finance, and both are categories where a website is assessed rather than admired. We build for readers who are checking whether you are credible before they ever make contact.",
+    sections: [
+      {
+        heading: "A professional services city, and websites are judged accordingly",
+        body: "Modelled regional estimates put financial and insurance services at 29.0 percent of value added in the City of Melbourne local government area, against a Victorian benchmark of 10.8 percent. Professional, scientific and technical services employ around 150,000 people in that council area, roughly 22 percent of local jobs. Note that this is the inner city council area rather than Greater Melbourne. What it means practically is that a large share of the surrounding market sells expertise, and expertise is bought on evidence: clear credentials, plain explanations of complicated work, and a site that behaves precisely.",
+      },
+      {
+        heading: "Health technology and research raise the standard",
+        body: "Victoria hosts around 40 percent of ASX-listed medical technology and pharmaceutical companies and produces 54 percent of national pharmaceutical exports. Those are state figures rather than Melbourne ones, but the institutions sit here: the Walter and Eliza Hall Institute runs more than 90 laboratories with over 1,200 staff and students, and the Royal Melbourne Hospital has operated since 1848 as Victoria's first public hospital. Organisations in this orbit have compliance-minded reviewers, accessibility expectations, and a low tolerance for inflated claims. We build conservatively by default for exactly that reason.",
+      },
+      {
+        heading: "Being found by Australian customers, and cited by AI",
+        body: "A Melbourne business needs to be found by Australian customers specifically. We build Australian market signals into the content, structured data that tells search engines and AI assistants precisely where you operate and what you do, and performance that holds up on Australian mobile networks. Increasingly the question is not only whether you rank, but whether an assistant names you when someone asks who to use. That takes clear, quotable, factual content, which is the same discipline we apply to our own site.",
+      },
+      {
+        heading: "How cross-Tasman projects actually run",
+        body: "Remotely, and without pretending otherwise. Kickoff, working sessions, and launch happen on scheduled video calls in Melbourne hours, with a shared project space you can open at any time. Melbourne is two hours behind New Zealand for most of the year and three during the daylight saving overlap, which is a small enough gap that a normal working day covers both. Invoicing can be in AUD or NZD, and in-person sessions can be arranged where a project genuinely benefits from one.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a business website cost in Melbourne?",
+        a: "Published Australian pricing guides put a custom-designed business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, commonly quoted exclusive of GST, which is 10 percent in Australia. Those are market ranges rather than ours, and Australian sources disagree widely at the entry level. Our guide at /guides/website-cost-australia collects the published figures and shows where they conflict.",
+      },
+      {
+        q: "Do you work with Melbourne businesses from New Zealand?",
+        a: "Yes. Projects run remotely with video sessions scheduled in Melbourne hours. The time difference is two hours for most of the year and three during the daylight saving overlap, so a normal working day comfortably covers both cities. In-person sessions can be arranged where a project genuinely benefits.",
+      },
+      {
+        q: "Can you build for regulated or research-linked organisations?",
+        a: "Yes, and we build conservatively by default: no inflated claims, no invented statistics, accessibility handled properly, and structured content your compliance reviewers can read without wincing. Melbourne has a dense health technology and research sector, and organisations in that orbit are reviewed more carefully than most.",
+      },
+      {
+        q: "Will the site be found by Australian customers rather than New Zealand ones?",
+        a: "Yes. Search engines determine relevance from content signals, structured data, and where your audience actually engages, not from where the studio sits. We build Australian market signals in from the start, and we can invoice in AUD.",
+      },
+    ],
+  },
+  {
+    slug: "brisbane",
+    city: "Brisbane",
+    country: "Australia",
+    metaTitle: "Web Design Brisbane | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Brisbane businesses across an unusually diversified economy, engineered for Australian search, AI answers, and mobile performance.",
+    h1: "Web design in Brisbane",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Brisbane businesses. Brisbane is the most genuinely diversified of Australia's big three city economies, which changes what a website has to do: it is more often explaining an unfamiliar business to a broad audience than competing inside one dominant sector.",
+    sections: [
+      {
+        heading: "No single industry dominates, and that shapes the brief",
+        body: "Modelled regional estimates put professional, scientific and technical services as the most productive industry in the City of Brisbane at about $21.4 billion, which is 13.1 percent of value added. That is the largest share, and it is small: in the City of Sydney council area, finance alone takes 34.0 percent. Queensland Treasury makes the same point at state level, noting no single sector has averaged more than 10 percent of output over the past decade. For a website it means less category shorthand and more explaining, because your visitor may have no frame of reference for what you do.",
+      },
+      {
+        heading: "Health, research and a city preparing for 2032",
+        body: "Health care employs around 160,000 people in the City of Brisbane council area, though notably that is a smaller share of local jobs than the Queensland average. Metro North Health employs more than 22,000 people and is the largest of Queensland's sixteen Hospital and Health Services; the Royal Brisbane and Women's Hospital is the state's largest, with over 9,000 staff and close to 1,000 beds. The University of Queensland teaches more than 57,000 students. Brisbane is also the host city for the 2032 Olympic and Paralympic Games, which is already shaping infrastructure and investment timelines.",
+      },
+      {
+        heading: "The fastest growing of the big three city economies",
+        body: "Modelled estimates put growth in the City of Brisbane council area at 3.0 percent in the year to June 2025, ahead of the City of Sydney at 2.5 percent and the City of Melbourne at 1.6 percent. Those council areas cover different proportions of their metro regions, so the absolute figures are not comparable, but the growth rates are a fair signal. Practically, a growing market means more new entrants, more categories that are still being explained to customers, and more competitive pressure on how clearly you can state what you do.",
+      },
+      {
+        heading: "Built for Australian search and AI answers",
+        body: "We build Australian market signals into the content, structured data that tells Google and AI assistants exactly where you operate, and performance that holds on Australian mobile networks. The newer question is whether an assistant names you when a customer asks who to use, which depends on clear factual content, consistent descriptions of your business across the web, and letting the right crawlers reach you. We do that work as part of the build rather than selling it back afterwards.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost in Brisbane?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, usually quoted exclusive of GST at 10 percent. Those are market figures rather than ours. The published sources disagree substantially at the lower end, and our guide at /guides/website-cost-australia shows the spread rather than averaging it away.",
+      },
+      {
+        q: "Do you work with Brisbane businesses from New Zealand?",
+        a: "Yes. Projects run remotely on scheduled video calls in Brisbane hours. Queensland does not observe daylight saving, so the gap from New Zealand is two hours for part of the year and three during the New Zealand daylight saving period. Either way a normal working day covers both.",
+      },
+      {
+        q: "Our category is hard to explain. Can you help with that?",
+        a: "That is a large part of the work. Brisbane's economy is unusually diversified, which means more businesses are explaining an unfamiliar offering than competing inside a crowded, well-understood category. Positioning, structure, and plain language do more for those sites than visual flourish, and we start there.",
+      },
+      {
+        q: "Will a New Zealand studio understand the Australian market?",
+        a: "We build for Australian audiences with Australian market signals, Australian pricing context, and AUD invoicing. We are also honest about the limits: we do not have an Australian street address, so we are not competing for map-pack results. What we compete on is the quality of the build and how findable it is nationally.",
+      },
+    ],
+  },
+  {
+    slug: "perth",
+    city: "Perth",
+    country: "Australia",
+    metaTitle: "Web Design Perth | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Perth businesses, including the engineering and professional services firms that run Western Australia's resources sector.",
+    h1: "Web design in Perth",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Perth businesses. Perth's inner city is not a mine site; it is the head office, engineering and professional services centre that runs Western Australia's resources sector. That audience buys on demonstrated capability, and we build sites that show it rather than assert it.",
+    sections: [
+      {
+        heading: "The control room for the resources sector",
+        body: "This is the fact that explains Perth. Modelled regional estimates put professional, scientific and technical services as the largest employer in the City of Perth council area at around 62,700 jobs, roughly 24 percent of local employment, against a Western Australian benchmark of 7.9 percent. That sector added close to 19,500 jobs in five years. Mining leads on value added at 24.9 percent, well below the state's 46.3 percent. Read together, the inner city is where the engineering, technical and corporate work happens, not where the extraction does. Websites here are read by procurement teams and engineers.",
+      },
+      {
+        heading: "What a capability-led audience actually wants",
+        body: "Firms selling into resources are assessed on evidence: certifications, standards, equipment, tolerances, project history, and safety record. That is a different brief from consumer persuasion. It calls for structured capability content, specifications that a technical reader can scan without a sales conversation, and enquiry forms that capture enough detail to respond usefully. Perth also hosts substantial research infrastructure, including the Pawsey Supercomputing Research Centre at Kensington, supported by $90 million in Australian Government national research infrastructure funding, and Curtin University, which teaches over 50,000 students across its network.",
+      },
+      {
+        heading: "A market with real scale and real distance",
+        body: "Modelled estimates put gross regional product for the City of Perth council area at about $61.7 billion in the year to June 2025, growing 6.7 percent. Western Australia attracted $34 billion of mining and petroleum investment in 2025, a decade high and 62 percent of the national total, with more than 136,000 on-site full-time equivalents employed in mining. Perth Airport handled a record 18.03 million passengers in calendar 2025. The scale is genuine, and so is the isolation, which is precisely why remote-capable suppliers are normal here rather than exceptional.",
+      },
+      {
+        heading: "Working across the widest time gap",
+        body: "Perth is the furthest Australian capital from New Zealand in working hours, four hours behind for much of the year and five during the New Zealand daylight saving period. We do not pretend that is nothing. In practice it means a genuine overlap in the New Zealand afternoon and the Perth morning, and we schedule accordingly rather than asking anyone to take calls at unreasonable hours. Written updates and a shared project space carry the rest, which is how most Perth businesses already work with suppliers on the east coast.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost in Perth?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, commonly quoted exclusive of GST at 10 percent. Those are Australian market ranges rather than ours. Our guide at /guides/website-cost-australia collects the published sources and shows where they conflict, which at the entry level is by a factor of forty.",
+      },
+      {
+        q: "How does the time difference work between Perth and New Zealand?",
+        a: "Perth is four hours behind New Zealand for much of the year and five during New Zealand daylight saving, the widest gap of any Australian capital. There is a workable overlap between the New Zealand afternoon and the Perth morning, and we schedule calls inside it. Everything else runs through written updates and a shared project space.",
+      },
+      {
+        q: "Can you build for engineering and resources supply chain businesses?",
+        a: "Yes, and it is a different discipline from consumer work. The audience is procurement staff and engineers assessing capability, so the site needs structured capability content, real specifications, certifications and standards where held, and enquiry forms that capture enough technical detail to quote against. Persuasion matters far less than being easy to evaluate.",
+      },
+      {
+        q: "Do you have an office in Perth?",
+        a: "No. AntCrow serves clients worldwide and works with Perth businesses remotely, which is a normal arrangement in a city that already works at distance from the eastern states. In-person sessions can be arranged where a project genuinely benefits. We would rather be straightforward about that than imply a local presence we do not have.",
+      },
+    ],
+  },
+];
+
+/**
+ * Every location, both countries. This is what the routes, the sitemap
+ * and llms.txt read, so anything added to either array above appears
+ * across the site automatically.
+ *
+ * The two arrays stay separate because hreflang is derived from
+ * `country`: a page about a New Zealand city should not declare itself
+ * relevant to an Australian audience, or the reverse.
+ */
+export const allLocations: Location[] = [...locations, ...australianLocations];
+
 export const getLocation = (slug: string) =>
-  locations.find((l) => l.slug === slug);
+  allLocations.find((l) => l.slug === slug);

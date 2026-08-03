@@ -3,6 +3,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import HealthCheck from "@/components/HealthCheck";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Free Website Health Check (2026)",
@@ -10,10 +11,7 @@ export const metadata: Metadata = {
     "A free 16-point website health check for business owners: speed, mobile, trust, search visibility, and AI readiness. Score your website in two minutes, no email required.",
   alternates: {
     canonical: "/tools/website-health-check/",
-    languages: {
-      "en-NZ": "/tools/website-health-check/",
-      "x-default": "/tools/website-health-check/",
-    },
+    languages: hreflangFor("/tools/website-health-check/"),
   },
 };
 

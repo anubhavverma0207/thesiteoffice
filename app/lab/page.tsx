@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import LabExhibits from "@/components/LabExhibits";
 import Marquee from "@/components/Marquee";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Lab",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     "The AntCrow Lab: interaction experiments from our studio. Autonomous critters, magnetic buttons, type in motion. Everything here runs in production on this site.",
   alternates: {
     canonical: "/lab/",
-    languages: { "en-NZ": "/lab/", "x-default": "/lab/" },
+    languages: hreflangFor("/lab/"),
   },
 };
 

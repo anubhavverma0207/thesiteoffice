@@ -4,6 +4,7 @@ import { AnimatedHeading, Reveal } from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { comparisons } from "@/lib/comparisons";
 import { site } from "@/lib/site.config";
+import { hreflangFor } from "@/lib/markets";
 
 export const metadata: Metadata = {
   title: "Comparisons",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     "Head-to-head comparisons of the platforms, payment providers, and ways of buying a website in New Zealand. Each one commits to an answer.",
   alternates: {
     canonical: "/compare/",
-    languages: { "en-NZ": "/compare/", "x-default": "/compare/" },
+    languages: hreflangFor("/compare/"),
   },
 };
 
