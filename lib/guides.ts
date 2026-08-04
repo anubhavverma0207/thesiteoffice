@@ -2127,7 +2127,253 @@ export const guides: Guide[] = [
     ],
     // website-cost-nz lives in standaloneGuides, not this array, so it
     // would silently filter out of the related list. Link real slugs.
-    related: ["choosing-a-web-design-agency-nz", "nz-ecommerce-compliance"],
+    related: ["choosing-a-web-design-agency-nz", "au-website-compliance"],
+  },
+
+  // =================================================================
+  {
+    slug: "au-website-compliance",
+    name: "Australian law for websites",
+    category: "Australia",
+    metaTitle: "Australian Law for Business Websites: Privacy, ACL & Spam",
+    metaDescription:
+      "What the Privacy Act 1988, Australian Consumer Law, and Spam Act actually require of a business website, with the recent changes most guides have wrong.",
+    h1: "Australian law and your business website",
+    standfirst:
+      "Australian website obligations changed materially in the last two years, and most published guides have not caught up. The maximum consumer law penalty doubled in March 2026, a privacy tort commenced in June 2025, and the cookie banners half the country runs are not required by any Australian law. Here is what is actually in force, sourced.",
+    published: "2026-08-04",
+    updated: "2026-08-04",
+    readingTime: 12,
+    blocks: [
+      {
+        type: "callout",
+        title: "General information, not legal advice",
+        body: "AntCrow builds websites; we are not lawyers, and Australian law is not our home jurisdiction. This page reports what the regulators publish, with links so you can read the primary sources yourself. For advice on your circumstances, talk to an Australian lawyer, or to the regulator directly. Two areas below changed recently and one is still changing, and we say which.",
+      },
+      {
+        type: "h2",
+        text: "The Privacy Act has a small business exemption, with sharp edges",
+      },
+      {
+        type: "p",
+        text: "The Privacy Act 1988 applies to organisations with annual turnover above $3 million, which exempts most Australian small businesses and is the single biggest difference from New Zealand, where the Privacy Act 2020 applies to everyone. The edges are where businesses get caught: all private health service providers are covered regardless of turnover, and the Office of the Australian Information Commissioner's own guidance lists gyms, weight-loss clinics, child care centres and private schools among them. So are businesses that sell or purchase personal information, credit reporting bodies, and Commonwealth contractors. A removal of the exemption entirely has been proposed in a second tranche of privacy reform, but as at the time of writing no such bill exists, and we are not going to publish a timeline for legislation that has not been introduced.",
+      },
+      {
+        type: "p",
+        text: "For covered organisations, thirteen Australian Privacy Principles apply. Three bear directly on a website: APP 1 requires a clearly expressed and up-to-date privacy policy, APP 5 requires notifying people when personal information is collected, and APP 8 sets the steps required before personal information is disclosed overseas, which is exactly what using offshore hosting, analytics, or email platforms involves.",
+      },
+      {
+        type: "h2",
+        text: "What changed in privacy law, precisely",
+      },
+      {
+        type: "ul",
+        items: [
+          "Since 13 December 2022, the maximum civil penalty for serious or repeated interference with privacy is the greater of $50 million, three times the benefit obtained, or 30 percent of adjusted turnover during the breach period.",
+          "The Privacy and Other Legislation Amendment Act 2024 received royal assent on 10 December 2024, adding tiered mid-level penalties of up to 2,000 penalty units and administrative penalties of up to 200 units, with the OAIC able to issue infringement notices. We cite penalty units rather than dollars deliberately, because the unit value is indexed and dollar figures in circulating guides go stale.",
+          "A statutory tort for serious invasions of privacy commenced on 10 June 2025. It is enforced through the courts rather than the OAIC, and it applies more broadly than the Privacy Act itself, which means a business inside the small business exemption can still be sued under it.",
+          "In November 2024 the OAIC published dedicated guidance on third-party tracking pixels, requiring due diligence, data minimisation, and transparency in privacy policies about pixel use.",
+        ],
+      },
+      {
+        type: "callout",
+        title: "Australia does not require cookie consent banners",
+        body: "No Australian law mandates the EU-style cookie banner, and the OAIC's tracking guidance asks for transparency and due diligence, not consent pop-ups. Many Australian sites run banners anyway, voluntarily or because they also serve European visitors under the GDPR, which is a genuinely different regime. This mirrors the position in New Zealand, and it means an Australian business being sold a consent banner as a legal necessity is being sold something the law does not require.",
+      },
+      {
+        type: "h2",
+        text: "Data breaches: the trigger, the clock, and who gets told",
+      },
+      {
+        type: "p",
+        text: "The Notifiable Data Breaches scheme is triggered when personal information is accessed, disclosed without authorisation, or lost, and this is likely to result in serious harm. Both the affected individuals and the OAIC must be notified. The OAIC's guidance gives entities up to 30 days to assess a suspected breach once there are grounds to suspect one, with an expectation of much faster where possible, and notification itself must then happen as soon as practicable. The practical implication for a website owner is the same as in New Zealand: decide who assesses, who notifies, and how, before an incident rather than during one.",
+      },
+      {
+        type: "h2",
+        text: "Consumer law: the single price rule is the one that catches websites",
+      },
+      {
+        type: "p",
+        text: "The Australian Consumer Law lives in Schedule 2 of the Competition and Consumer Act 2010, and its section 18 prohibition on misleading or deceptive conduct needs no intent: an honest mistake that misleads still contravenes it. For pricing, the ACCC's rule is concrete. A business must display the total price as a single figure, being the minimum a customer could pay including taxes, duties, and unavoidable or pre-selected fees. Consumer-facing prices must therefore include GST, and where a partial price such as a monthly instalment is shown, the total must be at least as prominent. This is stricter than New Zealand, where GST-inclusive display for consumers is enforced through general misleading conduct provisions rather than a single-price rule.",
+      },
+      {
+        type: "p",
+        text: "Drip pricing, where fees are added step by step through a checkout, has been litigated. The Federal Court found Jetstar and Virgin Australia engaged in misleading drip pricing over their booking flows, with penalties of $545,000 and $200,000 respectively. Fee disclosure belongs at the start of a purchase process, not the end of it.",
+      },
+      {
+        type: "callout",
+        title: "The penalty ceiling doubled in March 2026, and most guides are out of date",
+        body: "From 10 November 2022 the maximum penalty for a corporation breaching the consumer law was the greater of $50 million, three times the benefit, or 30 percent of adjusted turnover. Legislation commencing 28 March 2026 doubled the fixed limb to $100 million, leaving the other two limbs unchanged and the individual maximum at $2.5 million. At the time of writing, most published compliance guides still cite $50 million.",
+      },
+      {
+        type: "h2",
+        text: "Consumer guarantees, refunds, and reviews",
+      },
+      {
+        type: "ul",
+        items: [
+          "Consumer guarantees apply automatically to online sales and cannot be excluded: acceptable quality, fitness for purpose, and matching the description among them. Misleading customers about these rights is itself unlawful.",
+          "There is no general change-of-mind right for ordinary online retail in Australia, the same position as New Zealand and unlike the EU and UK. If a store voluntarily offers a change-of-mind policy it must honour it, and blanket no-refunds signs are illegal because they misrepresent the guarantees.",
+          "Fake and incentivised reviews are squarely unlawful. The ACCC's own enforcement page records Service Seeking penalised $600,000 and HealthEngine $2.9 million over review conduct. Incentives for reviews must apply regardless of whether the review is positive, and must be disclosed.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The Spam Act is opt-in, and enforcement is real money",
+      },
+      {
+        type: "p",
+        text: "The Spam Act 2003 covers commercial electronic messages by email, SMS, MMS and instant messaging, and it is an opt-in regime: consent first, express or inferred from an existing relationship. Every message needs accurate sender identification and a functional unsubscribe that is free or low cost, works for at least 30 days after sending, requires no login, and is honoured within five business days. The contrast with the United States matters for anyone using American marketing playbooks: CAN-SPAM permits unsolicited email until the recipient opts out. Australia does not.",
+      },
+      {
+        type: "p",
+        text: "The regulator, ACMA, enforces at a scale that surprises people. The Commonwealth Bank paid $7.5 million in 2024 over more than 170 million marketing emails without a working unsubscribe, its second penalty after $3.55 million in 2023. Kmart paid $1,303,500 in 2023 for emailing people who had unsubscribed, and Ticketek paid $515,040 the same year, a figure usually rounded down to half a million, for messaging without consent and after unsubscribes. The recurring failure across these cases is not exotic: it is unsubscribes that did not work or were not honoured, which is an engineering problem before it is a legal one.",
+      },
+      {
+        type: "h2",
+        text: "Domains: .au has rules that .nz does not",
+      },
+      {
+        type: "p",
+        text: "Every .au licence requires an Australian presence, satisfied by an ABN, ACN or ARBN, by citizenship or permanent residency, or, for foreign entities, by owning or applying for an Australian trade mark, with com.au requiring the domain to exactly match that trade mark. New Zealand's .nz has no presence requirement at all, so a New Zealand business can hold .nz freely but needs a qualifying route for .au. Direct second-level .au registration, such as example.au, opened on 24 March 2022 and drops the close-connection requirement, needing only a validated Australian presence. One more difference worth knowing: WHOIS privacy is prohibited for .au, and auDA expressly bans proxy registration, so Australian registrant details are public in a way New Zealand individuals can avoid.",
+      },
+      {
+        type: "p",
+        text: "On identifiers: an ABN is eleven digits, an ACN is nine, and the Australian Business Register runs a free lookup API updated hourly, which makes live ABN validation in a checkout or onboarding form practical. Displaying an ABN on a website is standard practice and useful for anyone vetting you, but the hard legal requirements attach elsewhere: tax invoices over $82.50 must carry it, and a supplier who fails to quote an ABN on payments over $75 generally faces 47 percent withholding by the payer.",
+      },
+      {
+        type: "h2",
+        text: "A practical checklist for an Australian business website",
+      },
+      {
+        type: "ol",
+        items: [
+          "Work out whether the Privacy Act covers you. Over $3 million turnover, any health-related service at any size, or trading in personal information means yes.",
+          "If covered, publish a privacy policy that reflects what your site actually does, including any tracking pixels, and note where data goes overseas.",
+          "Display consumer prices GST-inclusive as a single total, with any fees disclosed at the start of the purchase flow rather than dripped through it.",
+          "State your returns policy accurately: consumer guarantees always apply, change-of-mind is your choice, and once published your policy binds you.",
+          "Never fabricate or incentivise reviews without disclosure applied equally to positive and negative ones.",
+          "Make marketing email and SMS opt-in, identify the sender, and test the unsubscribe path end to end, since a broken unsubscribe is the single most penalised failure in Australian spam enforcement.",
+          "Secure your .au eligibility route before building a brand on the domain, and know that your registrant details will be public.",
+          "Write a one-page breach plan naming who assesses, who notifies the OAIC and customers, and on what clock.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Does the Privacy Act apply to my small Australian business?",
+        a: "If your annual turnover is $3 million or less, generally not, which is the small business exemption and the biggest difference from New Zealand. The sharp edges: all private health service providers are covered regardless of turnover, including gyms, weight-loss clinics, child care centres and private schools, as are businesses that sell or purchase personal information. Removing the exemption has been proposed but not legislated. Note the new privacy tort that commenced in June 2025 applies through the courts even to exempt businesses.",
+      },
+      {
+        q: "Do Australian websites need cookie consent banners?",
+        a: "No Australian law requires them. The OAIC's guidance on cookies and tracking pixels asks for transparency, due diligence and accurate privacy policies, not consent pop-ups. Sites serving European or UK visitors may need banners for those audiences under the GDPR, which is a separate regime. The position is essentially the same as New Zealand's.",
+      },
+      {
+        q: "Do prices on Australian websites have to include GST?",
+        a: "For consumers, yes. The ACCC requires the total price displayed as a single figure covering the minimum a customer could pay, including taxes and unavoidable or pre-selected fees. If a partial price such as per-month is shown, the total must be at least as prominent. Business-to-business quoting exclusive of GST remains common and lawful when clearly labelled.",
+      },
+      {
+        q: "Is there a cooling-off period for online purchases in Australia?",
+        a: "Not for ordinary online retail. Consumer guarantees apply automatically and cannot be excluded, but a customer who simply changes their mind has no general right to a refund. If a store voluntarily offers change-of-mind returns it must honour them, and blanket no-refunds signs are illegal because they misstate the guarantees.",
+      },
+      {
+        q: "What are the rules for marketing emails in Australia?",
+        a: "The Spam Act 2003 is opt-in: consent before sending, express or inferred from an existing relationship. Messages need accurate sender identification and a working unsubscribe honoured within five business days. Enforcement is substantial: the Commonwealth Bank paid $7.5 million in 2024 and Kmart over $1.3 million in 2023, in both cases substantially over unsubscribe failures.",
+      },
+      {
+        q: "Can a New Zealand business register a .com.au domain?",
+        a: "Only with a qualifying Australian presence. For a foreign entity the standard route is owning or applying for an Australian trade mark, and for com.au the domain must exactly match that trade mark. An ABN or ACN also qualifies where a business has an Australian entity. Unlike .nz, there is no anonymous route: WHOIS privacy is prohibited for .au and registrant details are public.",
+      },
+    ],
+    sources: [
+      {
+        title: "Rights and responsibilities under the Privacy Act",
+        publisher: "Office of the Australian Information Commissioner",
+        href: "https://www.oaic.gov.au/privacy/privacy-legislation/the-privacy-act/rights-and-responsibilities",
+      },
+      {
+        title: "Australian Privacy Principles",
+        publisher: "Office of the Australian Information Commissioner",
+        href: "https://www.oaic.gov.au/privacy/australian-privacy-principles",
+      },
+      {
+        title: "Statutory tort for serious invasions of privacy",
+        publisher: "Office of the Australian Information Commissioner",
+        href: "https://www.oaic.gov.au/privacy/your-privacy-rights/more-privacy-rights/statutory-tort-for-serious-invasions-of-privacy",
+        date: "Commenced 10 June 2025",
+      },
+      {
+        title: "Tracking pixels and privacy obligations",
+        publisher: "Office of the Australian Information Commissioner",
+        href: "https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/tracking-pixels-and-privacy-obligations",
+        date: "November 2024",
+      },
+      {
+        title: "Notifiable data breaches",
+        publisher: "Office of the Australian Information Commissioner",
+        href: "https://www.oaic.gov.au/privacy/notifiable-data-breaches",
+      },
+      {
+        title: "Displaying prices",
+        publisher: "Australian Competition and Consumer Commission",
+        href: "https://www.accc.gov.au/business/pricing/displaying-prices",
+      },
+      {
+        title: "Jetstar and Virgin penalties for misleading drip pricing",
+        publisher: "Australian Competition and Consumer Commission",
+        href: "https://www.accc.gov.au/media-release/jetstar-and-virgin-to-pay-penalties-for-misleading-drip-pricing-practices",
+      },
+      {
+        title: "Consumer rights and guarantees",
+        publisher: "Australian Competition and Consumer Commission",
+        href: "https://www.accc.gov.au/consumers/buying-products-and-services/consumer-rights-and-guarantees",
+      },
+      {
+        title: "Managing online reviews",
+        publisher: "Australian Competition and Consumer Commission",
+        href: "https://www.accc.gov.au/business/advertising-and-promotions/managing-online-reviews",
+      },
+      {
+        title: "New $100 million maximum penalty for competition and consumer law contraventions",
+        publisher: "Gilbert + Tobin",
+        href: "https://www.gtlaw.com.au/insights/new-$100-million-maximum-penalty-for-competition-and-consumer-law-contraventions",
+        date: "Commenced 28 March 2026",
+      },
+      {
+        title: "Avoid sending spam",
+        publisher: "Australian Communications and Media Authority",
+        href: "https://www.acma.gov.au/avoid-sending-spam",
+      },
+      {
+        title: "Commonwealth Bank pays $7.5m for spam breaches",
+        publisher: "Australian Communications and Media Authority",
+        href: "https://www.acma.gov.au/articles/2024-10/commonwealth-bank-pays-75m-more-spam-breaches",
+        date: "October 2024",
+      },
+      {
+        title: "Kmart pays $1.3m penalty for spam breaches",
+        publisher: "Australian Communications and Media Authority",
+        href: "https://www.acma.gov.au/articles/2023-11/kmart-pays-13m-penalty-spam-breaches",
+        date: "November 2023",
+      },
+      {
+        title: "com.au domain names and eligibility",
+        publisher: "auDA",
+        href: "https://www.auda.org.au/au-domain-names/the-different-au-domain-names/com-au-domain-names/",
+      },
+      {
+        title: "au direct: personalise your online presence",
+        publisher: "auDA",
+        href: "https://www.auda.org.au/news-insights/blog/au-direct-personalise-your-online-presence/",
+        date: "Launched 24 March 2022",
+      },
+      {
+        title: "ABN Lookup web services",
+        publisher: "Australian Business Register",
+        href: "https://abr.business.gov.au/Tools/WebServices",
+      },
+    ],
+    related: ["website-cost-australia", "nz-privacy-act-websites"],
   },
 ];
 
