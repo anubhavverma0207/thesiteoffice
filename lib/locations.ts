@@ -967,6 +967,241 @@ export const australianLocations: Location[] = [
       },
     ],
   },
+  {
+    slug: "adelaide",
+    city: "Adelaide",
+    country: "Australia",
+    metaTitle: "Web Design Adelaide | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Adelaide businesses, including the defence, health and research suppliers that anchor South Australia's institutional economy.",
+    h1: "Web design in Adelaide",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Adelaide businesses. Adelaide's economy is institution-led: defence programmes, health networks, and public administration set the tone, and suppliers into that world are judged on evidence and reliability rather than flash. We build websites that survive that kind of reading.",
+    sections: [
+      {
+        heading: "An institutional economy, and what that demands of a website",
+        body: "Modelled regional estimates put public administration and safety at 16.7 percent of jobs in the City of Adelaide council area, against a South Australian benchmark of 6.8 percent, a concentration of roughly two and a half times. Health care is the largest employer at around 32,000 jobs, and financial and insurance services lead value added at 20.0 percent. Note this describes the inner city council area rather than Greater Adelaide. Selling into institutions means procurement processes, compliance reviewers, and long evaluation cycles, so the website's job is to make you easy to assess: credentials stated plainly, capability documented, claims that survive checking.",
+      },
+      {
+        heading: "The defence build-up is reshaping the supplier landscape",
+        body: "Osborne is the anchor. The Hunter Class frigate programme is a $45 billion undertaking with an average of 2,500 people building the ships and a peak of 3,000, and in March 2024 ASC was selected as the Sovereign Submarine Partner to jointly build SSN-AUKUS submarines with BAE Systems at Osborne, with up to 4,000 workers constructing the yard and several thousand more building the boats at programme peak. South Australia is home to seven of the world's top ten defence companies, including BAE Systems, Boeing and Lockheed Martin. Every tier of that supply chain gets vetted, and a supplier's website is the first document in the file.",
+      },
+      {
+        heading: "Steady demand rather than a boom, stated honestly",
+        body: "Modelled estimates put gross regional product for the City of Adelaide council area at about $28.2 billion in the year to June 2025, essentially flat on the year before. We would rather tell you that than sell you a boom story the data does not support. Flat headline growth in an institution-led economy means demand is steady rather than speculative: health networks such as the Central Adelaide Local Health Network, the largest in SA Health, research institutes such as SAHMRI, and the defence programmes above keep buying through cycles. Websites serving that demand need durability and clarity more than novelty.",
+      },
+      {
+        heading: "Built for Australian search and AI answers",
+        body: "We build Australian market signals into the content, structured data that tells search engines and AI assistants exactly what you do and where you operate, and performance that holds up on Australian mobile networks. For Adelaide suppliers the increasingly important question is whether an assistant names you when a procurement officer asks who does your kind of work, which depends on clear factual content and consistent descriptions of your business across the web. Projects run remotely on video in Adelaide hours, and the time difference from New Zealand is small enough that a normal working day covers both.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost in Adelaide?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, commonly quoted exclusive of GST at 10 percent. Those are market ranges rather than ours, and the published sources disagree substantially at the entry level. Our guide at /guides/website-cost-australia collects the sources and shows the spread.",
+      },
+      {
+        q: "Can you build websites for defence supply chain businesses?",
+        a: "Yes, with the sobriety that audience expects: capability statements, certifications and standards where held, project history, and no inflated claims. We do not handle classified material and we say so plainly. What we build is the public evidence layer that lets a primes' procurement team assess you quickly.",
+      },
+      {
+        q: "Do you work with Adelaide businesses from New Zealand?",
+        a: "Yes. Projects run remotely with video sessions in Adelaide hours. Adelaide is two and a half hours behind New Zealand for part of the year and one and a half during the overlap of daylight saving periods, so scheduling is straightforward. Invoicing can be in AUD.",
+      },
+      {
+        q: "Our organisation has compliance reviewers. Will the site survive them?",
+        a: "That is how we build by default: accurate claims only, sources for published figures, accessibility handled properly, and structured content a reviewer can check quickly. Adelaide's institutional economy reviews suppliers more carefully than most markets, and a website that overstates is a liability there.",
+      },
+    ],
+  },
+  {
+    slug: "gold-coast",
+    city: "Gold Coast",
+    country: "Australia",
+    metaTitle: "Web Design Gold Coast | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Gold Coast businesses in a construction and healthcare economy with a tourism overlay, engineered for Australian search and AI answers.",
+    h1: "Web design on the Gold Coast",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Gold Coast businesses. The common picture of the Gold Coast as a tourism town is out of date: it is now a construction and healthcare economy with a tourism overlay, and the businesses growing fastest there are the ones most brochure websites were never designed to serve.",
+    sections: [
+      {
+        heading: "Not a tourism monoculture, whatever the postcards say",
+        body: "The numbers are unambiguous. Modelled regional estimates for Gold Coast City, which unusually does cover effectively the whole city, put accommodation and food services at just 5.0 percent of value added and 8.5 percent of jobs. Construction is the most productive industry at about $5.6 billion, 12.8 percent of value added against a Queensland benchmark of 8.8, and health care is the largest employer at around 58,000 jobs. Between 2019/20 and 2024/25 construction added roughly 16,700 jobs and health care 15,200. Tourism is real, and arts and recreation runs well above the state share, but it is the overlay rather than the engine.",
+      },
+      {
+        heading: "A health precinct with genuine scale",
+        body: "The Gold Coast Hospital and Health Service employs more than 14,000 people across more than twenty facilities including three hospitals, and describes itself as the city's largest employer. The Gold Coast Health and Knowledge Precinct spans 200 hectares and brings together more than $5 billion in health, research and education infrastructure, with over 1,000 researchers and 16,000 workers. Bond University at Robina was named Australia's top university for teaching in the Australian Financial Review's Best Universities Ranking in 2025, for the second year running. Clinics, allied health practices, and health-adjacent suppliers sit in the gravity of all that, and their websites carry real credibility obligations.",
+      },
+      {
+        heading: "Construction and trades, where a website wins or loses jobs",
+        body: "A construction economy growing at the Gold Coast's pace, with gross regional product up 3.7 percent in the year to June 2025 on modelled estimates, is a referral economy. Builders, subcontractors and trades win work when the person checking them out finds real projects, real credentials, and a fast path to an enquiry. That is a discipline we know unusually well: our team also runs CheckMyBuilder in New Zealand, which indexes building companies against public records, so we have watched exactly how customers vet construction businesses online before making contact.",
+      },
+      {
+        heading: "Built for Australian search and AI answers",
+        body: "We build Australian market signals into the content, structured data that tells Google and AI assistants exactly where you operate and what you do, and performance that holds on Australian mobile networks, which matters doubly for businesses whose customers search from a phone on a job site or a beach. Queensland does not observe daylight saving, so the gap from New Zealand is two hours for part of the year and three during the New Zealand daylight saving period, and a normal working day covers both comfortably.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost on the Gold Coast?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, usually quoted exclusive of GST at 10 percent. Those are market figures rather than ours. The sources disagree widely at the entry level, and our guide at /guides/website-cost-australia shows the published spread rather than inventing an average.",
+      },
+      {
+        q: "Do you build websites for builders and trades on the Gold Coast?",
+        a: "Yes, and it is a genuine specialty. Our team also runs CheckMyBuilder in New Zealand, a public tool that indexes building companies against official records, so we know precisely how customers vet construction businesses online. We build builder websites to pass that vetting: real projects, credentials, clear service areas, and an enquiry path that captures what you need to quote.",
+      },
+      {
+        q: "Can you build for clinics and health businesses?",
+        a: "Yes. Health websites carry particular obligations: accurate practitioner credentials, careful claims, accessibility, and privacy handled properly. Australian health advertising is regulated, and specific compliance questions should go to the relevant authority or a lawyer, but we build conservatively by default so your site is not the thing that creates the problem.",
+      },
+      {
+        q: "Do you work with Gold Coast businesses from New Zealand?",
+        a: "Yes. Projects run remotely with video sessions in Queensland hours. The time difference is two to three hours depending on the season, since Queensland does not observe daylight saving, and a normal working day covers both cities. Invoicing can be in AUD.",
+      },
+    ],
+  },
+  {
+    slug: "canberra",
+    city: "Canberra",
+    country: "Australia",
+    metaTitle: "Web Design Canberra | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Canberra businesses selling into government, where accessibility, procurement readiness and evidence matter more than anywhere in Australia.",
+    h1: "Web design in Canberra",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Canberra businesses. Canberra is the most government-shaped market in Australia, and selling into it is different: procurement processes, panel arrangements, and accessibility standards decide who gets considered. We build websites that make those evaluations easy to pass.",
+    sections: [
+      {
+        heading: "The public service is the economy, by a wide margin",
+        body: "Public administration and safety contributed $18,757 million of industry gross value added in the ACT in 2024-25, far ahead of any other sector, and the Australian Public Service Commission's own workforce data puts 70,221 APS employees in Canberra at 30 June 2025, about 35 percent of the entire national service. The ACT economy grew 3.5 percent that year, the highest rate of any Australian jurisdiction, with GSP per capita of $119,544. Almost every business in the city either sells to government, sells to people paid by government, or supplies the businesses that do.",
+      },
+      {
+        heading: "Selling to government starts with being assessable",
+        body: "Government buyers do not browse; they evaluate. Before a supplier reaches a shortlist, someone has checked the website for capability evidence, corporate details, security posture, and whether the organisation seems like it will still exist in three years. A Canberra supplier's website is effectively a standing tender document. We structure them that way: capability statements that map to how agencies actually describe requirements, credentials and panel memberships stated plainly, and an entity that is consistent everywhere it appears, because procurement teams check that too.",
+      },
+      {
+        heading: "Accessibility is not optional in this market",
+        body: "Australian Government digital services are held to accessibility standards, and that expectation flows down to suppliers: an agency evaluating two vendors will notice if one's website fails the standards the agency itself must meet. We build to WCAG 2.2 AA as a working baseline, with real colour contrast, keyboard navigation, and structure that assistive technology can actually use. Canberra also hosts research anchors including CSIRO, which is consolidating sites in the city, the Australian National University, and the University of Canberra, and that institutional audience reads with the same care.",
+      },
+      {
+        heading: "Built for Australian search and AI answers",
+        body: "We build Australian market signals into the content, structured data that tells search engines and AI assistants exactly what you do, and clear factual pages that assistants can safely quote, which increasingly matters when an evaluator's first question goes to a chatbot rather than a search box. Projects run remotely on video in Canberra hours; the time difference from New Zealand is two hours for most of the year, and invoicing can be in AUD.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost in Canberra?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, commonly quoted exclusive of GST at 10 percent. Those are market ranges rather than ours. Our guide at /guides/website-cost-australia collects the published sources, which disagree substantially at the entry level, and shows the spread.",
+      },
+      {
+        q: "Can you build websites for businesses selling to government?",
+        a: "Yes, and it is a distinct discipline. The site needs to function as a standing capability statement: what you do, evidence you have done it, corporate and compliance details where evaluators expect them, and accessibility to the standards agencies are themselves held to. We build to WCAG 2.2 AA as a baseline and keep claims strictly checkable.",
+      },
+      {
+        q: "Does accessibility really affect winning government work?",
+        a: "Practically, yes. Australian Government digital services are held to accessibility standards, and suppliers are assessed by people who work under those standards daily. An inaccessible supplier website is a visible signal of how you will treat their requirements. It is also simply the correct way to build, and it improves how machines read your content too.",
+      },
+      {
+        q: "Do you work with Canberra organisations from New Zealand?",
+        a: "Yes. Projects run remotely with video sessions in Canberra hours, and the time difference is two hours for most of the year, three during the overlap of daylight saving changes. Government-adjacent work often involves more stakeholders per decision, and we run structured reviews to keep that moving rather than letting it drift.",
+      },
+    ],
+  },
+  {
+    slug: "newcastle",
+    city: "Newcastle",
+    country: "Australia",
+    metaTitle: "Web Design Newcastle | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Newcastle businesses in a city whose economy is now led by health care, not steel, with a port diversifying beneath it.",
+    h1: "Web design in Newcastle",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Newcastle businesses. The city's economic story has quietly inverted: health care is now the defining industry inside Newcastle itself, while the coal economy lives mostly in the surrounding Hunter and in the port's throughput. Websites here serve a more diverse market than the reputation suggests.",
+    sections: [
+      {
+        heading: "Health care is the defining industry now, and that surprises people",
+        body: "Modelled regional estimates make health care and social assistance the largest employer in the City of Newcastle at around 33,000 local jobs, 23.8 percent of the total and up roughly 8,600 jobs in five years. The Hunter New England Local Health District employs more than 11,700 full-time equivalents, the largest employer in its region, serving over 970,000 residents. Mining's value added inside the council area fell from about $1.1 billion to $750 million over the same five years. Both things are true at once: the city has become a health and services economy, while the coal trade continues at scale through the port.",
+      },
+      {
+        heading: "The port is diversifying beneath a very large number",
+        body: "The Port of Newcastle describes itself as Australia's deepwater global gateway, the largest on the nation's East Coast, with trade worth about $48 billion a year to the national economy and its shipping channel running at half capacity. Its own 2025 trade report shows coal at 149 million revenue tonnes, 93.1 percent of trade and edging down from 94.6 the year before, while diversified non-coal trade grew by nearly a third. For the supply chain businesses around the port, the practical question is positioning for both realities: servicing today's trade while being findable for tomorrow's.",
+      },
+      {
+        heading: "A university city with a serious research base",
+        body: "The University of Newcastle counted 39,721 students and 3,014 full-time equivalent staff at the end of 2025, including more than 8,500 international students from 97 countries. A university at that scale feeds the city's professional services, health research, and startup activity, and it shapes the audience: Newcastle readers include a large population of students, academics and clinicians who check claims. Websites that state their evidence plainly do better here than websites that perform.",
+      },
+      {
+        heading: "Built for Australian search and AI answers",
+        body: "We build Australian market signals into the content, structured data that tells Google and AI assistants exactly where you operate, and performance that holds on Australian mobile networks. Newcastle businesses compete against Sydney suppliers two hours down the motorway, so being clearly findable and clearly credible is worth real money. Projects run remotely on video in New South Wales hours, with a time difference from New Zealand of two hours for most of the year, and invoicing can be in AUD.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost in Newcastle?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, commonly quoted exclusive of GST at 10 percent. Those are market ranges rather than ours, and the published sources disagree by a wide margin at the entry level. Our guide at /guides/website-cost-australia shows the spread and cites every source.",
+      },
+      {
+        q: "Can you build for port and logistics supply chain businesses?",
+        a: "Yes. That audience is procurement-led: they want capability, certifications, service areas, and evidence they can verify quickly. We structure sites so a logistics coordinator or procurement officer can assess you in minutes, and we build the search presence so you are found for the diversifying trade as well as the established one.",
+      },
+      {
+        q: "Do you build for health businesses and clinics?",
+        a: "Yes. Health is Newcastle's largest employer and its websites carry particular obligations: accurate credentials, careful claims, accessibility, and privacy handled properly. We build conservatively by default and point specific regulatory questions to the relevant authority rather than guessing on your behalf.",
+      },
+      {
+        q: "Do you work with Newcastle businesses from New Zealand?",
+        a: "Yes. Projects run remotely with video sessions in New South Wales hours. The time difference is two hours for most of the year, briefly three around daylight saving changes, so a normal working day covers both. In-person sessions can be arranged where a project genuinely benefits.",
+      },
+    ],
+  },
+  {
+    slug: "hobart",
+    city: "Hobart",
+    country: "Australia",
+    metaTitle: "Web Design Hobart | Custom Website Design & Development",
+    metaDescription:
+      "AntCrow builds custom websites for Hobart businesses, from the Antarctic science sector to health, government and the makers Tasmania is known for.",
+    h1: "Web design in Hobart",
+    intro:
+      "AntCrow designs and builds custom websites, online stores, and AI-ready digital experiences for Hobart businesses. Hobart concentrates Tasmania's institutions, carrying a quarter of the state's value added, and it holds one economy found nowhere else in Australia: the Antarctic gateway. Both audiences read carefully, and we build websites that stand up to careful reading.",
+    sections: [
+      {
+        heading: "A city of institutions, concentrated",
+        body: "Modelled regional estimates put Hobart City at about $10.0 billion of gross regional product, roughly 23.6 percent of Tasmania, with a quarter of the state's value added produced in the city. Three industries dominate: health care at 21.5 percent of value added, public administration and safety at 16.9, and financial and insurance services at 10.9, together nearly half the city's economy. Health care is the largest employer at around 15,200 jobs, and public administration runs at more than double the Tasmanian benchmark share. Selling into that mix means being easy to evaluate, which is a design problem as much as a content one.",
+      },
+      {
+        heading: "The Antarctic gateway is a real industry, not a slogan",
+        body: "The Antarctic and Southern Ocean sector contributes more than $204 million a year to the Tasmanian economy and employs more than 1,100 people, up from 671 a decade earlier, on the Tasmanian Government's own 2023-24 figures. The Australian Antarctic Division, headquarters of the national Antarctic programme, is based at Kingston just south of the city. Around that anchor sits a supply chain of science, logistics, engineering and specialist services whose customers are research agencies and expedition operators worldwide, and whose websites are read by exacting international audiences.",
+      },
+      {
+        heading: "Small state, distinctive producers, global buyers",
+        body: "Tasmania's agriculture, forestry and fishing sector is proportionally far larger than in most states, at about $3.4 billion of statewide value added, and Hobart is where much of it meets its market: producers, aquaculture businesses, and makers selling distinctive goods to mainland and international buyers. For those businesses the website is the export channel. It has to carry provenance convincingly, handle e-commerce properly, and perform for a customer in Sydney or Singapore as well as one in Sandy Bay. That is a remote-first problem by nature, which suits how we work.",
+      },
+      {
+        heading: "Built for Australian search and AI answers",
+        body: "We build Australian market signals into the content, structured data that tells search engines and AI assistants exactly what you do and where, and clear factual pages that assistants can quote safely. For a small market with global customers, being findable beyond Tasmania matters more than being merely present within it. Projects run remotely on video in Tasmanian hours, with a time difference from New Zealand of two hours for most of the year, and invoicing can be in AUD.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does a website cost in Hobart?",
+        a: "Published Australian pricing guides put a custom business website at roughly $5,000 to $15,000 and e-commerce from about $10,000, commonly quoted exclusive of GST at 10 percent. Those are market ranges rather than ours, and the sources disagree substantially at the entry level. Our guide at /guides/website-cost-australia collects the published figures and shows where they conflict.",
+      },
+      {
+        q: "Can you build for science and Antarctic sector organisations?",
+        a: "Yes. That audience is international, technical, and precise: research agencies, logistics partners and expedition operators who check claims. We build structured, factual, fast sites with accessibility handled properly, and we keep the content quotable, which matters when your next enquiry starts with someone asking an AI assistant who operates in the sector.",
+      },
+      {
+        q: "Can you build e-commerce for Tasmanian producers selling beyond the state?",
+        a: "Yes, and that is where a producer's website earns its keep: provenance told convincingly, product pages that do the selling, checkout and shipping handled properly for mainland and international customers, and performance that holds up far from Hobart. The site is effectively your export channel, and we build it as one.",
+      },
+      {
+        q: "Do you work with Hobart businesses from New Zealand?",
+        a: "Yes. Projects run remotely with video sessions in Tasmanian hours. The time difference is two hours for most of the year, briefly three around daylight saving changes, so scheduling is easy. In-person sessions can be arranged where a project genuinely benefits.",
+      },
+    ],
+  },
 ];
 
 /**
